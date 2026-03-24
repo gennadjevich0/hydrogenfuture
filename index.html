@@ -159,6 +159,29 @@ textarea.inp{height:85px;resize:vertical}
 .install-banner{display:none;margin-top:10px;padding:12px 16px;background:rgba(61,142,245,0.08);border:1px solid rgba(61,142,245,0.25);border-radius:10px;font-size:12px;color:var(--text2);line-height:1.6}
 .install-banner strong{color:var(--blue)}
 .install-banner.show{display:block}
+
+/* MODE TOGGLE */
+.mode-toggle-wrap{display:flex;align-items:center;gap:12px;margin-bottom:18px;justify-content:center}
+.mode-lbl{font-size:13px;color:var(--text2);font-family:'DM Sans',sans-serif;font-weight:500;transition:color .2s}
+.mode-lbl.on{color:var(--teal)}
+.mtoggle{position:relative;display:inline-block;width:46px;height:24px;flex-shrink:0}
+.mtoggle input{opacity:0;width:0;height:0}
+.mslider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.08);transition:.25s;border-radius:24px;border:1px solid var(--border2)}
+.mslider:before{position:absolute;content:"";height:18px;width:18px;left:2px;bottom:2px;background:var(--text2);transition:.25s;border-radius:50%}
+.mtoggle input:checked+.mslider{background:var(--teal2);border-color:var(--teal)}
+.mtoggle input:checked+.mslider:before{transform:translateX(22px);background:var(--teal)}
+
+/* HUB SUMMARY CARD */
+.hub-metric{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-top:1px solid var(--border)}
+.hub-metric:first-child{border-top:none}
+.hub-mk{color:var(--text2);font-size:13px}
+.hub-mv{font-size:14px;font-weight:500;color:var(--text)}
+.hub-metric.hm-hl .hub-mv{color:var(--teal);font-size:15px}
+.hub-metric.hm-co2 .hub-mv{color:var(--blue)}
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.hub-kpi{background:var(--teal3);border:1px solid rgba(0,212,160,0.15);border-radius:10px;padding:12px 14px;text-align:center}
+.hub-kpi-val{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--teal);line-height:1.1}
+.hub-kpi-lbl{font-size:11px;color:var(--text2);margin-top:4px}
 </style>
 </head>
 <body>
@@ -271,32 +294,77 @@ textarea.inp{height:85px;resize:vertical}
 
 <!-- ══════════════ CALCULATOR ══════════════ -->
 <div id="tab-calc" class="sec">
-  <div class="stabs">
-    <button class="stab opt on" onclick="setScen('opt',this)" id="scen-opt"></button>
-    <button class="stab base" onclick="setScen('base',this)" id="scen-base"></button>
-    <button class="stab cons" onclick="setScen('cons',this)" id="scen-cons"></button>
+  <!-- MODE TOGGLE -->
+  <div class="mode-toggle-wrap">
+    <span class="mode-lbl on" id="mode-lbl-single">Single Home</span>
+    <label class="mtoggle">
+      <input type="checkbox" id="hub-toggle" onchange="switchCalcMode()">
+      <span class="mslider"></span>
+    </label>
+    <span class="mode-lbl" id="mode-lbl-hub">Community Hub</span>
   </div>
-  <div class="g2">
-    <div class="card">
-      <div class="st" id="calc-params-title"></div>
-      <div class="sr"><span class="sl" id="c-inv-l"></span><input type="range" min="1" max="50" step="0.5" value="5" id="inv" oninput="recalc()"><span class="sv" id="inv-v">€5M</span></div>
-      <div class="sr"><span class="sl" id="c-homes-l"></span><input type="range" min="100" max="20000" step="100" value="1000" id="homes" oninput="recalc()"><span class="sv" id="homes-v">1,000</span></div>
-      <div class="sr"><span class="sl" id="c-price-l"></span><input type="range" min="3" max="8" step="0.5" value="4.5" id="price" oninput="recalc()"><span class="sv" id="price-v">€4.5k</span></div>
-      <div class="sr"><span class="sl" id="c-margin-l"></span><input type="range" min="2" max="25" step="1" value="8" id="margin" oninput="recalc()"><span class="sv" id="margin-v">8%</span></div>
-      <div class="sr"><span class="sl" id="c-h2p-l"></span><input type="range" min="100" max="5000" step="100" value="1000" id="h2prod" oninput="recalc()"><span class="sv" id="h2prod-v">1,000t</span></div>
-      <div class="sr"><span class="sl" id="c-h2px-l"></span><input type="range" min="2" max="12" step="0.5" value="4" id="h2px" oninput="recalc()"><span class="sv" id="h2px-v">€4/kg</span></div>
-      <div class="sr"><span class="sl" id="c-disc-l"></span><input type="range" min="3" max="15" step="1" value="8" id="disc" oninput="recalc()"><span class="sv" id="disc-v">8%</span></div>
+
+  <!-- SINGLE HOME MODE -->
+  <div id="calc-single">
+    <div class="stabs">
+      <button class="stab opt on" onclick="setScen('opt',this)" id="scen-opt"></button>
+      <button class="stab base" onclick="setScen('base',this)" id="scen-base"></button>
+      <button class="stab cons" onclick="setScen('cons',this)" id="scen-cons"></button>
     </div>
-    <div class="card">
-      <div class="st" id="calc-results-title"></div>
-      <div id="calc-results"></div>
-      <div class="ch-wrap"><canvas id="calcChart"></canvas></div>
+    <div class="g2">
+      <div class="card">
+        <div class="st" id="calc-params-title"></div>
+        <div class="sr"><span class="sl" id="c-inv-l"></span><input type="range" min="1" max="50" step="0.5" value="5" id="inv" oninput="recalc()"><span class="sv" id="inv-v">€5M</span></div>
+        <div class="sr"><span class="sl" id="c-homes-l"></span><input type="range" min="100" max="20000" step="100" value="1000" id="homes" oninput="recalc()"><span class="sv" id="homes-v">1,000</span></div>
+        <div class="sr"><span class="sl" id="c-price-l"></span><input type="range" min="3" max="8" step="0.5" value="4.5" id="price" oninput="recalc()"><span class="sv" id="price-v">€4.5k</span></div>
+        <div class="sr"><span class="sl" id="c-margin-l"></span><input type="range" min="2" max="25" step="1" value="8" id="margin" oninput="recalc()"><span class="sv" id="margin-v">8%</span></div>
+        <div class="sr"><span class="sl" id="c-h2p-l"></span><input type="range" min="100" max="5000" step="100" value="1000" id="h2prod" oninput="recalc()"><span class="sv" id="h2prod-v">1,000t</span></div>
+        <div class="sr"><span class="sl" id="c-h2px-l"></span><input type="range" min="2" max="12" step="0.5" value="4" id="h2px" oninput="recalc()"><span class="sv" id="h2px-v">€4/kg</span></div>
+        <div class="sr"><span class="sl" id="c-disc-l"></span><input type="range" min="3" max="15" step="1" value="8" id="disc" oninput="recalc()"><span class="sv" id="disc-v">8%</span></div>
+      </div>
+      <div class="card">
+        <div class="st" id="calc-results-title"></div>
+        <div id="calc-results"></div>
+        <div class="ch-wrap"><canvas id="calcChart"></canvas></div>
+      </div>
+    </div>
+    <!-- CALC CONTEXT -->
+    <div class="card" style="margin-top:0">
+      <div class="st" id="calc-ctx-title"></div>
+      <div class="prose" id="calc-ctx-prose"></div>
     </div>
   </div>
-  <!-- CALC CONTEXT -->
-  <div class="card" style="margin-top:0">
-    <div class="st" id="calc-ctx-title"></div>
-    <div class="prose" id="calc-ctx-prose"></div>
+
+  <!-- COMMUNITY HUB MODE -->
+  <div id="calc-hub" style="display:none">
+    <div class="g2">
+      <div class="card">
+        <div class="st">HUB PARAMETERS</div>
+        <div class="sr">
+          <span class="sl">Number of homes</span>
+          <input type="range" min="10" max="500" step="10" value="50" id="hub-homes" oninput="recalcHub()">
+          <span class="sv" id="hub-homes-v">50</span>
+        </div>
+        <div class="sr">
+          <span class="sl">Avg home size (m²)</span>
+          <input type="range" min="50" max="300" step="10" value="120" id="hub-size" oninput="recalcHub()">
+          <span class="sv" id="hub-size-v">120 m²</span>
+        </div>
+        <div class="sr">
+          <span class="sl">Wind curtailment (MWh/yr)</span>
+          <input type="range" min="100" max="5000" step="100" value="500" id="hub-wind" oninput="recalcHub()">
+          <span class="sv" id="hub-wind-v">500 MWh</span>
+        </div>
+        <div style="margin-top:14px;padding:10px 12px;background:var(--teal3);border:1px solid rgba(0,212,160,0.15);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+          Hub pricing is <strong style="color:var(--teal)">40% cheaper per unit</strong> than individual installs — economies of scale in bulk procurement, shared installation logistics &amp; shared electrolyser infrastructure.
+        </div>
+      </div>
+      <div class="card">
+        <div class="st">COMMUNITY HUB SUMMARY</div>
+        <div id="hub-results"></div>
+        <div class="hub-grid" id="hub-kpis"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -823,7 +891,7 @@ function showTab(id){
   document.getElementById('tab-'+id).classList.add('on');
   const idx={overview:0,calc:1,timeline:2,market:3,contact:4}[id];
   document.querySelectorAll('.nb')[idx].classList.add('on');
-  if(id==='calc') setTimeout(recalc,60);
+  if(id==='calc') setTimeout(()=>{if(document.getElementById('hub-toggle').checked)recalcHub();else recalc();},60);
   if(id==='timeline') setTimeout(renderTlChart,60);
 }
 
@@ -929,6 +997,91 @@ function recalc(){
         y2:{position:'right',ticks:{color:'#a78bfa',font:{size:10},callback:v=>v+'M'},grid:{display:false}}
       }}
   });
+}
+
+/* ═══════════════════════════════════════════════
+   COMMUNITY HUB CALCULATOR
+═══════════════════════════════════════════════ */
+function switchCalcMode(){
+  const isHub=document.getElementById('hub-toggle').checked;
+  document.getElementById('calc-single').style.display=isHub?'none':'block';
+  document.getElementById('calc-hub').style.display=isHub?'block':'none';
+  document.getElementById('mode-lbl-single').classList.toggle('on',!isHub);
+  document.getElementById('mode-lbl-hub').classList.toggle('on',isHub);
+  if(isHub) recalcHub(); else recalc();
+}
+
+function recalcHub(){
+  const homes=parseInt(document.getElementById('hub-homes').value);
+  const size=parseInt(document.getElementById('hub-size').value);
+  const wind=parseInt(document.getElementById('hub-wind').value);
+
+  document.getElementById('hub-homes-v').textContent=homes;
+  document.getElementById('hub-size-v').textContent=size+' m²';
+  document.getElementById('hub-wind-v').textContent=wind.toLocaleString()+' MWh';
+
+  // Total H2 demand
+  const h2DemandKgDay=homes*2.5;
+
+  // Electrolyser size: 55 kWh/kg H2, size in kW = daily demand × 55 / 24h
+  const electrolyserKW=Math.round(h2DemandKgDay*55/24);
+
+  // Installation cost: hub is 40% cheaper per unit than individual (€4,500/home base)
+  const hubCostPerHome=4500*0.6;
+  const totalInstallCost=homes*hubCostPerHome;
+
+  // Annual H2 savings vs gas
+  // Annual H2 per home: 2.5 kg/day × 365 = 912.5 kg/yr
+  // Gas equivalent energy cost: 912.5 kg × 33.3 kWh/kg × €0.08/kWh
+  // H2 cost from curtailed wind: 912.5 kg × €2/kg
+  const annualH2PerHome=h2DemandKgDay*365;
+  const gasCostTotal=annualH2PerHome*33.3*0.08*homes;
+  const h2CostTotal=annualH2PerHome*2*homes;
+  const annualSavingsVsGas=Math.round(gasCostTotal-h2CostTotal);
+
+  // Investor ROI over 10 years
+  // Revenue: H2 sold at €4/kg - production cost €2/kg = €2/kg net margin
+  const annualRevenue=h2DemandKgDay*365*homes*2;
+  const roi10yr=Math.round(((annualRevenue*10-totalInstallCost)/totalInstallCost)*100);
+
+  // CO2 avoided: gas emits ~0.2 kg CO2/kWh, H2 from curtailed wind ≈ 0
+  const annualEnergyKWh=h2DemandKgDay*365*homes*33.3;
+  const co2Tonnes=Math.round(annualEnergyKWh*0.2/1000);
+
+  // Format helpers
+  const fmtK=n=>n>=1e6?'€'+Math.round(n/1e5)/10+'M':'€'+Math.round(n/1000)+'k';
+
+  const metrics=[
+    {key:'Total H₂ demand',val:h2DemandKgDay.toLocaleString()+' kg/day',hl:'hm-hl'},
+    {key:'Electrolyser size needed',val:electrolyserKW.toLocaleString()+' kW',hl:''},
+    {key:'Total installation cost',val:fmtK(totalInstallCost),hl:''},
+    {key:'Annual H₂ savings vs gas',val:fmtK(annualSavingsVsGas)+'/yr',hl:'hm-hl'},
+    {key:'CO₂ avoided',val:co2Tonnes.toLocaleString()+' t/yr',hl:'hm-co2'},
+  ];
+
+  document.getElementById('hub-results').innerHTML=metrics.map(r=>`
+    <div class="hub-metric${r.hl?' '+r.hl:''}">
+      <span class="hub-mk">${r.key}</span>
+      <span class="hub-mv">${r.val}</span>
+    </div>`).join('');
+
+  document.getElementById('hub-kpis').innerHTML=`
+    <div class="hub-kpi">
+      <div class="hub-kpi-val">${roi10yr>0?'+':''}${roi10yr}%</div>
+      <div class="hub-kpi-lbl">Investor ROI (10 yr)</div>
+    </div>
+    <div class="hub-kpi">
+      <div class="hub-kpi-val">${co2Tonnes.toLocaleString()}t</div>
+      <div class="hub-kpi-lbl">CO₂ avoided / yr</div>
+    </div>
+    <div class="hub-kpi">
+      <div class="hub-kpi-val">${homes}</div>
+      <div class="hub-kpi-lbl">Homes served</div>
+    </div>
+    <div class="hub-kpi">
+      <div class="hub-kpi-val">${fmtK(totalInstallCost)}</div>
+      <div class="hub-kpi-lbl">Total install cost</div>
+    </div>`;
 }
 
 /* ═══════════════════════════════════════════════
