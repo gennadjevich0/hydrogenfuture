@@ -1031,17 +1031,29 @@ function switchCalcMode(){
 }
 
 function calculateCommunityHub(homes, homeSizeM2, curtailmentMWh){
+  const LOW_ELEC  = 0.03;  // €/kWh curtailed wind
+  const GRID_ELEC = 0.18;  // €/kWh grid electricity
+  const KWH_PER_KG = 50;   // kWh of electricity per kg H₂
+
   const heatingDemandPerHome = 12 * Math.sqrt(homeSizeM2 / 100);
   const totalHeatKWhDay = homes * heatingDemandPerHome;
   const totalH2KgDay = totalHeatKWhDay / 33.33;
-  const electrolyserKW = (totalH2KgDay * 50) / 8;
+  const electrolyserKW = (totalH2KgDay * KWH_PER_KG) / 8;
   const installCostEUR = electrolyserKW * 1000 * 1.4;
-  const annualH2Cost = totalH2KgDay * 5 * 365;
+
+  // Blended electricity price: curtailment covers electrolysis first, grid fills the gap
+  const requiredElecKWhDay = totalH2KgDay * KWH_PER_KG;
+  const curtailKWhDay = curtailmentMWh * 1000 / 365;
+  const curtailUsed = Math.min(curtailKWhDay, requiredElecKWhDay);
+  const gridUsed = Math.max(0, requiredElecKWhDay - curtailKWhDay);
+  const blendedElecPrice = (curtailUsed * LOW_ELEC + gridUsed * GRID_ELEC) / requiredElecKWhDay;
+
+  const annualH2Cost = blendedElecPrice * KWH_PER_KG * totalH2KgDay * 365;
   const annualGasCost = totalHeatKWhDay * 365 * 0.10;
   const annualSavings = annualGasCost - annualH2Cost;
   const co2TonnesYear = (totalHeatKWhDay * 365 * 0.2) / 1000;
   const roi10yr = ((annualSavings * 10) / installCostEUR) * 100;
-  return {heatingDemandPerHome,totalHeatKWhDay,totalH2KgDay,electrolyserKW,installCostEUR,annualH2Cost,annualGasCost,annualSavings,co2TonnesYear,roi10yr};
+  return {heatingDemandPerHome,totalHeatKWhDay,totalH2KgDay,electrolyserKW,installCostEUR,annualH2Cost,annualGasCost,annualSavings,co2TonnesYear,roi10yr,blendedElecPrice,requiredElecKWhDay,curtailKWhDay};
 }
 
 function recalcHub(){
@@ -1057,10 +1069,9 @@ function recalcHub(){
   const r=calculateCommunityHub(homes,size,wind);
   const fmtK=n=>{const a=Math.abs(n),s=n<0?'-€':'€';return a>=1e6?s+Math.round(a/1e5)/10+'M':s+Math.round(a/1000)+'k'};
 
-  // Curtailment check: supply cap warning
-  const availableKWhDay=wind*1000/365;
+  // Curtailment check: warn when grid electricity is needed (blended price applies)
   const warnEl=document.getElementById('hub-warn');
-  if(availableKWhDay<r.totalHeatKWhDay){
+  if(r.curtailKWhDay<r.requiredElecKWhDay){
     warnEl.textContent=t.hub_warn;
     warnEl.style.display='block';
   }else{
