@@ -155,10 +155,8 @@ textarea.inp{height:85px;resize:vertical}
 .btl{background:rgba(0,212,160,0.12);color:var(--teal)}
 .bal{background:rgba(245,166,35,0.12);color:var(--amber)}
 
-/* INSTALL BANNER */
-.install-banner{display:none;margin-top:10px;padding:12px 16px;background:rgba(61,142,245,0.08);border:1px solid rgba(61,142,245,0.25);border-radius:10px;font-size:12px;color:var(--text2);line-height:1.6}
-.install-banner strong{color:var(--blue)}
-.install-banner.show{display:block}
+/* TOOL NOTE */
+.tool-note{margin-top:10px;padding:12px 16px;background:rgba(0,212,160,0.05);border:1px solid rgba(0,212,160,0.15);border-radius:10px;font-size:12px;color:var(--text2);line-height:1.6}
 
 /* MODE TOGGLE */
 .mode-toggle-wrap{display:flex;align-items:center;gap:12px;margin-bottom:18px;justify-content:center}
@@ -221,7 +219,7 @@ textarea.inp{height:85px;resize:vertical}
     <div class="ip-title" id="ip-title"></div>
     <div class="ip-body" id="ip-body"></div>
   </div>
-  <div class="install-banner" id="install-banner"></div>
+  <div class="tool-note">This tool shows real-world economics: hydrogen can decarbonise heating today, but ROI depends on cheap electricity and scale.</div>
 </div>
 
 <!-- NAV -->
@@ -559,8 +557,6 @@ en:{
   hub_warn:'⚠ Insufficient curtailment for full coverage',
   hub_m:['Total heat demand','Total H₂ demand','Electrolyser size','Install cost','Annual gas cost','Annual H₂ cost','Annual savings','CO₂ avoided'],
   hub_kl:['ROI (10 yr)','CO₂ / yr','Homes','Install cost'],
-  install_ios:'<strong>Install on iPhone:</strong> Tap the Share button (□↑) in Safari → "Add to Home Screen" → the app installs with its own icon, runs fullscreen without browser chrome.',
-  install_android:'<strong>Install on Android:</strong> Tap the menu (⋮) in Chrome → "Add to Home screen" — or Chrome will show a banner automatically.'
 },
 fr:{
   pills:[
@@ -642,8 +638,6 @@ fr:{
   hub_warn:'⚠ Curtailment insuffisant pour couverture totale',
   hub_m:['Demande totale chaleur','Demande totale H₂','Taille électrolyseur','Coût installation','Coût gaz annuel','Coût H₂ annuel','Économies annuelles','CO₂ évité'],
   hub_kl:['ROI (10 ans)','CO₂ / an','Logements','Coût inst.'],
-  install_ios:'<strong>Installer sur iPhone:</strong> Appuyer sur le bouton Partager (□↑) dans Safari → "Sur l\'écran d\'accueil" → l\'app s\'installe avec sa propre icône.',
-  install_android:'<strong>Installer sur Android:</strong> Menu (⋮) dans Chrome → "Ajouter à l\'écran d\'accueil".'
 },
 de:{
   pills:[
@@ -725,8 +719,6 @@ de:{
   hub_warn:'⚠ Unzureichende Abregelung für Vollabdeckung',
   hub_m:['Gesamtwärmebedarf','Gesamter H₂-Bedarf','Elektrolyseurkapazität','Installationskosten','Jährl. Gaskosten','Jährl. H₂-Kosten','Jährl. Einsparung','CO₂ vermieden'],
   hub_kl:['ROI (10 J.)','CO₂ / Jahr','Häuser','Inst.-Kosten'],
-  install_ios:'<strong>Auf iPhone installieren:</strong> Teilen-Schaltfläche (□↑) in Safari → "Zum Home-Bildschirm" → die App installiert sich mit eigenem Symbol.',
-  install_android:'<strong>Auf Android installieren:</strong> Menü (⋮) in Chrome → "Zum Startbildschirm hinzufügen".'
 },
 es:{
   pills:[
@@ -808,8 +800,6 @@ es:{
   hub_warn:'⚠ Curtailment insuficiente para cobertura total',
   hub_m:['Demanda total calor','Demanda total H₂','Tamaño electrolizador','Coste instalación','Coste gas anual','Coste H₂ anual','Ahorro anual','CO₂ evitado'],
   hub_kl:['ROI (10 años)','CO₂ / año','Hogares','Coste inst.'],
-  install_ios:'<strong>Instalar en iPhone:</strong> Botón Compartir (□↑) en Safari → "Añadir a pantalla de inicio" → la app se instala con su propio icono.',
-  install_android:'<strong>Instalar en Android:</strong> Menú (⋮) en Chrome → "Añadir a pantalla de inicio".'
 },
 ru:{
   pills:[
@@ -891,8 +881,6 @@ ru:{
   hub_warn:'⚠ Недостаточное curtailment для полного покрытия',
   hub_m:['Общий спрос на тепло','Общий спрос H₂','Мощность электролизёра','Стоимость установки','Годовые расходы на газ','Годовые расходы H₂','Годовая экономия','Избежанный CO₂'],
   hub_kl:['ROI (10 лет)','CO₂ / год','Домов','Стоимость'],
-  install_ios:'<strong>Установить на iPhone:</strong> Кнопка «Поделиться» (□↑) в Safari → «На экран «Домой»» → приложение устанавливается с иконкой, без браузерной строки.',
-  install_android:'<strong>Установить на Android:</strong> Меню (⋮) в Chrome → «Добавить на главный экран».'
 }
 };
 
@@ -1277,12 +1265,6 @@ function render(){
   document.getElementById('hub-note').innerHTML=t.hub_note;
   if(document.getElementById('hub-toggle').checked) recalcHub();
 
-  // Install banner
-  const banner=document.getElementById('install-banner');
-  const isIOS=/iPad|iPhone|iPod/.test(navigator.userAgent);
-  const isAndroid=/Android/.test(navigator.userAgent);
-  if(isIOS){banner.innerHTML=t.install_ios;banner.classList.add('show');}
-  else if(isAndroid){banner.innerHTML=t.install_android;banner.classList.add('show');}
 }
 
 /* ═══════════════════════════════════════════════
