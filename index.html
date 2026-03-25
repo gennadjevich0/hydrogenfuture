@@ -294,7 +294,7 @@ textarea.inp{height:85px;resize:vertical}
 <div id="tab-calc" class="sec">
   <!-- MODE TOGGLE -->
   <div class="mode-toggle-wrap">
-    <span class="mode-lbl on" id="mode-lbl-single">Single Home</span>
+    <span class="mode-lbl on" id="mode-lbl-single">Pilot Project</span>
     <label class="mtoggle">
       <input type="checkbox" id="hub-toggle" onchange="switchCalcMode()">
       <span class="mslider"></span>
@@ -322,6 +322,7 @@ textarea.inp{height:85px;resize:vertical}
       </div>
       <div class="card">
         <div class="st" id="calc-results-title"></div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:10px;line-height:1.55">Model reflects Phase 1 pilot economics for SEAI/DTIF evaluation. Assumes centralised H₂ production and distribution at scale.</div>
         <div id="calc-results"></div>
         <div class="ch-wrap"><canvas id="calcChart"></canvas></div>
       </div>
@@ -500,10 +501,10 @@ en:{
   cycle:['Wind (2.1 TWh)','→','Electrolysis','→','Green H₂','→','Home Heat','→','Farm Subsidies','→','Forests / SAC','→','Clean Water','→','Health Savings','→','Reinvest →'],
   cycle_prose:`<p>The loop is financial, not poetic. Curtailed wind at ~€0.01/kWh produces H₂ at €1.5–2.5/kg. Sold to homes and to ESB's Moneypoint at €4–6/kg, each kilogram generates €2–4 net margin. That margin funds the <strong>20% Covenant</strong>: farmers receive €12–18k/yr in H₂ transition subsidies in exchange for voluntary 20% herd reduction over 10 years — verified independently by ICBF ear-tag data, not self-reporting.</p>
 <p>Freed land is planted with native woodland. Native woodland generates carbon credits from Year 5 at €50–90/tonne CO₂. Forest buffer zones reduce nitrogen loading on rivers and lakes — cutting Ireland's €1B+/yr water remediation bill. Improved water quality and air quality reduce hospital costs. Those health savings are reinvested into new electrolyser capacity. <strong>Money stops leaving Ireland. Entropy decreases. The system self-sustains without ongoing subsidy after Year 3.</strong></p>`,
-  calc_params:'INVESTMENT PARAMETERS',calc_results:'RESULTS',
-  sliders:['Investment (€M)','Homes (Phase 1)','Boiler price (€k)','IP margin (%)','H₂ output (t/yr)','H₂ sale price (€/kg)','Discount rate (%)'],
+  calc_params:'PROJECT PARAMETERS',calc_results:'RESULTS',
+  sliders:['Investment (€M)','Phase 1 Homes','Boiler price (€k)','IP margin (%)','H₂ output (t/yr)','H₂ sale price (€/kg)','Discount rate (%)'],
   scenarios:['Optimistic','Base Case','Conservative'],
-  res_labels:['Annual revenue','IP royalties / yr','H₂ sales / yr','Gross profit','NPV (10 yr)','IRR','Payback period','ROI (5 yr)'],
+  res_labels:['Annual revenue','IP royalties / yr','Projected H₂ Revenue','Gross profit','NPV (10 yr)','IRR','Payback period','ROI — Phase 1 (5 yr)'],
   calc_ctx_title:'IP MODEL & FUNDING STRUCTURE',
   calc_ctx_prose:`The IP model is structured <strong></strong> — IP held by the project consortium.<br><br><strong>Funding path:</strong> DTIF (€1.5M+ initial) → PSO Levy redirect 4% of €37.5M pool → curtailed wind revenues €21M/yr self-fund the commercial electrolyser by Year 3 — no grants, no government debt after pilot phase.<br><br>The PSO Levy already collects €37.5M/year from energy consumers for green transition. Redirecting 4% to this pilot requires no new taxes and no new legislation — simply a ministerial decision.`,
   tl_phases_title:'PHASE ROADMAP',tl_ms_title:'KEY MILESTONES',
