@@ -294,7 +294,7 @@ textarea.inp{height:85px;resize:vertical}
 <div id="tab-calc" class="sec">
   <!-- MODE TOGGLE -->
   <div class="mode-toggle-wrap">
-    <span class="mode-lbl on" id="mode-lbl-single">Single Home</span>
+    <span class="mode-lbl on" id="mode-lbl-single">Pilot Project</span>
     <label class="mtoggle">
       <input type="checkbox" id="hub-toggle" onchange="switchCalcMode()">
       <span class="mslider"></span>
@@ -323,6 +323,7 @@ textarea.inp{height:85px;resize:vertical}
       </div>
       <div class="card">
         <div class="st" id="calc-results-title"></div>
+        <div class="tool-note" style="margin-bottom:10px">Model reflects Phase 1 pilot economics for SEAI/DTIF evaluation. Assumes centralised H₂ production and distribution at scale.</div>
         <div id="calc-results"></div>
         <div class="ch-wrap"><canvas id="calcChart"></canvas></div>
       </div>
@@ -506,10 +507,10 @@ en:{
   cycle:['Wind (2.1 TWh)','→','Electrolysis','→','Green H₂','→','Home Heat','→','Farm Subsidies','→','Forests / SAC','→','Clean Water','→','Health Savings','→','Reinvest →'],
   cycle_prose:`<p>The loop is financial, not poetic. Curtailed wind at ~€0.01/kWh produces H₂ at €1.5–2.5/kg. Sold to homes and to ESB's Moneypoint at €4–6/kg, each kilogram generates €2–4 net margin. That margin funds the <strong>20% Covenant</strong>: farmers receive €12–18k/yr in H₂ transition subsidies in exchange for voluntary 20% herd reduction over 10 years — verified independently by ICBF ear-tag data, not self-reporting.</p>
 <p>Freed land is planted with native woodland. Native woodland generates carbon credits from Year 5 at €50–90/tonne CO₂. Forest buffer zones reduce nitrogen loading on rivers and lakes — cutting Ireland's €1B+/yr water remediation bill. Improved water quality and air quality reduce hospital costs. Those health savings are reinvested into new electrolyser capacity. <strong>Money stops leaving Ireland. Entropy decreases. The system self-sustains without ongoing subsidy after Year 3.</strong></p>`,
-  calc_params:'INVESTMENT PARAMETERS',calc_results:'RESULTS',
-  sliders:['Investment (€M)','Homes (Phase 1)','Boiler price (€k)','IP margin (%)','H₂ output (t/yr)','H₂ sale price (€/kg)','Discount rate (%)'],
+  calc_params:'PROJECT PARAMETERS',calc_results:'RESULTS',
+  sliders:['Investment (€M)','Phase 1 Homes','Boiler price (€k)','IP margin (%)','H₂ output (t/yr)','H₂ sale price (€/kg)','Discount rate (%)'],
   scenarios:['Optimistic','Base Case','Conservative'],
-  res_labels:['H₂ Sales Revenue','IP / Boiler Income','Total OPEX','Gross Profit','NPV (10 yr)','IRR','Payback Period','ROI (5 yr)'],
+  res_labels:['Projected H₂ Revenue','IP / Boiler Income','Total OPEX','Gross Profit','NPV (10 yr)','IRR','Payback Period','ROI — Phase 1 (5 yr)'],
   calc_ctx_title:'IP MODEL & FUNDING STRUCTURE',
   calc_ctx_prose:`The IP model is structured <strong></strong> — IP held by the project consortium.<br><br><strong>Funding path:</strong> DTIF (€1.5M+ initial) → PSO Levy redirect 4% of €37.5M pool → curtailed wind revenues €21M/yr self-fund the commercial electrolyser by Year 3 — no grants, no government debt after pilot phase.<br><br>The PSO Levy already collects €37.5M/year from energy consumers for green transition. Redirecting 4% to this pilot requires no new taxes and no new legislation — simply a ministerial decision.`,
   tl_phases_title:'PHASE ROADMAP',tl_ms_title:'KEY MILESTONES',
@@ -587,10 +588,10 @@ fr:{
   cycle_title:'BOUCLE D\'ÉCONOMIE CIRCULAIRE',
   cycle:['Vent (2,1 TWh)','→','Électrolyse','→','H₂ vert','→','Chauffage','→','Subventions agricoles','→','Forêts / SAC','→','Eau propre','→','Économies santé','→','Réinvestir →'],
   cycle_prose:`Chaque élément finance le suivant. Le <strong>curtailment éolien</strong> fournit un intrant quasi-gratuit. Les <strong>ventes H₂</strong> alimentent le fonds. Le <strong>Pacte 20%</strong> paie les agriculteurs pour réduire volontairement le cheptel. Les <strong>forêts indigènes</strong> génèrent des crédits carbone. L'<strong>eau plus propre</strong> réduit la facture de dépollution de €1Mrd+/an. La boucle se ferme.`,
-  calc_params:'PARAMÈTRES D\'INVESTISSEMENT',calc_results:'RÉSULTATS',
-  sliders:['Investissement (M€)','Logements (Phase 1)','Prix chaudière (k€)','Marge IP (%)','Production H₂ (t/an)','Prix vente H₂ (€/kg)','Taux d\'actualisation (%)'],
+  calc_params:'PARAMÈTRES DU PROJET',calc_results:'RÉSULTATS',
+  sliders:['Investissement (M€)','Logements Phase 1','Prix chaudière (k€)','Marge IP (%)','Production H₂ (t/an)','Prix vente H₂ (€/kg)','Taux d\'actualisation (%)'],
   scenarios:['Optimiste','Cas de base','Conservateur'],
-  res_labels:['Revenus ventes H₂','Revenus IP / chaudière','OPEX total','Bénéfice brut','VAN (10 ans)','TRI','Période de retour','ROI (5 ans)'],
+  res_labels:['Revenus H₂ projetés','Revenus IP / chaudière','OPEX total','Bénéfice brut','VAN (10 ans)','TRI','Période de retour','ROI — Phase 1 (5 ans)'],
   calc_ctx_title:'MODÈLE IP ET STRUCTURE DE FINANCEMENT',
   calc_ctx_prose:`Le modèle IP est structuré <strong></strong> — 98% détenu par le projet, 2% retenu pour UCC. La voie de financement: DTIF (€1,5M initial) → redirection PSO Levy 4% du pool €37,5M → revenus curtailed €21M/an autofinancent l'électrolyseur commercial en Année 3. <strong>Aucune subvention, aucune dette publique après la phase pilote.</strong>`,
   tl_phases_title:'FEUILLE DE ROUTE',tl_ms_title:'JALONS CLÉS',
@@ -668,10 +669,10 @@ de:{
   cycle_title:'KREISLAUFWIRTSCHAFTSSCHLEIFE',
   cycle:['Wind (2,1 TWh)','→','Elektrolyse','→','Grüner H₂','→','Wärme','→','Agrarsubventionen','→','Wälder / SAC','→','Sauberes Wasser','→','Gesundheitseinspar.','→','Reinvestieren →'],
   cycle_prose:`Jedes Element finanziert das nächste. Die <strong>Windabregelung</strong> liefert Quasi-Gratis-Rohstoff. <strong>H₂-Verkäufe</strong> füllen den Fonds. Der <strong>20%-Covenant</strong> zahlt Landwirten für freiwillige Bestandsreduzierung. <strong>Heimischer Wald</strong> erzeugt ab Jahr 5 CO₂-Zertifikate. <strong>Saubereres Wasser</strong> reduziert die €1Mrd.+/Jahr-Sanierungsrechnung.`,
-  calc_params:'INVESTITIONSPARAMETER',calc_results:'ERGEBNISSE',
-  sliders:['Investition (Mio. €)','Häuser (Phase 1)','Kesselpreis (Tsd. €)','IP-Marge (%)','H₂-Produktion (t/Jahr)','H₂-Verkaufspreis (€/kg)','Diskontierungsrate (%)'],
+  calc_params:'PROJEKTPARAMETER',calc_results:'ERGEBNISSE',
+  sliders:['Investition (Mio. €)','Häuser Phase 1','Kesselpreis (Tsd. €)','IP-Marge (%)','H₂-Produktion (t/Jahr)','H₂-Verkaufspreis (€/kg)','Diskontierungsrate (%)'],
   scenarios:['Optimistisch','Basisfall','Konservativ'],
-  res_labels:['H₂-Verkaufserlöse','IP / Kessel-Einnahmen','Gesamt-OPEX','Bruttogewinn','NPV (10 Jahre)','IRR','Amortisationszeit','ROI (5 Jahre)'],
+  res_labels:['Prognostizierte H₂-Erlöse','IP / Kessel-Einnahmen','Gesamt-OPEX','Bruttogewinn','NPV (10 Jahre)','IRR','Amortisationszeit','ROI — Phase 1 (5 Jahre)'],
   calc_ctx_title:'IP-MODELL UND FINANZIERUNGSSTRUKTUR',
   calc_ctx_prose:`Das IP-Modell ist <strong></strong> strukturiert — 98% beim Projekt, 2% für UCC. Finanzierungsweg: DTIF (€1,5M initial) → PSO-Levy-Umleitung 4% des €37,5M-Pools → Abregelungserlöse €21M/Jahr finanzieren den kommerziellen Elektrolyseur in Jahr 3 selbst. <strong>Keine Subventionen, keine öffentliche Verschuldung nach der Pilotphase.</strong>`,
   tl_phases_title:'PHASEN-ROADMAP',tl_ms_title:'MEILENSTEINE',
@@ -749,10 +750,10 @@ es:{
   cycle_title:'BUCLE DE ECONOMÍA CIRCULAR',
   cycle:['Viento (2,1 TWh)','→','Electrólisis','→','H₂ verde','→','Calefacción','→','Subsidios agrícolas','→','Bosques / SAC','→','Agua limpia','→','Ahorro sanit.','→','Reinvertir →'],
   cycle_prose:`Cada elemento financia el siguiente. El <strong>curtailment eólico</strong> proporciona materia prima casi gratuita. Las <strong>ventas de H₂</strong> alimentan el fondo. El <strong>Pacto 20%</strong> paga a los agricultores por reducir voluntariamente el ganado. El <strong>bosque nativo</strong> genera créditos de carbono desde el Año 5. El <strong>agua más limpia</strong> reduce la factura de saneamiento de €1B+/año.`,
-  calc_params:'PARÁMETROS DE INVERSIÓN',calc_results:'RESULTADOS',
-  sliders:['Inversión (M€)','Hogares (Fase 1)','Precio caldera (k€)','Margen IP (%)','Producción H₂ (t/año)','Precio venta H₂ (€/kg)','Tasa de descuento (%)'],
+  calc_params:'PARÁMETROS DEL PROYECTO',calc_results:'RESULTADOS',
+  sliders:['Inversión (M€)','Hogares Fase 1','Precio caldera (k€)','Margen IP (%)','Producción H₂ (t/año)','Precio venta H₂ (€/kg)','Tasa de descuento (%)'],
   scenarios:['Optimista','Caso base','Conservador'],
-  res_labels:['Ingresos ventas H₂','Ingresos IP / caldera','OPEX total','Beneficio bruto','VAN (10 años)','TIR','Período recuperación','ROI (5 años)'],
+  res_labels:['Ingresos H₂ proyectados','Ingresos IP / caldera','OPEX total','Beneficio bruto','VAN (10 años)','TIR','Período recuperación','ROI — Fase 1 (5 años)'],
   calc_ctx_title:'MODELO IP Y ESTRUCTURA DE FINANCIACIÓN',
   calc_ctx_prose:`El modelo IP está estructurado <strong></strong> — 98% en el proyecto, 2% para UCC. Ruta de financiación: DTIF (€1,5M inicial) → redirección PSO Levy 4% del pool €37,5M → ingresos curtailed €21M/año autofinancian el electrolizador comercial en el Año 3. <strong>Sin subvenciones, sin deuda pública tras la fase piloto.</strong>`,
   tl_phases_title:'HOJA DE RUTA',tl_ms_title:'HITOS CLAVE',
@@ -830,10 +831,10 @@ ru:{
   cycle_title:'ПЕТЛЯ ЦИРКУЛЯРНОЙ ЭКОНОМИКИ',
   cycle:['Ветер (2,1 ТВт·ч)','→','Электролиз','→','Зелёный H₂','→','Тепло','→','Субсидии фермерам','→','Леса / SAC','→','Чистая вода','→','Экономия здоровья','→','Реинвест →'],
   cycle_prose:`Каждый элемент финансирует следующий. <strong>Curtailed ветер</strong> даёт почти бесплатное сырьё. <strong>Продажи H₂</strong> наполняют фонд. <strong>20% Covenant</strong> платит фермерам за добровольное сокращение стада. <strong>Коренной лес</strong> на освобождённых землях генерирует углеродные кредиты с 5-го года. <strong>Чистая вода</strong> сокращает счёт на очистку €1 млрд+/год.`,
-  calc_params:'ПАРАМЕТРЫ ИНВЕСТИЦИИ',calc_results:'РЕЗУЛЬТАТЫ',
-  sliders:['Инвестиция (млн €)','Домов (Фаза 1)','Цена котла (тыс. €)','Маржа IP (%)','Производство H₂ (т/год)','Цена H₂ (€/кг)','Ставка дисконта (%)'],
+  calc_params:'ПАРАМЕТРЫ ПРОЕКТА',calc_results:'РЕЗУЛЬТАТЫ',
+  sliders:['Инвестиция (млн €)','Домов Фаза 1','Цена котла (тыс. €)','Маржа IP (%)','Производство H₂ (т/год)','Цена H₂ (€/кг)','Ставка дисконта (%)'],
   scenarios:['Оптимистичный','Базовый','Консервативный'],
-  res_labels:['Выручка от продажи H₂','Доходы IP / котёл','Операционные затраты','Валовая прибыль','NPV (10 лет)','IRR','Срок окупаемости','ROI (5 лет)'],
+  res_labels:['Прогноз выручки H₂','Доходы IP / котёл','Операционные затраты','Валовая прибыль','NPV (10 лет)','IRR','Срок окупаемости','ROI — Фаза 1 (5 лет)'],
   calc_ctx_title:'IP-МОДЕЛЬ И СТРУКТУРА ФИНАНСИРОВАНИЯ',
   calc_ctx_prose:`IP-модель структурирована <strong></strong> — 98% проекту, 2% UCC. Путь финансирования: DTIF (€1,5M начальные) → перенаправление PSO Levy 4% пула €37,5M → curtailed доходы €21M/год самофинансируют коммерческий электролизёр к 3-му году. <strong>Никаких грантов, никакого госдолга после пилотной фазы.</strong>`,
   tl_phases_title:'ДОРОЖНАЯ КАРТА',tl_ms_title:'КЛЮЧЕВЫЕ MILESTONE',
