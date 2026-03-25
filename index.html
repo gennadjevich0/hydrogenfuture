@@ -1031,29 +1031,47 @@ function switchCalcMode(){
 }
 
 function calculateCommunityHub(homes, homeSizeM2, curtailmentMWh){
-  const LOW_ELEC  = 0.03;  // €/kWh curtailed wind
-  const GRID_ELEC = 0.18;  // €/kWh grid electricity
-  const KWH_PER_KG = 50;   // kWh of electricity per kg H₂
+  // ── Community Hub economic model ─────────────────────────────────────────
+  // Distinct from Single Home: bulk curtailment access, 24h operation,
+  // scale-based CAPEX and efficiency, O&M included.
+
+  const LOW_ELEC  = 0.03;  // €/kWh curtailed wind — hub bulk contract only
+  const GRID_ELEC = 0.18;  // €/kWh grid fallback when curtailment insufficient
+
+  // 1. EFFICIENCY: improves with scale (better utilisation, lower stack losses)
+  //    ~55 kWh/kg at 10 homes → ~44 kWh/kg at 500+ homes
+  const kWhPerKg = Math.max(44, 56 - Math.log10(Math.max(10, homes)) * 4);
 
   const heatingDemandPerHome = 12 * Math.sqrt(homeSizeM2 / 100);
   const totalHeatKWhDay = homes * heatingDemandPerHome;
   const totalH2KgDay = totalHeatKWhDay / 33.33;
-  const electrolyserKW = (totalH2KgDay * KWH_PER_KG) / 8;
-  const installCostEUR = electrolyserKW * 1000 * 1.4;
 
-  // Blended electricity price: curtailment covers electrolysis first, grid fills the gap
-  const requiredElecKWhDay = totalH2KgDay * KWH_PER_KG;
+  // 2. UTILISATION: hub runs 24h/day vs ~8h for small/single systems
+  //    Same daily H2 output needs 3× less peak kW → lower CAPEX base
+  const electrolyserKW = (totalH2KgDay * kWhPerKg) / 24;
+
+  // 3. CAPEX: falls with scale via bulk procurement and shared balance-of-plant
+  //    ~€2,000/kW at 10 homes → ~€900/kW at 500 homes
+  const capexPerKW = 2000 * Math.pow(homes / 10, -0.20);
+  const installCostEUR = electrolyserKW * capexPerKW;
+
+  // 4. ELECTRICITY: blended price — curtailment covers electrolysis first
+  const requiredElecKWhDay = totalH2KgDay * kWhPerKg;
   const curtailKWhDay = curtailmentMWh * 1000 / 365;
   const curtailUsed = Math.min(curtailKWhDay, requiredElecKWhDay);
   const gridUsed = Math.max(0, requiredElecKWhDay - curtailKWhDay);
   const blendedElecPrice = (curtailUsed * LOW_ELEC + gridUsed * GRID_ELEC) / requiredElecKWhDay;
 
-  const annualH2Cost = blendedElecPrice * KWH_PER_KG * totalH2KgDay * 365;
+  // 5. OPERATING COST: electricity + 3% O&M (maintenance, compression, admin)
+  const elecCost = blendedElecPrice * kWhPerKg * totalH2KgDay * 365;
+  const annualOM  = installCostEUR * 0.03;
+  const annualH2Cost = elecCost + annualOM;        // total annual operating cost
+
   const annualGasCost = totalHeatKWhDay * 365 * 0.10;
   const annualSavings = annualGasCost - annualH2Cost;
   const co2TonnesYear = (totalHeatKWhDay * 365 * 0.2) / 1000;
   const roi10yr = ((annualSavings * 10) / installCostEUR) * 100;
-  return {heatingDemandPerHome,totalHeatKWhDay,totalH2KgDay,electrolyserKW,installCostEUR,annualH2Cost,annualGasCost,annualSavings,co2TonnesYear,roi10yr,blendedElecPrice,requiredElecKWhDay,curtailKWhDay};
+  return {heatingDemandPerHome,totalHeatKWhDay,totalH2KgDay,electrolyserKW,installCostEUR,annualH2Cost,annualGasCost,annualSavings,co2TonnesYear,roi10yr,blendedElecPrice,kWhPerKg,requiredElecKWhDay,curtailKWhDay};
 }
 
 function recalcHub(){
