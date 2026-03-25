@@ -339,29 +339,30 @@ textarea.inp{height:85px;resize:vertical}
   <div id="calc-hub" style="display:none">
     <div class="g2">
       <div class="card">
-        <div class="st">HUB PARAMETERS</div>
+        <div class="st" id="hub-params-title">HUB PARAMETERS</div>
         <div class="sr">
-          <span class="sl">Number of homes</span>
+          <span class="sl" id="hub-sl1">Number of homes</span>
           <input type="range" min="10" max="500" step="10" value="50" id="hub-homes" oninput="recalcHub()">
           <span class="sv" id="hub-homes-v">50</span>
         </div>
         <div class="sr">
-          <span class="sl">Avg home size (m²)</span>
+          <span class="sl" id="hub-sl2">Avg home size (m²)</span>
           <input type="range" min="50" max="300" step="10" value="120" id="hub-size" oninput="recalcHub()">
           <span class="sv" id="hub-size-v">120 m²</span>
         </div>
         <div class="sr">
-          <span class="sl">Wind curtailment (MWh/yr)</span>
+          <span class="sl" id="hub-sl3">Wind curtailment (MWh/yr)</span>
           <input type="range" min="100" max="5000" step="100" value="500" id="hub-wind" oninput="recalcHub()">
           <span class="sv" id="hub-wind-v">500 MWh</span>
         </div>
-        <div style="margin-top:14px;padding:10px 12px;background:var(--teal3);border:1px solid rgba(0,212,160,0.15);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
-          Hub pricing is <strong style="color:var(--teal)">40% cheaper per unit</strong> than individual installs — economies of scale in bulk procurement, shared installation logistics &amp; shared electrolyser infrastructure.
+        <div id="hub-note" style="margin-top:14px;padding:10px 12px;background:var(--teal3);border:1px solid rgba(0,212,160,0.15);border-radius:8px;font-size:12px;color:var(--text2);line-height:1.7">
+          Electrolyser sized for community-scale production. Hub installs are <strong style="color:var(--teal)">40% cheaper per unit</strong> via economies of scale.
         </div>
       </div>
       <div class="card">
-        <div class="st">COMMUNITY HUB SUMMARY</div>
+        <div class="st" id="hub-summary-title">COMMUNITY HUB SUMMARY</div>
         <div id="hub-results"></div>
+        <div id="hub-warn" style="display:none;margin-top:8px;padding:8px 12px;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);border-radius:8px;font-size:12px;color:var(--amber)"></div>
         <div class="hub-grid" id="hub-kpis"></div>
       </div>
     </div>
@@ -477,7 +478,7 @@ en:{
     {id:'dropin',label:'Drop-In Decarbonisation',title:'Drop-In Decarbonisation',body:`Ireland cannot meet its 2030 climate targets without decarbonising heat. Conventional deep retrofit costs <span class="stat">€49,600/home</span> and is structurally impossible for <span class="stat">~30%</span> of Irish homes with solid stone walls.<br><br>The H₂-ready drop-in boiler replaces only the gas burner unit, fitting existing radiators and pipework. <strong>Zero structural changes. Installed in one day. Cost €3,000–6,000.</strong> It runs on green hydrogen produced from curtailed wind — the <span class="stat">2.1 TWh</span> wasted annually by EirGrid because the grid cannot absorb it.<br><br>This is the only viable decarbonisation pathway for hard-to-treat homes.`},
     {id:'green',label:'Green Hydrogen',title:'Green Hydrogen from Curtailed Wind',body:`EirGrid pays generators to <em>switch off</em> when wind production exceeds grid capacity. In 2025, <span class="stat">2.1 TWh</span> of renewable electricity was wasted — enough to power County Dublin for a year.<br><br>We capture that curtailed energy at near-zero cost (<span class="stat">~€0.01/kWh</span>) through electrolysis and convert it to green hydrogen. Production cost: <span class="stat">€1.5–2.5/kg</span> vs <span class="stat">€6–10/kg</span> from grid electricity. <strong>4–6× cost advantage.</strong><br><br>The alternative to selling this electricity to our electrolyser is literally zero. Any price we pay is pure gain for the grid operator.`},
     {id:'circular',label:'Circular Economy',title:'The Circular Economy Loop',body:`The H₂-Retrofit model is self-reinforcing: <strong>Wind → H₂ → Home Heat → Farm Subsidies → Forests → Clean Water → Health Savings → Reinvest → More Wind Infrastructure.</strong><br><br>H₂ revenues fund the voluntary 20% Covenant — farmers reduce livestock, plant native woodland, and receive <span class="stat">€12–18k/yr</span> subsidy while carbon credits accumulate from Year 5.<br><br>Forest buffer zones reduce nitrogen runoff into rivers and lakes. Ireland has the <span class="stat">#1 nitrogen footprint/hectare</span> in the EU. Cleaner water reduces the <span class="stat">€1B+/yr</span> remediation bill. Health savings reinvest into new H₂ infrastructure. <strong>Entropy decreases. The system self-sustains.</strong>`},
-    {id:'pilot',label:'County Clare Pilot',title:'County Clare Pilot Site',body:`Clare is the ideal pilot: Moneypoint (915 MW, Kilrush) stopped burning coal in June 2025 and needs a domestic H₂ supplier confirmed before 2029. The River Fergus and Ballyallia Lake SAC (site 000014) face direct agricultural nitrogen pressure — demonstrating water quality improvement from the pilot has immediate policy value.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 social homes, gas network integration, 12 months performance data. Cost: <span class="stat">€1.5M</span> via DTIF + PSO Levy redirect (4% of existing €37.5M pool).<br><br>Contact: Juri Ptitsin · +353 86 244 5827. Partners: TUS · UCC · UL · GNI · SEAI · IFA.`},
+    {id:'pilot',label:'County Clare Pilot',title:'County Clare Pilot Site',body:`Clare is the ideal pilot: Moneypoint (915 MW, Kilrush) stopped burning coal in June 2025 and needs a domestic H₂ supplier confirmed before 2029. The River Fergus and Ballyallia Lake SAC (site 000014) face direct agricultural nitrogen pressure — demonstrating water quality improvement from the pilot has immediate policy value.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 social homes, gas network integration, 12 months performance data. Cost: <span class="stat">€1.5M</span> via DTIF + PSO Levy redirect (4% of existing €37.5M pool).<br><br>Contact: Juri Ptitsin · +353 86 244 5827. Developed independently as a working prototype for pilot evaluation.`},
     {id:'national',label:'National Rollout',title:'National Rollout Strategy',body:`Phase 2 (2027–30): Electrolyser self-funded at <span class="stat">€21M/yr</span> curtailed revenue. <span class="stat">€63M</span> over 3 years with no grants or government debt. First H₂ delivery to Moneypoint 2028. ESB contract confirmed before their 2029 deadline.<br><br>Phase 3 (2030–35): First 100% H₂ residential districts. Clare becomes the national template. Shannon deepwater port opens the Atlantic H₂ export corridor to UK and EU markets.<br><br>Phase 4 (2035–45): Ireland H₂ exporter. <span class="stat">2M ha</span> native woodland by 2045 sequesters <span class="stat">8–12M tonnes CO₂/yr</span>. <span class="stat">50,000+</span> jobs created. <span class="stat">€5B+</span> annual H₂ export revenue. SACs restored to favourable conservation status.`}
   ],
   nav:['Overview','Calculator','Timeline','Market','Contact'],
@@ -509,14 +510,14 @@ en:{
   calc_ctx_prose:`The IP model is structured <strong></strong> — IP held by the project consortium.<br><br><strong>Funding path:</strong> DTIF (€1.5M+ initial) → PSO Levy redirect 4% of €37.5M pool → curtailed wind revenues €21M/yr self-fund the commercial electrolyser by Year 3 — no grants, no government debt after pilot phase.<br><br>The PSO Levy already collects €37.5M/year from energy consumers for green transition. Redirecting 4% to this pilot requires no new taxes and no new legislation — simply a ministerial decision.`,
   tl_phases_title:'PHASE ROADMAP',tl_ms_title:'KEY MILESTONES',
   phases:[
-    {yr:'Phase 1 · 2025–2027',title:'Clare Pilot',col:'#3d8ef5',text:'5–10 social homes · gas network integration · 12-month performance data · DTIF €1.5M · TUS/UCC/UL partnership · Ballyallia Lake SAC baseline monitoring'},
+    {yr:'Phase 1 · 2025–2027',title:'Clare Pilot',col:'#3d8ef5',text:'5–10 social homes · gas network integration · 12-month performance data · DTIF €1.5M · Ballyallia Lake SAC baseline monitoring'},
     {yr:'Phase 2 · 2027–2030',title:'Scale Clare',col:'#00d4a0',text:'Electrolyser self-funded (€21M/yr) · first H₂ delivery Moneypoint 2028 · ESB contract confirmed by 2029 · 20% Covenant launches · Clare model documented for replication'},
     {yr:'Phase 3 · 2030–2035',title:'National Template',col:'#f5a623',text:'First 100% H₂ residential districts · Clare → national template · H₂ export begins via Shannon · revenues fund reforestation at scale'},
     {yr:'Phase 4 · 2035–2045',title:'Energy Independence',col:'#a78bfa',text:'Ireland H₂ exporter · 2M ha native woodland by 2045 · SACs restored · 50k+ jobs · €5B+ H₂ export potential · Ireland global circular economy reference model'}
   ],
   milestones:[['Clare pilot starts','2026','bl'],['Electrolyser funded','2027','bl'],['First Moneypoint delivery','2028','tl'],['ESB contract confirmed','2029','tl'],['20% H₂ grid blending','2028','al'],['100% H₂ conversion','2040s','al'],['60% catchment forest buffers','2040','tl'],['2M ha native woodland','2045','tl']],
   tl_esb_title:'MONEYPOINT — THE 2029 WINDOW',
-  tl_esb_prose:`Moneypoint (Kilrush, Co. Clare) — Ireland's last coal plant — stopped burning coal in June 2025. ESB has publicly committed to converting the site to a green energy hub under the <em>Green Atlantic @ Moneypoint</em> programme. <strong>But ESB needs a domestic H₂ supplier confirmed before 2029 to proceed with turbine investment.</strong><br><br>No supplier confirmed = ESB looks abroad. Ireland loses the anchor contract that de-risks the entire national H₂ infrastructure buildout.<br><br>Our curtailed wind revenues accumulate <span class="tag tag-t">€21M/yr</span> into the H₂ fund. <span class="tag tag-t">€63M over 3 years</span> self-funds a commercial electrolyser at Shannon — no grants, no government debt. First delivery to Moneypoint: <span class="tag tag-b">2028</span>. Contract confirmed before ESB's deadline: <span class="tag tag-b">2029</span>. <strong>This is not competition with ESB — it is partnership. We solve their problem.</strong>`,
+  tl_esb_prose:`Moneypoint (Kilrush, Co. Clare) — Ireland's last coal plant — stopped burning coal in June 2025. ESB has publicly committed to converting the site to a green energy hub under the <em>Green Atlantic @ Moneypoint</em> programme. <strong>But ESB needs a domestic H₂ supplier confirmed before 2029 to proceed with turbine investment.</strong><br><br>No supplier confirmed = ESB looks abroad. Ireland loses the anchor contract that de-risks the entire national H₂ infrastructure buildout.<br><br>Our curtailed wind revenues accumulate <span class="tag tag-t">€21M/yr</span> into the H₂ fund. <span class="tag tag-t">€63M over 3 years</span> self-funds a commercial electrolyser at Shannon — no grants, no government debt. First delivery to Moneypoint: <span class="tag tag-b">2028</span>. Contract confirmed before ESB's deadline: <span class="tag tag-b">2029</span>. <strong>This is not competition with ESB — it is collaboration. We solve their problem.</strong>`,
   tl_farm_title:'THE 20% COVENANT — VOLUNTARY TRANSITION',
   tl_farm_prose:`Governments that tried to mandate herd reduction failed politically. The 20% Covenant succeeds because <strong>it is voluntary, verifiable, and profitable for the farmer.</strong><br><br>Participating farmers voluntarily commit to a 20% reduction in livestock numbers over 10 years. In exchange: <span class="tag tag-t">€12,000–18,000/yr</span> H₂ transition subsidy. Freed land planted with native forest. Carbon credits from Year 5. <strong>Total income equal or higher than before.</strong><br><br>ICBF verifies each animal via ear-tag data — no self-reporting, no manipulation. The system self-selects first movers. No one loses income. No one is coerced. The circular economy funds the transition from within itself.`,
   mk_labels:['Curtailed Wind 2025','Offshore Wind Potential','H₂ Export by 2035'],
@@ -544,14 +545,20 @@ en:{
   ct_info_title:'PROJECT CONTACTS',
   ct_info:[['Project Lead','Juri Ptitsin'],['Phone / WhatsApp','+353 86 244 5827'],['Institution','UCC'],['Funding Target','DTIF €1.5M+ · SEAI · EU Just Transition'],['Pilot Site','Ballyallia Lake SAC 000014, Co. Clare']],
   ct_role:'Project Lead · H₂-Retrofit Ireland',
-  ct_ip_note:'UCC academic affiliation · County Clare pilot confirmed',
+  ct_ip_note:'Developed independently as a working prototype for pilot evaluation.',
   ct_why_title:'WHY INVEST NOW',
-  ct_why_prose:`<strong>First-mover window closes 2029</strong> — ESB needs a supplier confirmed before their Moneypoint conversion deadline. After 2029, Ireland either imports H₂ or misses the anchor contract that de-risks the entire infrastructure build.<br><br>DTIF funding round is open now. PSO Levy redirect requires only a ministerial decision — no new legislation. TUS/UCC/UL research partnership is in place. Clare County Council Climate Action contact is active. <strong>The infrastructure, the policy window, and the market deadline all align in 2025–2027.</strong>`,
+  ct_why_prose:`<strong>First-mover window closes 2029</strong> — ESB needs a supplier confirmed before their Moneypoint conversion deadline. After 2029, Ireland either imports H₂ or misses the anchor contract that de-risks the entire infrastructure build.<br><br>DTIF funding round is open now. PSO Levy redirect requires only a ministerial decision — no new legislation. Clare County Council Climate Action contact is active. Developed independently as a working prototype for pilot evaluation. <strong>The infrastructure, the policy window, and the market deadline all align in 2025–2027.</strong>`,
   ct_form_title:'INVESTOR ENQUIRY',
   ct_placeholders:['Full name','Email address'],
-  ct_opts:['Area of interest...','Strategic investor','Government / policy','Research partnership','Media / press'],
+  ct_opts:['Area of interest...','Strategic investor','Government / policy','Media / press'],
   ct_msg_ph:'Message or questions...',ct_btn:'Send Enquiry',
   ct_thanks:'Thank you — we will respond within 48 hours.',
+  hub_params:'HUB PARAMETERS',hub_summary:'COMMUNITY HUB SUMMARY',
+  hub_sl1:'Number of homes',hub_sl2:'Avg home size (m²)',hub_sl3:'Wind curtailment (MWh/yr)',
+  hub_note:'Electrolyser sized for community-scale production. Hub installs are <strong style="color:var(--teal)">40% cheaper per unit</strong> via economies of scale.',
+  hub_warn:'⚠ Insufficient curtailment for full coverage',
+  hub_m:['Total heat demand','Total H₂ demand','Electrolyser size','Install cost','Annual gas cost','Annual H₂ cost','Annual savings','CO₂ avoided'],
+  hub_kl:['ROI (10 yr)','CO₂ / yr','Homes','Install cost'],
   install_ios:'<strong>Install on iPhone:</strong> Tap the Share button (□↑) in Safari → "Add to Home Screen" → the app installs with its own icon, runs fullscreen without browser chrome.',
   install_android:'<strong>Install on Android:</strong> Tap the menu (⋮) in Chrome → "Add to Home screen" — or Chrome will show a banner automatically.'
 },
@@ -586,7 +593,7 @@ fr:{
   calc_ctx_prose:`Le modèle IP est structuré <strong></strong> — 98% détenu par le projet, 2% retenu pour UCC. La voie de financement: DTIF (€1,5M initial) → redirection PSO Levy 4% du pool €37,5M → revenus curtailed €21M/an autofinancent l'électrolyseur commercial en Année 3. <strong>Aucune subvention, aucune dette publique après la phase pilote.</strong>`,
   tl_phases_title:'FEUILLE DE ROUTE',tl_ms_title:'JALONS CLÉS',
   phases:[
-    {yr:'Phase 1 · 2025–2027',title:'Pilote Clare',col:'#3d8ef5',text:'5–10 logements sociaux · intégration réseau gaz · données 12 mois · DTIF €1,5M · partenariat TUS/UCC/UL · surveillance baseline Ballyallia Lake SAC'},
+    {yr:'Phase 1 · 2025–2027',title:'Pilote Clare',col:'#3d8ef5',text:'5–10 logements sociaux · intégration réseau gaz · données 12 mois · DTIF €1,5M · surveillance baseline Ballyallia Lake SAC'},
     {yr:'Phase 2 · 2027–2030',title:'Mise à l\'échelle Clare',col:'#00d4a0',text:'Électrolyseur autofinancé (€21M/an) · 1ère livraison H₂ Moneypoint 2028 · contrat ESB avant 2029 · Pacte 20% lancé'},
     {yr:'Phase 3 · 2030–2035',title:'Modèle national',col:'#f5a623',text:'Premiers quartiers 100% H₂ · Clare → modèle national · export H₂ couloir Shannon'},
     {yr:'Phase 4 · 2035–2045',title:'Indépendance énergétique',col:'#a78bfa',text:'Irlande exportatrice H₂ · 2M ha forêt indigène 2045 · SACs restaurés · 50k+ emplois · €5 Mrd+ export H₂'}
@@ -621,14 +628,20 @@ fr:{
   ct_info_title:'CONTACTS PROJET',
   ct_info:[['Responsable projet','Juri Ptitsin'],['Institution','UCC'],['Objectif financement','DTIF €1,5M+ · SEAI · Just Transition UE'],['Site pilote','Ballyallia Lake SAC 000014, Co. Clare']],
   ct_role:'Responsable projet · H₂-Retrofit Ireland',
-  ct_ip_note:'Modèle IP  · Affiliation UCC · Pilote Clare confirmé',
+  ct_ip_note:'Développé indépendamment comme prototype opérationnel pour l\'évaluation pilote.',
   ct_why_title:'POURQUOI INVESTIR MAINTENANT',
   ct_why_prose:`<strong>La fenêtre du premier entrant se ferme en 2029</strong> — ESB a besoin d'un fournisseur avant leur délai Moneypoint. Le tour de financement DTIF est ouvert maintenant. La redirection PSO Levy ne nécessite qu'une décision ministérielle. <strong>L'infrastructure, la fenêtre politique et le délai de marché s'alignent tous en 2025–2027.</strong>`,
   ct_form_title:'DEMANDE INVESTISSEUR',
   ct_placeholders:['Nom complet','Adresse email'],
-  ct_opts:['Domaine d\'intérêt...','Investisseur stratégique','Gouvernement / politique','Partenariat recherche','Médias / presse'],
+  ct_opts:['Domaine d\'intérêt...','Investisseur stratégique','Gouvernement / politique','Médias / presse'],
   ct_msg_ph:'Message ou questions...',ct_btn:'Envoyer la demande',
   ct_thanks:'Merci — nous répondrons dans les 48 heures.',
+  hub_params:'PARAMÈTRES HUB',hub_summary:'RÉSUMÉ HUB COMMUNAUTAIRE',
+  hub_sl1:'Nombre de logements',hub_sl2:'Surface moyenne (m²)',hub_sl3:'Abréglement éolien (MWh/an)',
+  hub_note:'Électrolyseur dimensionné pour la production communautaire. <strong style="color:var(--teal)">40% moins cher par unité</strong> grâce aux économies d\'échelle.',
+  hub_warn:'⚠ Curtailment insuffisant pour couverture totale',
+  hub_m:['Demande totale chaleur','Demande totale H₂','Taille électrolyseur','Coût installation','Coût gaz annuel','Coût H₂ annuel','Économies annuelles','CO₂ évité'],
+  hub_kl:['ROI (10 ans)','CO₂ / an','Logements','Coût inst.'],
   install_ios:'<strong>Installer sur iPhone:</strong> Appuyer sur le bouton Partager (□↑) dans Safari → "Sur l\'écran d\'accueil" → l\'app s\'installe avec sa propre icône.',
   install_android:'<strong>Installer sur Android:</strong> Menu (⋮) dans Chrome → "Ajouter à l\'écran d\'accueil".'
 },
@@ -663,7 +676,7 @@ de:{
   calc_ctx_prose:`Das IP-Modell ist <strong></strong> strukturiert — 98% beim Projekt, 2% für UCC. Finanzierungsweg: DTIF (€1,5M initial) → PSO-Levy-Umleitung 4% des €37,5M-Pools → Abregelungserlöse €21M/Jahr finanzieren den kommerziellen Elektrolyseur in Jahr 3 selbst. <strong>Keine Subventionen, keine öffentliche Verschuldung nach der Pilotphase.</strong>`,
   tl_phases_title:'PHASEN-ROADMAP',tl_ms_title:'MEILENSTEINE',
   phases:[
-    {yr:'Phase 1 · 2025–2027',title:'Clare-Pilot',col:'#3d8ef5',text:'5–10 Sozialhäuser · Gasnetintegration · 12 Monate Daten · DTIF €1,5M · TUS/UCC/UL-Partnerschaft'},
+    {yr:'Phase 1 · 2025–2027',title:'Clare-Pilot',col:'#3d8ef5',text:'5–10 Sozialhäuser · Gasnetintegration · 12 Monate Daten · DTIF €1,5M · Ballyallia Lake SAC Basismonitoring'},
     {yr:'Phase 2 · 2027–2030',title:'Clare skalieren',col:'#00d4a0',text:'Elektrolyseur selbstfinanziert (€21M/Jahr) · 1. H₂-Lieferung Moneypoint 2028 · ESB-Vertrag bis 2029'},
     {yr:'Phase 3 · 2030–2035',title:'Nationales Muster',col:'#f5a623',text:'Erste 100% H₂-Bezirke · Clare → nationales Muster · H₂-Export über Shannon-Korridor'},
     {yr:'Phase 4 · 2035–2045',title:'Energieunabhängigkeit',col:'#a78bfa',text:'Irland H₂-Exporteur · 2M ha heimischer Wald 2045 · 50k+ Arbeitsplätze · €5 Mrd.+ H₂-Exportpotenzial'}
@@ -698,14 +711,20 @@ de:{
   ct_info_title:'PROJEKTKONTAKTE',
   ct_info:[['Projektleiter','Juri Ptitsin'],['Institution','UCC'],['Finanzierungsziel','DTIF €1,5M+ · SEAI · EU Just Transition'],['Pilotstandort','Ballyallia Lake SAC 000014, Co. Clare']],
   ct_role:'Projektleiter · H₂-Retrofit Ireland',
-  ct_ip_note:'IP-Modell  · UCC-Zugehörigkeit · Clare-Pilot bestätigt',
+  ct_ip_note:'Unabhängig entwickelt als funktionierender Prototyp zur Pilotbewertung.',
   ct_why_title:'WARUM JETZT INVESTIEREN',
   ct_why_prose:`<strong>Das First-Mover-Fenster schließt sich 2029</strong> — ESB braucht einen Lieferanten vor ihrer Moneypoint-Frist. Die DTIF-Finanzierungsrunde ist jetzt offen. Die PSO-Levy-Umleitung erfordert nur eine Ministerentscheidung. <strong>Infrastruktur, Politikfenster und Marktfrist richten sich alle auf 2025–2027 aus.</strong>`,
   ct_form_title:'INVESTORENANFRAGE',
   ct_placeholders:['Vollständiger Name','E-Mail-Adresse'],
-  ct_opts:['Interessenbereich...','Strategischer Investor','Regierung / Politik','Forschungspartnerschaft','Medien / Presse'],
+  ct_opts:['Interessenbereich...','Strategischer Investor','Regierung / Politik','Medien / Presse'],
   ct_msg_ph:'Nachricht oder Fragen...',ct_btn:'Anfrage senden',
   ct_thanks:'Danke — wir antworten innerhalb von 48 Stunden.',
+  hub_params:'HUB-PARAMETER',hub_summary:'COMMUNITY HUB ZUSAMMENFASSUNG',
+  hub_sl1:'Anzahl Häuser',hub_sl2:'Durchschn. Hausgröße (m²)',hub_sl3:'Windabregelung (MWh/Jahr)',
+  hub_note:'Elektrolyseur für gemeinschaftliche Produktion dimensioniert. <strong style="color:var(--teal)">40% günstiger pro Einheit</strong> durch Skaleneffekte.',
+  hub_warn:'⚠ Unzureichende Abregelung für Vollabdeckung',
+  hub_m:['Gesamtwärmebedarf','Gesamter H₂-Bedarf','Elektrolyseurkapazität','Installationskosten','Jährl. Gaskosten','Jährl. H₂-Kosten','Jährl. Einsparung','CO₂ vermieden'],
+  hub_kl:['ROI (10 J.)','CO₂ / Jahr','Häuser','Inst.-Kosten'],
   install_ios:'<strong>Auf iPhone installieren:</strong> Teilen-Schaltfläche (□↑) in Safari → "Zum Home-Bildschirm" → die App installiert sich mit eigenem Symbol.',
   install_android:'<strong>Auf Android installieren:</strong> Menü (⋮) in Chrome → "Zum Startbildschirm hinzufügen".'
 },
@@ -740,7 +759,7 @@ es:{
   calc_ctx_prose:`El modelo IP está estructurado <strong></strong> — 98% en el proyecto, 2% para UCC. Ruta de financiación: DTIF (€1,5M inicial) → redirección PSO Levy 4% del pool €37,5M → ingresos curtailed €21M/año autofinancian el electrolizador comercial en el Año 3. <strong>Sin subvenciones, sin deuda pública tras la fase piloto.</strong>`,
   tl_phases_title:'HOJA DE RUTA',tl_ms_title:'HITOS CLAVE',
   phases:[
-    {yr:'Fase 1 · 2025–2027',title:'Piloto Clare',col:'#3d8ef5',text:'5–10 viviendas sociales · integración red gas · datos 12 meses · DTIF €1,5M · TUS/UCC/UL · baseline Ballyallia Lake SAC'},
+    {yr:'Fase 1 · 2025–2027',title:'Piloto Clare',col:'#3d8ef5',text:'5–10 viviendas sociales · integración red gas · datos 12 meses · DTIF €1,5M · baseline Ballyallia Lake SAC'},
     {yr:'Fase 2 · 2027–2030',title:'Escalar Clare',col:'#00d4a0',text:'Electrolizador autofinanciado (€21M/año) · 1ª entrega H₂ Moneypoint 2028 · contrato ESB antes de 2029'},
     {yr:'Fase 3 · 2030–2035',title:'Plantilla nacional',col:'#f5a623',text:'Primeros distritos 100% H₂ · Clare → plantilla nacional · exportación H₂ corredor Shannon'},
     {yr:'Fase 4 · 2035–2045',title:'Independencia energética',col:'#a78bfa',text:'Irlanda exportadora H₂ · 2M ha bosque nativo 2045 · 50k+ empleos · €5B+ exportación H₂'}
@@ -775,14 +794,20 @@ es:{
   ct_info_title:'CONTACTOS DEL PROYECTO',
   ct_info:[['Responsable del proyecto','Juri Ptitsin'],['Institución','UCC'],['Objetivo de financiación','DTIF €1,5M+ · SEAI · Just Transition UE'],['Sitio piloto','Ballyallia Lake SAC 000014, Co. Clare']],
   ct_role:'Responsable del proyecto · H₂-Retrofit Ireland',
-  ct_ip_note:'Modelo IP  · Afiliación UCC · Piloto Clare confirmado',
+  ct_ip_note:'Desarrollado independientemente como prototipo funcional para evaluación piloto.',
   ct_why_title:'POR QUÉ INVERTIR AHORA',
   ct_why_prose:`<strong>La ventana del primer entrante se cierra en 2029</strong> — ESB necesita un proveedor antes de su plazo Moneypoint. La ronda de financiación DTIF está abierta ahora. La redirección PSO Levy solo requiere una decisión ministerial. <strong>La infraestructura, la ventana política y el plazo de mercado se alinean en 2025–2027.</strong>`,
   ct_form_title:'CONSULTA DE INVERSOR',
   ct_placeholders:['Nombre completo','Dirección de email'],
-  ct_opts:['Área de interés...','Inversor estratégico','Gobierno / política','Colaboración investigación','Medios / prensa'],
+  ct_opts:['Área de interés...','Inversor estratégico','Gobierno / política','Medios / prensa'],
   ct_msg_ph:'Mensaje o preguntas...',ct_btn:'Enviar consulta',
   ct_thanks:'Gracias — responderemos en 48 horas.',
+  hub_params:'PARÁMETROS HUB',hub_summary:'RESUMEN HUB COMUNITARIO',
+  hub_sl1:'Número de hogares',hub_sl2:'Tamaño medio del hogar (m²)',hub_sl3:'Curtailment eólico (MWh/año)',
+  hub_note:'Electrolizador dimensionado para producción comunitaria. <strong style="color:var(--teal)">40% más barato por unidad</strong> por economías de escala.',
+  hub_warn:'⚠ Curtailment insuficiente para cobertura total',
+  hub_m:['Demanda total calor','Demanda total H₂','Tamaño electrolizador','Coste instalación','Coste gas anual','Coste H₂ anual','Ahorro anual','CO₂ evitado'],
+  hub_kl:['ROI (10 años)','CO₂ / año','Hogares','Coste inst.'],
   install_ios:'<strong>Instalar en iPhone:</strong> Botón Compartir (□↑) en Safari → "Añadir a pantalla de inicio" → la app se instala con su propio icono.',
   install_android:'<strong>Instalar en Android:</strong> Menú (⋮) en Chrome → "Añadir a pantalla de inicio".'
 },
@@ -817,7 +842,7 @@ ru:{
   calc_ctx_prose:`IP-модель структурирована <strong></strong> — 98% проекту, 2% UCC. Путь финансирования: DTIF (€1,5M начальные) → перенаправление PSO Levy 4% пула €37,5M → curtailed доходы €21M/год самофинансируют коммерческий электролизёр к 3-му году. <strong>Никаких грантов, никакого госдолга после пилотной фазы.</strong>`,
   tl_phases_title:'ДОРОЖНАЯ КАРТА',tl_ms_title:'КЛЮЧЕВЫЕ MILESTONE',
   phases:[
-    {yr:'Фаза 1 · 2025–2027',title:'Пилот Clare',col:'#3d8ef5',text:'5–10 социальных домов · интеграция с газосетью · данные 12 месяцев · DTIF €1,5M · TUS/UCC/UL · базовый мониторинг Ballyallia Lake SAC'},
+    {yr:'Фаза 1 · 2025–2027',title:'Пилот Clare',col:'#3d8ef5',text:'5–10 социальных домов · интеграция с газосетью · данные 12 месяцев · DTIF €1,5M · базовый мониторинг Ballyallia Lake SAC'},
     {yr:'Фаза 2 · 2027–2030',title:'Масштабирование Clare',col:'#00d4a0',text:'Электролизёр самофинансируется (€21M/год) · первая поставка H₂ на Moneypoint 2028 · контракт ESB до 2029 · 20% Covenant запускается'},
     {yr:'Фаза 3 · 2030–2035',title:'Национальный шаблон',col:'#f5a623',text:'Первые 100% H₂ районы · Clare → национальный шаблон · экспорт H₂ через Шэннон-коридор'},
     {yr:'Фаза 4 · 2035–2045',title:'Энергетическая независимость',col:'#a78bfa',text:'Ирландия — экспортёр H₂ · 2M га коренного леса к 2045 · SAC восстановлены · 50k+ рабочих мест · €5B+ экспортный потенциал H₂'}
@@ -852,14 +877,20 @@ ru:{
   ct_info_title:'КОНТАКТЫ ПРОЕКТА',
   ct_info:[['Руководитель проекта','Juri Ptitsin'],['Институция','UCC'],['Цель финансирования','DTIF €1,5M+ · SEAI · EU Just Transition'],['Пилотная площадка','Ballyallia Lake SAC 000014, Co. Clare']],
   ct_role:'Руководитель проекта · H₂-Retrofit Ireland',
-  ct_ip_note:'IP-модель  · Аффилиация UCC · Пилот Clare подтверждён',
+  ct_ip_note:'Разработано независимо как рабочий прототип для пилотной оценки.',
   ct_why_title:'ПОЧЕМУ ИНВЕСТИРОВАТЬ СЕЙЧАС',
   ct_why_prose:`<strong>Окно первопроходца закрывается в 2029</strong> — ESB нужен поставщик до дедлайна Moneypoint. Раунд финансирования DTIF открыт сейчас. Перенаправление PSO Levy требует только министерского решения — никаких новых законов. <strong>Инфраструктура, политическое окно и рыночный дедлайн совпадают в 2025–2027.</strong>`,
   ct_form_title:'ЗАПРОС ИНВЕСТОРА',
   ct_placeholders:['Полное имя','Email адрес'],
-  ct_opts:['Область интереса...','Стратегический инвестор','Правительство / политика','Исследовательское партнёрство','СМИ / пресса'],
+  ct_opts:['Область интереса...','Стратегический инвестор','Правительство / политика','СМИ / пресса'],
   ct_msg_ph:'Сообщение или вопросы...',ct_btn:'Отправить запрос',
   ct_thanks:'Спасибо — ответим в течение 48 часов.',
+  hub_params:'ПАРАМЕТРЫ HUB',hub_summary:'СВОДКА COMMUNITY HUB',
+  hub_sl1:'Количество домов',hub_sl2:'Средний размер дома (м²)',hub_sl3:'Curtailed ветер (МВт·ч/год)',
+  hub_note:'Электролизёр рассчитан на общественное производство. <strong style="color:var(--teal)">На 40% дешевле за единицу</strong> за счёт экономии от масштаба.',
+  hub_warn:'⚠ Недостаточное curtailment для полного покрытия',
+  hub_m:['Общий спрос на тепло','Общий спрос H₂','Мощность электролизёра','Стоимость установки','Годовые расходы на газ','Годовые расходы H₂','Годовая экономия','Избежанный CO₂'],
+  hub_kl:['ROI (10 лет)','CO₂ / год','Домов','Стоимость'],
   install_ios:'<strong>Установить на iPhone:</strong> Кнопка «Поделиться» (□↑) в Safari → «На экран «Домой»» → приложение устанавливается с иконкой, без браузерной строки.',
   install_android:'<strong>Установить на Android:</strong> Меню (⋮) в Chrome → «Добавить на главный экран».'
 }
@@ -1011,7 +1042,22 @@ function switchCalcMode(){
   if(isHub) recalcHub(); else recalc();
 }
 
+function calculateCommunityHub(homes, homeSizeM2, curtailmentMWh){
+  const heatingDemandPerHome = 12 * Math.sqrt(homeSizeM2 / 100);
+  const totalHeatKWhDay = homes * heatingDemandPerHome;
+  const totalH2KgDay = totalHeatKWhDay / 33.33;
+  const electrolyserKW = (totalH2KgDay * 50) / 8;
+  const installCostEUR = electrolyserKW * 1000 * 1.4;
+  const annualH2Cost = totalH2KgDay * 5 * 365;
+  const annualGasCost = totalHeatKWhDay * 365 * 0.10;
+  const annualSavings = annualGasCost - annualH2Cost;
+  const co2TonnesYear = (totalHeatKWhDay * 365 * 0.2) / 1000;
+  const roi10yr = ((annualSavings * 10) / installCostEUR) * 100;
+  return {heatingDemandPerHome,totalHeatKWhDay,totalH2KgDay,electrolyserKW,installCostEUR,annualH2Cost,annualGasCost,annualSavings,co2TonnesYear,roi10yr};
+}
+
 function recalcHub(){
+  const t=T[lang];
   const homes=parseInt(document.getElementById('hub-homes').value);
   const size=parseInt(document.getElementById('hub-size').value);
   const wind=parseInt(document.getElementById('hub-wind').value);
@@ -1020,67 +1066,55 @@ function recalcHub(){
   document.getElementById('hub-size-v').textContent=size+' m²';
   document.getElementById('hub-wind-v').textContent=wind.toLocaleString()+' MWh';
 
-  // Total H2 demand
-  const h2DemandKgDay=homes*2.5;
+  const r=calculateCommunityHub(homes,size,wind);
+  const fmtK=n=>{const a=Math.abs(n),s=n<0?'-€':'€';return a>=1e6?s+Math.round(a/1e5)/10+'M':s+Math.round(a/1000)+'k'};
 
-  // Electrolyser size: 55 kWh/kg H2, size in kW = daily demand × 55 / 24h
-  const electrolyserKW=Math.round(h2DemandKgDay*55/24);
+  // Curtailment check: supply cap warning
+  const availableKWhDay=wind*1000/365;
+  const warnEl=document.getElementById('hub-warn');
+  if(availableKWhDay<r.totalHeatKWhDay){
+    warnEl.textContent=t.hub_warn;
+    warnEl.style.display='block';
+  }else{
+    warnEl.style.display='none';
+  }
 
-  // Installation cost: hub is 40% cheaper per unit than individual (€4,500/home base)
-  const hubCostPerHome=4500*0.6;
-  const totalInstallCost=homes*hubCostPerHome;
-
-  // Annual H2 savings vs gas
-  // Annual H2 per home: 2.5 kg/day × 365 = 912.5 kg/yr
-  // Gas equivalent energy cost: 912.5 kg × 33.3 kWh/kg × €0.08/kWh
-  // H2 cost from curtailed wind: 912.5 kg × €2/kg
-  const annualH2PerHome=h2DemandKgDay*365;
-  const gasCostTotal=annualH2PerHome*33.3*0.08*homes;
-  const h2CostTotal=annualH2PerHome*2*homes;
-  const annualSavingsVsGas=Math.round(gasCostTotal-h2CostTotal);
-
-  // Investor ROI over 10 years
-  // Revenue: H2 sold at €4/kg - production cost €2/kg = €2/kg net margin
-  const annualRevenue=h2DemandKgDay*365*homes*2;
-  const roi10yr=Math.round(((annualRevenue*10-totalInstallCost)/totalInstallCost)*100);
-
-  // CO2 avoided: gas emits ~0.2 kg CO2/kWh, H2 from curtailed wind ≈ 0
-  const annualEnergyKWh=h2DemandKgDay*365*homes*33.3;
-  const co2Tonnes=Math.round(annualEnergyKWh*0.2/1000);
-
-  // Format helpers
-  const fmtK=n=>n>=1e6?'€'+Math.round(n/1e5)/10+'M':'€'+Math.round(n/1000)+'k';
-
+  const lm=t.hub_m;
   const metrics=[
-    {key:'Total H₂ demand',val:h2DemandKgDay.toLocaleString()+' kg/day',hl:'hm-hl'},
-    {key:'Electrolyser size needed',val:electrolyserKW.toLocaleString()+' kW',hl:''},
-    {key:'Total installation cost',val:fmtK(totalInstallCost),hl:''},
-    {key:'Annual H₂ savings vs gas',val:fmtK(annualSavingsVsGas)+'/yr',hl:'hm-hl'},
-    {key:'CO₂ avoided',val:co2Tonnes.toLocaleString()+' t/yr',hl:'hm-co2'},
+    {key:lm[0],val:Math.round(r.totalHeatKWhDay).toLocaleString()+' kWh/day',hl:''},
+    {key:lm[1],val:Math.round(r.totalH2KgDay)+' kg/day',hl:'hm-hl'},
+    {key:lm[2],val:Math.round(r.electrolyserKW)+' kW',hl:''},
+    {key:lm[3],val:fmtK(r.installCostEUR),hl:''},
+    {key:lm[4],val:fmtK(r.annualGasCost)+'/yr',hl:''},
+    {key:lm[5],val:fmtK(r.annualH2Cost)+'/yr',hl:''},
+    {key:lm[6],val:fmtK(r.annualSavings)+'/yr',hl:r.annualSavings>0?'hm-hl':''},
+    {key:lm[7],val:Math.round(r.co2TonnesYear).toLocaleString()+' t/yr',hl:'hm-co2'},
   ];
 
-  document.getElementById('hub-results').innerHTML=metrics.map(r=>`
-    <div class="hub-metric${r.hl?' '+r.hl:''}">
-      <span class="hub-mk">${r.key}</span>
-      <span class="hub-mv">${r.val}</span>
+  document.getElementById('hub-results').innerHTML=metrics.map(row=>`
+    <div class="hub-metric${row.hl?' '+row.hl:''}">
+      <span class="hub-mk">${row.key}</span>
+      <span class="hub-mv">${row.val}</span>
     </div>`).join('');
 
+  const kl=t.hub_kl;
+  const roi=Math.round(r.roi10yr);
   document.getElementById('hub-kpis').innerHTML=`
     <div class="hub-kpi">
-      <div class="hub-kpi-val">${roi10yr>0?'+':''}${roi10yr}%</div>
-      <div class="hub-kpi-lbl">Investor ROI (10 yr)</div>
+      <div class="hub-kpi-val">${roi>0?'+':''}${roi}%</div>
+      <div class="hub-kpi-lbl">${kl[0]}</div>
     </div>
     <div class="hub-kpi">
-      <div class="hub-kpi-val">${co2Tonnes.toLocaleString()}t</div>
-      <div class="hub-kpi-lbl">CO₂ avoided / yr</div>
+      <div class="hub-kpi-val">${Math.round(r.co2TonnesYear).toLocaleString()}t</div>
+      <div class="hub-kpi-lbl">${kl[1]}</div>
     </div>
     <div class="hub-kpi">
       <div class="hub-kpi-val">${homes}</div>
-      <div class="hub-kpi-lbl">Homes served</div>
+      <div class="hub-kpi-lbl">${kl[2]}</div>
     </div>
     <div class="hub-kpi">
-      <div class="hub-kpi-val">${fmtK(totalInstallCost)}</div>
-      <div class="hub-kpi-lbl">Total install cost</div>
+      <div class="hub-kpi-val">${fmtK(r.installCostEUR)}</div>
+      <div class="hub-kpi-lbl">${kl[3]}</div>
     </div>`;
 }
 
@@ -1233,6 +1267,15 @@ function render(){
   document.getElementById('ct-msg').placeholder=t.ct_msg_ph;
   document.getElementById('ct-btn').textContent=t.ct_btn;
   t.ct_opts.forEach((opt,i)=>document.getElementById('ct-opt'+(i+1)).textContent=opt);
+
+  // Hub calculator labels
+  document.getElementById('hub-params-title').textContent=t.hub_params;
+  document.getElementById('hub-summary-title').textContent=t.hub_summary;
+  document.getElementById('hub-sl1').textContent=t.hub_sl1;
+  document.getElementById('hub-sl2').textContent=t.hub_sl2;
+  document.getElementById('hub-sl3').textContent=t.hub_sl3;
+  document.getElementById('hub-note').innerHTML=t.hub_note;
+  if(document.getElementById('hub-toggle').checked) recalcHub();
 
   // Install banner
   const banner=document.getElementById('install-banner');
