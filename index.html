@@ -489,14 +489,18 @@ textarea.inp{height:85px;resize:vertical}
     <div class="proto-grid">
       <!-- VIDEO -->
       <div>
-        <div class="proto-video-wrap">
-          <iframe
-            src="https://www.youtube.com/embed/dZAJy4WKacs"
-            title="Prototype Demonstration — H₂-Retrofit Ireland"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+        <div class="proto-video-wrap" id="proto-video-wrap">
+          <div id="proto-thumb" onclick="loadProtoVideo()" style="position:absolute;top:0;left:0;width:100%;height:100%;cursor:pointer;background:#000">
+            <img src="https://img.youtube.com/vi/dZAJy4WKacs/hqdefault.jpg" alt="Prototype Demonstration" style="width:100%;height:100%;object-fit:cover;opacity:.85;border-radius:12px">
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;background:rgba(255,0,0,0.92);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.5)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="5,3 19,12 5,21"/></svg>
+            </div>
+          </div>
         </div>
+        <a href="https://youtube.com/shorts/dZAJy4WKacs" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:7px;margin-top:10px;font-size:12px;color:var(--text3);text-decoration:none;padding:7px;border:1px solid var(--border);border-radius:8px;transition:all .15s" onmouseover="this.style.borderColor='rgba(0,212,160,0.4)';this.style.color='var(--teal)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text3)'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6v2H5v11h11v-5h2v6a1 1 0 01-1 1H4a1 1 0 01-1-1V7a1 1 0 011-1h6zm11-3v8h-2V6.413l-7.293 7.294-1.414-1.414L17.585 5H13V3h8z"/></svg>
+          Watch on YouTube
+        </a>
       </div>
       <!-- TEXT -->
       <div>
@@ -1433,6 +1437,12 @@ if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
     navigator.serviceWorker.register('sw.js').catch(()=>{});
   });
+}
+
+/* PROTOTYPE VIDEO */
+function loadProtoVideo(){
+  const wrap=document.getElementById('proto-video-wrap');
+  wrap.innerHTML='<iframe src="https://www.youtube.com/embed/dZAJy4WKacs?autoplay=1" title="Prototype Demonstration" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"></iframe>';
 }
 
 /* INIT */
