@@ -57,8 +57,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* NAV */
 .nav{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav::-webkit-scrollbar{display:none}
-.investor-block{display:block;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-radius:8px;padding:12px 18px;margin-bottom:16px;color:#e63946;text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;transition:background .15s}
-.investor-block:hover{background:rgba(230,57,70,0.15)}
+.nb.nb-warn{color:#e63946}
+.nb.nb-warn.on{color:#e63946;border-bottom-color:#e63946}
 .nb{padding:9px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
 .nb.on{color:var(--teal);border-bottom-color:var(--teal)}
 .nb:hover:not(.on){color:var(--text)}
@@ -258,8 +258,8 @@ textarea.inp{height:85px;resize:vertical}
   <button class="nb" onclick="showTab('market')" id="nav-market"></button>
   <button class="nb" onclick="showTab('contact')" id="nav-contact"></button>
   <button class="nb" onclick="showTab('proto')" id="nav-proto"></button>
+  <button class="nb nb-warn" onclick="showTab('investor')" id="nav-investor">⚠ Investor Analysis</button>
 </div>
-<a href="investor-analysis.html" target="_blank" class="investor-block">⚠ Investor Analysis — Critical Risk Assessment</a>
 
 <!-- ══════════════ OVERVIEW ══════════════ -->
 <div id="tab-overview" class="sec on">
@@ -531,6 +531,77 @@ textarea.inp{height:85px;resize:vertical}
   </div>
 </div>
 
+<!-- ══════════════ INVESTOR ANALYSIS ══════════════ -->
+<div id="tab-investor" class="sec">
+  <div class="card" style="border-color:rgba(230,57,70,0.3)">
+    <div class="st" style="color:#e63946">CRITICAL INVESTOR ANALYSIS</div>
+    <p style="color:var(--text2);font-size:0.85rem;margin-bottom:20px">Independent risk assessment — West of Ireland, 50 homes + 1 ha greenhouse</p>
+
+    <div class="st" style="font-size:0.75rem;margin-bottom:10px">TOP 5 RISKS</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px">
+      <div style="background:rgba(230,57,70,0.06);border-left:3px solid #e63946;padding:12px 14px;border-radius:0 6px 6px 0">
+        <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:4px">1. Feedstock is not a resource — it's a scheduling problem</div>
+        <div style="color:var(--text2);font-size:0.82rem">Curtailment is managed by EirGrid through constraint payments. You need signed offtake agreements with wind operators willing to divert output in real time. No wind operator has an incentive to manage that complexity for a 50-home buyer. As Ireland adds interconnectors, curtailment drops — your cheapest input disappears.</div>
+      </div>
+      <div style="background:rgba(230,57,70,0.06);border-left:3px solid #e63946;padding:12px 14px;border-radius:0 6px 6px 0">
+        <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:4px">2. Hydrogen storage near homes will not get planning permission easily</div>
+        <div style="color:var(--text2);font-size:0.82rem">Compressed hydrogen above certain thresholds is a major hazard installation under COMAH regulations. Exclusion zones, third-party risk assessments, and possibly a full EIA required. No Irish local authority has approved a residential-adjacent hydrogen storage facility.</div>
+      </div>
+      <div style="background:rgba(230,57,70,0.06);border-left:3px solid #e63946;padding:12px 14px;border-radius:0 6px 6px 0">
+        <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:4px">3. District heating CAPEX is the invisible killer</div>
+        <div style="color:var(--text2);font-size:0.82rem">Delivering heat to 50 dispersed rural homes requires insulated piping, heat exchangers, controls, and metering. Ireland has almost no district heating infrastructure outside Dublin. Cost: €1.5M–€3M before buying a single electrolyzer.</div>
+      </div>
+      <div style="background:rgba(230,57,70,0.06);border-left:3px solid #e63946;padding:12px 14px;border-radius:0 6px 6px 0">
+        <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:4px">4. Three revenue streams that conflict with each other</div>
+        <div style="color:var(--text2);font-size:0.82rem">Heat supply needs continuous output. Grid balancing needs dispatchable on-demand response. Greenhouse heating needs sustained low-grade heat. A curtailment-fed electrolyzer cannot optimise for all three. DS3/FFR contracts require firm availability guarantees you cannot provide.</div>
+      </div>
+      <div style="background:rgba(230,57,70,0.06);border-left:3px solid #e63946;padding:12px 14px;border-radius:0 6px 6px 0">
+        <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:4px">5. 50 homes is a demonstration priced as a business</div>
+        <div style="color:var(--text2);font-size:0.82rem">Electrolysis and district heating economics only work at multi-MW scale. At this scale CAPEX per delivered kWh is 5–10× more expensive than a heat pump. Investors don't fund demonstrations without a scale-up roadmap and public funding absorbing pilot losses.</div>
+      </div>
+    </div>
+
+    <div class="st" style="font-size:0.75rem;margin-bottom:10px">CHALLENGED ASSUMPTIONS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:12px">
+        <div style="color:var(--text2);font-size:0.75rem;margin-bottom:4px">ASSUMED</div>
+        <div style="color:#fff;font-size:0.9rem;font-weight:600">€0.03–0.05/kWh</div>
+        <div style="color:var(--text2);font-size:0.8rem">curtailed energy cost</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:12px">
+        <div style="color:#e63946;font-size:0.75rem;margin-bottom:4px">REALISTIC</div>
+        <div style="color:#fff;font-size:0.9rem;font-weight:600">€0.05–0.08/kWh</div>
+        <div style="color:var(--text2);font-size:0.8rem">after bilateral contract &amp; dispatch flexibility</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:12px">
+        <div style="color:var(--text2);font-size:0.75rem;margin-bottom:4px">ASSUMED</div>
+        <div style="color:#fff;font-size:0.9rem;font-weight:600">€1.5–2.5/kg H₂</div>
+        <div style="color:var(--text2);font-size:0.8rem">production cost</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:12px">
+        <div style="color:#e63946;font-size:0.75rem;margin-bottom:4px">REALISTIC AT THIS SCALE</div>
+        <div style="color:#fff;font-size:0.9rem;font-weight:600">€10–18/kg H₂</div>
+        <div style="color:var(--text2);font-size:0.8rem">energy + small-scale CAPEX + O&amp;M</div>
+      </div>
+    </div>
+
+    <div class="st" style="font-size:0.75rem;margin-bottom:10px">WHAT INVESTORS NEED BEFORE A SERIOUS CONVERSATION</div>
+    <div style="display:flex;flex-direction:column;gap:0">
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">Signed LOI from a wind operator</strong> — without this, input cost is fictional</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">Planning pre-application on hydrogen storage</strong> — without this, you don't know if the project is permittable</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">Electrolyzer vendor quote at actual scale</strong> — not industry averages</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">EirGrid grid connection feasibility study</strong> — rural Donegal/Mayo connection cost: €300K–€800K</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">12 months of metered heat demand data</strong> — not estimates</span></div>
+      <div style="display:flex;gap:10px;align-items:flex-start;padding:9px 0"><span style="color:#e63946;flex-shrink:0">→</span><span style="color:var(--text2);font-size:0.83rem"><strong style="color:#fff">Full financial model with 3 scenarios</strong> — IRR and payback at best / base / downside</span></div>
+    </div>
+
+    <div style="margin-top:20px;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.3);border-radius:8px;padding:14px 16px">
+      <div style="color:#e63946;font-weight:700;font-size:0.85rem;margin-bottom:6px">BOTTOM LINE</div>
+      <div style="color:var(--text2);font-size:0.83rem">This is a technically interesting concept built on unvalidated assumptions at a scale too small to be commercial and too large to be a cheap pilot. The project as described would deliver hydrogen at 5–10× the cost of any competing heat source. Spend €50K–€100K on feasibility work first — real vendor quotes, site studies, planning pre-application — before asking anyone for serious capital. Right now this is a hypothesis, not a project.</div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /outer -->
 <script>
 /* ═══════════════════════════════════════════════
@@ -545,7 +616,7 @@ en:{
     {id:'pilot',label:'County Clare Pilot',title:'County Clare Pilot Site',body:`Clare is the ideal pilot: Moneypoint (915 MW, Kilrush) stopped burning coal in June 2025 and needs a domestic H₂ supplier confirmed before 2029. The River Fergus and Ballyallia Lake SAC (site 000014) face direct agricultural nitrogen pressure — demonstrating water quality improvement from the pilot has immediate policy value.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 social homes, gas network integration, 12 months performance data. Cost: <span class="stat">€1.5M</span> via DTIF + PSO Levy redirect (4% of existing €37.5M pool).<br><br>Contact: Juri Ptitsin · +353 86 244 5827. Developed independently as a working prototype for pilot evaluation.`},
     {id:'national',label:'National Rollout',title:'National Rollout Strategy',body:`Phase 2 (2027–30): Electrolyser self-funded at <span class="stat">€21M/yr</span> curtailed revenue. <span class="stat">€63M</span> over 3 years with no grants or government debt. First H₂ delivery to Moneypoint 2028. ESB contract confirmed before their 2029 deadline.<br><br>Phase 3 (2030–35): First 100% H₂ residential districts. Clare becomes the national template. Shannon deepwater port opens the Atlantic H₂ export corridor to UK and EU markets.<br><br>Phase 4 (2035–45): Ireland H₂ exporter. <span class="stat">2M ha</span> native woodland by 2045 sequesters <span class="stat">8–12M tonnes CO₂/yr</span>. <span class="stat">50,000+</span> jobs created. <span class="stat">€5B+</span> annual H₂ export revenue. SACs restored to favourable conservation status.`}
   ],
-  nav:['Overview','Calculator','Timeline','Market','Contact','Prototype'],
+  nav:['Overview','Calculator','Timeline','Market','Contact','Prototype'],nav_investor:'Investor Analysis',
   ov_l:['Pilot Funding','Market Size','Installation Cost','Jobs Potential'],
   ov_s:['DTIF / Clare CC','hard-to-treat homes','vs €49.6k deep retrofit','by 2030'],
   prob_title:'THE PROBLEM — IRELAND\'S RETROFIT CRISIS',
@@ -639,7 +710,7 @@ fr:{
     {id:'pilot',label:'Pilote Comté de Clare',title:'Site pilote — Comté de Clare',body:`Clare est le pilote idéal: Moneypoint (915 MW, Kilrush) a cessé de brûler du charbon en juin 2025 et a besoin d'un fournisseur H₂ domestique confirmé avant 2029. La rivière Fergus et le lac Ballyallia SAC (site 000014) subissent une pression agricole directe en azote.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 logements sociaux, intégration réseau gaz, 12 mois de données. Coût: <span class="stat">€1,5M</span> via DTIF + redirection PSO Levy.`},
     {id:'national',label:'Déploiement national',title:'Stratégie de déploiement national',body:`Phase 2 (2027–30): Électrolyseur autofinancé à <span class="stat">€21M/an</span> de revenus curtailed. <span class="stat">€63M</span> sur 3 ans sans subventions ni dette publique. Première livraison H₂ à Moneypoint 2028.<br><br>Phase 4 (2035–45): Irlande exportatrice H₂. <span class="stat">2M ha</span> de forêt indigène séquestrant <span class="stat">8–12M tonnes CO₂/an</span>. <span class="stat">50 000+</span> emplois. <span class="stat">€5 Mrd+</span> de revenus d'exportation annuels.`}
   ],
-  nav:['Aperçu','Calculateur','Calendrier','Marché','Contact','Prototype'],
+  nav:['Aperçu','Calculateur','Calendrier','Marché','Contact','Prototype'],nav_investor:'Analyse Investisseur',
   ov_l:['Financement pilote','Taille du marché','Coût installation','Emplois potentiels'],
   ov_s:['DTIF / Clare CC','logements difficiles','vs €49 600 rénov. profonde','d\'ici 2030'],
   prob_title:'LE PROBLÈME — CRISE DE RÉNOVATION',
@@ -727,7 +798,7 @@ de:{
     {id:'pilot',label:'Pilotprojekt County Clare',title:'Pilotstandort — County Clare',body:`Clare ist der ideale Pilotstandort: Moneypoint (915 MW, Kilrush) hat im Juni 2025 die Kohleverbrennung eingestellt und benötigt vor 2029 einen bestätigten inländischen H₂-Lieferanten.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 Sozialwohnungen, Gasnetintegration, 12 Monate Leistungsdaten. Kosten: <span class="stat">€1,5M</span> via DTIF.`},
     {id:'national',label:'Nationaler Rollout',title:'Nationale Rollout-Strategie',body:`Phase 2 (2027–30): Elektrolyseur selbstfinanziert mit <span class="stat">€21M/Jahr</span> Abregelungserlösen. <span class="stat">€63M</span> in 3 Jahren ohne Subventionen.<br><br>Phase 4 (2035–45): Irland H₂-Exporteur. <span class="stat">2M ha</span> heimischer Wald. <span class="stat">50.000+</span> Arbeitsplätze. <span class="stat">€5 Mrd.+</span> jährliche Exporterlöse.`}
   ],
-  nav:['Übersicht','Rechner','Zeitplan','Markt','Kontakt','Prototyp'],
+  nav:['Übersicht','Rechner','Zeitplan','Markt','Kontakt','Prototyp'],nav_investor:'Investorenanalyse',
   ov_l:['Pilotfinanzierung','Marktgröße','Installationskosten','Jobpotenzial'],
   ov_s:['DTIF / Clare CC','schwer zu san. Häuser','vs. €49.600 Tiefrenovierung','bis 2030'],
   prob_title:'DAS PROBLEM — IRLANDS RENOVIERUNGSKRISE',
@@ -815,7 +886,7 @@ es:{
     {id:'pilot',label:'Piloto Condado de Clare',title:'Sitio piloto — Condado de Clare',body:`Clare es el piloto ideal: Moneypoint (915 MW, Kilrush) dejó de quemar carbón en junio 2025 y necesita un proveedor H₂ doméstico confirmado antes de 2029.<br><br><strong>Fase 1 (2025–27):</strong> 5–10 viviendas sociales, integración red gas, 12 meses datos. Coste: <span class="stat">€1,5M</span> via DTIF.`},
     {id:'national',label:'Despliegue nacional',title:'Estrategia de despliegue nacional',body:`Fase 2 (2027–30): Electrolizador autofinanciado con <span class="stat">€21M/año</span> de ingresos curtailed. <span class="stat">€63M</span> en 3 años sin subvenciones.<br><br>Fase 4 (2035–45): Irlanda exportadora H₂. <span class="stat">2M ha</span> bosque nativo. <span class="stat">50.000+</span> empleos. <span class="stat">€5B+</span> ingresos anuales de exportación.`}
   ],
-  nav:['Resumen','Calculadora','Cronograma','Mercado','Contacto','Prototipo'],
+  nav:['Resumen','Calculadora','Cronograma','Mercado','Contacto','Prototipo'],nav_investor:'Análisis Inversor',
   ov_l:['Financiación piloto','Tamaño del mercado','Coste instalación','Potencial de empleo'],
   ov_s:['DTIF / Clare CC','hogares difíciles de tratar','vs €49.600 rénov. profunda','para 2030'],
   prob_title:'EL PROBLEMA — CRISIS DE RENOVACIÓN',
@@ -903,7 +974,7 @@ ru:{
     {id:'pilot',label:'Пилот графство Клэр',title:'Пилотная площадка — графство Клэр',body:`Клэр — идеальный пилот: Moneypoint (915 МВт, Kilrush) прекратил сжигать уголь в июне 2025 года и нуждается в подтверждённом внутреннем поставщике H₂ до 2029 года. Река Фергус и озеро Баллиаллия SAC (площадка 000014) испытывают прямое сельскохозяйственное давление по азоту.<br><br><strong>Фаза 1 (2025–27):</strong> 5–10 социальных домов, интеграция с газосетью, 12 месяцев данных. Стоимость: <span class="stat">€1,5M</span> через DTIF.`},
     {id:'national',label:'Национальный охват',title:'Стратегия национального масштабирования',body:`Фаза 2 (2027–30): Электролизёр самофинансируется на <span class="stat">€21M/год</span> curtailed доходов. <span class="stat">€63M за 3 года</span> без грантов и госдолга. Первая поставка H₂ на Moneypoint в 2028.<br><br>Фаза 4 (2035–45): Ирландия — экспортёр H₂. <span class="stat">2M га</span> коренного леса к 2045. <span class="stat">50 000+</span> рабочих мест. <span class="stat">€5 млрд+</span> годовых экспортных доходов.`}
   ],
-  nav:['Обзор','Калькулятор','Фазы','Рынок','Контакт','Прототип'],
+  nav:['Обзор','Калькулятор','Фазы','Рынок','Контакт','Прототип'],nav_investor:'Анализ рисков',
   ov_l:['Пилотное финансирование','Объём рынка','Стоимость установки','Потенциал рабочих мест'],
   ov_s:['DTIF / Clare CC','hard-to-treat домов','vs €49 600 глубокий ремонт','к 2030 году'],
   prob_title:'ПРОБЛЕМА — КРИЗИС МОДЕРНИЗАЦИИ',
@@ -1020,7 +1091,7 @@ function showTab(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   document.getElementById('tab-'+id).classList.add('on');
-  const idx={overview:0,calc:1,timeline:2,market:3,contact:4,proto:5}[id];
+  const idx={overview:0,calc:1,timeline:2,market:3,contact:4,proto:5,investor:6}[id];
   document.querySelectorAll('.nb')[idx].classList.add('on');
   if(id==='calc') setTimeout(()=>{if(document.getElementById('hub-toggle').checked)recalcHub();else recalc();},60);
   if(id==='timeline') setTimeout(renderTlChart,60);
@@ -1357,6 +1428,7 @@ function render(){
 
   // Nav
   ['nav-overview','nav-calc','nav-timeline','nav-market','nav-contact','nav-proto'].forEach((id,i)=>document.getElementById(id).textContent=t.nav[i]);
+  document.getElementById('nav-investor').textContent='⚠ '+t.nav_investor;
 
   // Overview metrics
   ['ov-l1','ov-l2','ov-l3','ov-l4'].forEach((id,i)=>document.getElementById(id).textContent=t.ov_l[i]);
