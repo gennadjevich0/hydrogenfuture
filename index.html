@@ -258,6 +258,7 @@ textarea.inp{height:85px;resize:vertical}
   <button class="nb" onclick="showTab('market')" id="nav-market"></button>
   <button class="nb" onclick="showTab('contact')" id="nav-contact"></button>
   <button class="nb" onclick="showTab('proto')" id="nav-proto"></button>
+  <button class="nb" onclick="showTab('analytics')" id="nav-analytics">Analytics</button>
   <button class="nb nb-warn" onclick="showTab('investor')" id="nav-investor">⚠ Investor Analysis</button>
 </div>
 
@@ -338,6 +339,26 @@ textarea.inp{height:85px;resize:vertical}
       <div style="background:rgba(0,212,160,0.06);border:1px solid rgba(0,212,160,0.15);border-radius:8px;padding:14px;text-align:center">
         <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--teal);line-height:1">€95k</div>
         <div style="color:var(--text2);font-size:0.8rem;margin-top:6px">revenue/year<br>(heat + grid services)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGRO INTEGRATION -->
+  <div class="card" id="agro-section" style="margin-bottom:14px;border-color:rgba(0,212,160,0.2)">
+    <div class="st" style="color:var(--teal)">AGRO INTEGRATION</div>
+    <div class="prose">
+      <p><strong>How it works:</strong> Electrolysis splits water into hydrogen and oxygen using electricity. The process is 60–70% efficient — meaning 20–30% of input energy is released as heat. That heat is not wasted: it is captured and directed to greenhouse heating. The hydrogen produced is used for backup space heating in homes and agricultural facilities.</p>
+      <div class="kv-block" style="margin:12px 0">
+        <strong>Energy flow:</strong> Wind electricity → Electrolyser → Hydrogen (fuel) + Heat (20–30% of input) → Greenhouse heating + Home backup heating
+      </div>
+      <p><strong>Why it matters:</strong></p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--teal);flex-shrink:0">→</span><span style="color:var(--text2);font-size:13px"><strong style="color:var(--text)">Year-round food production.</strong> Greenhouses eliminate seasonal growing limits, producing vegetables in winter when field crops are not viable.</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--teal);flex-shrink:0">→</span><span style="color:var(--text2);font-size:13px"><strong style="color:var(--text)">Ireland imports most of its vegetables.</strong> Over 80% of fresh vegetables consumed in Ireland are imported. Local greenhouse production directly reduces that dependency.</span></div>
+        <div style="display:flex;gap:10px;align-items:flex-start"><span style="color:var(--teal);flex-shrink:0">→</span><span style="color:var(--text2);font-size:13px"><strong style="color:var(--text)">Stable energy demand.</strong> Greenhouses require consistent low-grade heat — a predictable baseload that improves electrolyser utilisation and project economics.</span></div>
+      </div>
+      <div style="margin-top:12px;padding:12px 16px;background:rgba(0,212,160,0.07);border:1px solid rgba(0,212,160,0.25);border-radius:8px;font-size:13px;line-height:1.7">
+        This is not only an energy system.<br>It is a local energy and food production model.
       </div>
     </div>
   </div>
@@ -583,6 +604,54 @@ textarea.inp{height:85px;resize:vertical}
   </div>
 </div>
 
+<!-- ══════════════ ANALYTICS ══════════════ -->
+<div id="tab-analytics" class="sec">
+  <div class="card" style="margin-bottom:14px">
+    <div class="st">PROJECT METRICS</div>
+    <div class="g4" style="margin-bottom:0">
+      <div class="mcard"><div class="mlabel">Curtailed Wind</div><div class="mval teal">2.1 TWh</div><div class="msub">wasted/year in Ireland</div></div>
+      <div class="mcard"><div class="mlabel">H₂ Production Cost</div><div class="mval teal">€1.5–2.5/kg</div><div class="msub">from curtailed wind</div></div>
+      <div class="mcard"><div class="mlabel">Homes (Phase 1)</div><div class="mval">50</div><div class="msub">County Clare pilot</div></div>
+      <div class="mcard"><div class="mlabel">CO₂ Avoided</div><div class="mval teal">120t</div><div class="msub">per year vs gas</div></div>
+    </div>
+  </div>
+  <div class="g2" style="margin-bottom:14px">
+    <div class="card">
+      <div class="st">ENERGY FLOWS</div>
+      <div class="row"><span class="rk">Wind input (curtailed)</span><span class="rv teal">400+ MWh/yr</span></div>
+      <div class="row"><span class="rk">Electrolyser efficiency</span><span class="rv">60–70%</span></div>
+      <div class="row"><span class="rk">Heat recovered (WHR)</span><span class="rv teal">20–30% of input</span></div>
+      <div class="row"><span class="rk">H₂ to homes</span><span class="rv">heating &amp; backup</span></div>
+      <div class="row"><span class="rk">Heat to greenhouse</span><span class="rv teal">year-round</span></div>
+    </div>
+    <div class="card">
+      <div class="st">REVENUE BREAKDOWN</div>
+      <div class="row"><span class="rk">H₂ sales (homes)</span><span class="rv teal">€4–6/kg</span></div>
+      <div class="row"><span class="rk">Thermal energy (agro)</span><span class="rv teal">secondary stream</span></div>
+      <div class="row"><span class="rk">Grid balancing services</span><span class="rv">DS3 / FFR</span></div>
+      <div class="row"><span class="rk">Annual revenue target</span><span class="rv teal">€95k/yr</span></div>
+      <div class="row"><span class="rk">Payback (base case)</span><span class="rv amber">7–10 yr</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:14px">
+    <div class="st">PHASE TARGETS</div>
+    <div class="row"><span class="rk">Phase 1 (2025–27) — Clare pilot</span><span class="rv blue">€1.5M · 50 homes</span></div>
+    <div class="row"><span class="rk">Phase 2 (2027–30) — Scale Clare</span><span class="rv teal">€21M/yr self-funded</span></div>
+    <div class="row"><span class="rk">Moneypoint H₂ delivery</span><span class="rv teal">2028</span></div>
+    <div class="row"><span class="rk">ESB contract deadline</span><span class="rv amber">2029</span></div>
+    <div class="row"><span class="rk">Phase 3 (2030–35) — National</span><span class="rv purple">100% H₂ districts</span></div>
+    <div class="row"><span class="rk">Phase 4 (2035–45) — Export</span><span class="rv teal">50k+ jobs · €5B+/yr</span></div>
+  </div>
+  <div class="card">
+    <div class="st">AGRO INTEGRATION — KEY DATA</div>
+    <div class="row"><span class="rk">Waste heat available</span><span class="rv teal">20–30% of electrolyser input</span></div>
+    <div class="row"><span class="rk">Greenhouse area (pilot)</span><span class="rv">1 ha</span></div>
+    <div class="row"><span class="rk">Vegetables imported (Ireland)</span><span class="rv amber">80%+</span></div>
+    <div class="row"><span class="rk">Heat delivery temp</span><span class="rv">40–60°C low-grade</span></div>
+    <div class="row"><span class="rk">LCOH reduction via WHR</span><span class="rv teal">secondary revenue offsets cost</span></div>
+  </div>
+</div>
+
 <!-- ══════════════ INVESTOR ANALYSIS ══════════════ -->
 <div id="tab-investor" class="sec">
   <div class="card" style="border-color:rgba(230,57,70,0.3)">
@@ -668,7 +737,7 @@ en:{
     {id:'pilot',label:'County Clare Pilot',title:'County Clare Pilot Site',body:`Clare is the ideal pilot: Moneypoint (915 MW, Kilrush) stopped burning coal in June 2025 and needs a domestic H₂ supplier confirmed before 2029. The River Fergus and Ballyallia Lake SAC (site 000014) face direct agricultural nitrogen pressure — demonstrating water quality improvement from the pilot has immediate policy value.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 social homes, gas network integration, 12 months performance data. Cost: <span class="stat">€1.5M</span> via DTIF + PSO Levy redirect (4% of existing €37.5M pool).<br><br>Contact: Juri Ptitsin · +353 86 244 5827. Developed independently as a working prototype for pilot evaluation.`},
     {id:'national',label:'National Rollout',title:'National Rollout Strategy',body:`Phase 2 (2027–30): Electrolyser self-funded at <span class="stat">€21M/yr</span> curtailed revenue. <span class="stat">€63M</span> over 3 years with no grants or government debt. First H₂ delivery to Moneypoint 2028. ESB contract confirmed before their 2029 deadline.<br><br>Phase 3 (2030–35): First 100% H₂ residential districts. Clare becomes the national template. Shannon deepwater port opens the Atlantic H₂ export corridor to UK and EU markets.<br><br>Phase 4 (2035–45): Ireland H₂ exporter. <span class="stat">2M ha</span> native woodland by 2045 sequesters <span class="stat">8–12M tonnes CO₂/yr</span>. <span class="stat">50,000+</span> jobs created. <span class="stat">€5B+</span> annual H₂ export revenue. SACs restored to favourable conservation status.`}
   ],
-  nav:['Overview','Calculator','Timeline','Market','Contact','Prototype'],nav_investor:'Investor Analysis',
+  nav:['Overview','Calculator','Timeline','Market','Contact','Prototype','Analytics'],nav_investor:'Investor Analysis',
   ov_l:['Pilot Funding','Market Size','Installation Cost','Jobs Potential'],
   ov_s:['DTIF / Clare CC','hard-to-treat homes','vs €49.6k deep retrofit','by 2030'],
   prob_title:'THE PROBLEM — IRELAND\'S RETROFIT CRISIS',
@@ -762,7 +831,7 @@ fr:{
     {id:'pilot',label:'Pilote Comté de Clare',title:'Site pilote — Comté de Clare',body:`Clare est le pilote idéal: Moneypoint (915 MW, Kilrush) a cessé de brûler du charbon en juin 2025 et a besoin d'un fournisseur H₂ domestique confirmé avant 2029. La rivière Fergus et le lac Ballyallia SAC (site 000014) subissent une pression agricole directe en azote.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 logements sociaux, intégration réseau gaz, 12 mois de données. Coût: <span class="stat">€1,5M</span> via DTIF + redirection PSO Levy.`},
     {id:'national',label:'Déploiement national',title:'Stratégie de déploiement national',body:`Phase 2 (2027–30): Électrolyseur autofinancé à <span class="stat">€21M/an</span> de revenus curtailed. <span class="stat">€63M</span> sur 3 ans sans subventions ni dette publique. Première livraison H₂ à Moneypoint 2028.<br><br>Phase 4 (2035–45): Irlande exportatrice H₂. <span class="stat">2M ha</span> de forêt indigène séquestrant <span class="stat">8–12M tonnes CO₂/an</span>. <span class="stat">50 000+</span> emplois. <span class="stat">€5 Mrd+</span> de revenus d'exportation annuels.`}
   ],
-  nav:['Aperçu','Calculateur','Calendrier','Marché','Contact','Prototype'],nav_investor:'Analyse Investisseur',
+  nav:['Aperçu','Calculateur','Calendrier','Marché','Contact','Prototype','Analytique'],nav_investor:'Analyse Investisseur',
   ov_l:['Financement pilote','Taille du marché','Coût installation','Emplois potentiels'],
   ov_s:['DTIF / Clare CC','logements difficiles','vs €49 600 rénov. profonde','d\'ici 2030'],
   prob_title:'LE PROBLÈME — CRISE DE RÉNOVATION',
@@ -850,7 +919,7 @@ de:{
     {id:'pilot',label:'Pilotprojekt County Clare',title:'Pilotstandort — County Clare',body:`Clare ist der ideale Pilotstandort: Moneypoint (915 MW, Kilrush) hat im Juni 2025 die Kohleverbrennung eingestellt und benötigt vor 2029 einen bestätigten inländischen H₂-Lieferanten.<br><br><strong>Phase 1 (2025–27):</strong> 5–10 Sozialwohnungen, Gasnetintegration, 12 Monate Leistungsdaten. Kosten: <span class="stat">€1,5M</span> via DTIF.`},
     {id:'national',label:'Nationaler Rollout',title:'Nationale Rollout-Strategie',body:`Phase 2 (2027–30): Elektrolyseur selbstfinanziert mit <span class="stat">€21M/Jahr</span> Abregelungserlösen. <span class="stat">€63M</span> in 3 Jahren ohne Subventionen.<br><br>Phase 4 (2035–45): Irland H₂-Exporteur. <span class="stat">2M ha</span> heimischer Wald. <span class="stat">50.000+</span> Arbeitsplätze. <span class="stat">€5 Mrd.+</span> jährliche Exporterlöse.`}
   ],
-  nav:['Übersicht','Rechner','Zeitplan','Markt','Kontakt','Prototyp'],nav_investor:'Investorenanalyse',
+  nav:['Übersicht','Rechner','Zeitplan','Markt','Kontakt','Prototyp','Analytik'],nav_investor:'Investorenanalyse',
   ov_l:['Pilotfinanzierung','Marktgröße','Installationskosten','Jobpotenzial'],
   ov_s:['DTIF / Clare CC','schwer zu san. Häuser','vs. €49.600 Tiefrenovierung','bis 2030'],
   prob_title:'DAS PROBLEM — IRLANDS RENOVIERUNGSKRISE',
@@ -938,7 +1007,7 @@ es:{
     {id:'pilot',label:'Piloto Condado de Clare',title:'Sitio piloto — Condado de Clare',body:`Clare es el piloto ideal: Moneypoint (915 MW, Kilrush) dejó de quemar carbón en junio 2025 y necesita un proveedor H₂ doméstico confirmado antes de 2029.<br><br><strong>Fase 1 (2025–27):</strong> 5–10 viviendas sociales, integración red gas, 12 meses datos. Coste: <span class="stat">€1,5M</span> via DTIF.`},
     {id:'national',label:'Despliegue nacional',title:'Estrategia de despliegue nacional',body:`Fase 2 (2027–30): Electrolizador autofinanciado con <span class="stat">€21M/año</span> de ingresos curtailed. <span class="stat">€63M</span> en 3 años sin subvenciones.<br><br>Fase 4 (2035–45): Irlanda exportadora H₂. <span class="stat">2M ha</span> bosque nativo. <span class="stat">50.000+</span> empleos. <span class="stat">€5B+</span> ingresos anuales de exportación.`}
   ],
-  nav:['Resumen','Calculadora','Cronograma','Mercado','Contacto','Prototipo'],nav_investor:'Análisis Inversor',
+  nav:['Resumen','Calculadora','Cronograma','Mercado','Contacto','Prototipo','Analítica'],nav_investor:'Análisis Inversor',
   ov_l:['Financiación piloto','Tamaño del mercado','Coste instalación','Potencial de empleo'],
   ov_s:['DTIF / Clare CC','hogares difíciles de tratar','vs €49.600 rénov. profunda','para 2030'],
   prob_title:'EL PROBLEMA — CRISIS DE RENOVACIÓN',
@@ -1026,7 +1095,7 @@ ru:{
     {id:'pilot',label:'Пилот графство Клэр',title:'Пилотная площадка — графство Клэр',body:`Клэр — идеальный пилот: Moneypoint (915 МВт, Kilrush) прекратил сжигать уголь в июне 2025 года и нуждается в подтверждённом внутреннем поставщике H₂ до 2029 года. Река Фергус и озеро Баллиаллия SAC (площадка 000014) испытывают прямое сельскохозяйственное давление по азоту.<br><br><strong>Фаза 1 (2025–27):</strong> 5–10 социальных домов, интеграция с газосетью, 12 месяцев данных. Стоимость: <span class="stat">€1,5M</span> через DTIF.`},
     {id:'national',label:'Национальный охват',title:'Стратегия национального масштабирования',body:`Фаза 2 (2027–30): Электролизёр самофинансируется на <span class="stat">€21M/год</span> curtailed доходов. <span class="stat">€63M за 3 года</span> без грантов и госдолга. Первая поставка H₂ на Moneypoint в 2028.<br><br>Фаза 4 (2035–45): Ирландия — экспортёр H₂. <span class="stat">2M га</span> коренного леса к 2045. <span class="stat">50 000+</span> рабочих мест. <span class="stat">€5 млрд+</span> годовых экспортных доходов.`}
   ],
-  nav:['Обзор','Калькулятор','Фазы','Рынок','Контакт','Прототип'],nav_investor:'Анализ рисков',
+  nav:['Обзор','Калькулятор','Фазы','Рынок','Контакт','Прототип','Аналитика'],nav_investor:'Анализ рисков',
   ov_l:['Пилотное финансирование','Объём рынка','Стоимость установки','Потенциал рабочих мест'],
   ov_s:['DTIF / Clare CC','hard-to-treat домов','vs €49 600 глубокий ремонт','к 2030 году'],
   prob_title:'ПРОБЛЕМА — КРИЗИС МОДЕРНИЗАЦИИ',
@@ -1143,7 +1212,7 @@ function showTab(id){
   document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
   document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
   document.getElementById('tab-'+id).classList.add('on');
-  const idx={overview:0,calc:1,timeline:2,market:3,contact:4,proto:5,investor:6}[id];
+  const idx={overview:0,calc:1,timeline:2,market:3,contact:4,proto:5,analytics:6,investor:7}[id];
   document.querySelectorAll('.nb')[idx].classList.add('on');
   if(id==='calc') setTimeout(()=>{if(document.getElementById('hub-toggle').checked)recalcHub();else recalc();},60);
   if(id==='timeline') setTimeout(renderTlChart,60);
@@ -1479,7 +1548,7 @@ function render(){
   }
 
   // Nav
-  ['nav-overview','nav-calc','nav-timeline','nav-market','nav-contact','nav-proto'].forEach((id,i)=>document.getElementById(id).textContent=t.nav[i]);
+  ['nav-overview','nav-calc','nav-timeline','nav-market','nav-contact','nav-proto','nav-analytics'].forEach((id,i)=>document.getElementById(id).textContent=t.nav[i]);
   document.getElementById('nav-investor').textContent='⚠ '+t.nav_investor;
 
   // Overview metrics
