@@ -606,50 +606,7 @@ textarea.inp{height:85px;resize:vertical}
 
 <!-- ══════════════ ANALYTICS ══════════════ -->
 <div id="tab-analytics" class="sec">
-  <div class="card" style="margin-bottom:14px">
-    <div class="st">PROJECT METRICS</div>
-    <div class="g4" style="margin-bottom:0">
-      <div class="mcard"><div class="mlabel">Curtailed Wind</div><div class="mval teal">2.1 TWh</div><div class="msub">wasted/year in Ireland</div></div>
-      <div class="mcard"><div class="mlabel">H₂ Production Cost</div><div class="mval teal">€1.5–2.5/kg</div><div class="msub">from curtailed wind</div></div>
-      <div class="mcard"><div class="mlabel">Homes (Phase 1)</div><div class="mval">50</div><div class="msub">County Clare pilot</div></div>
-      <div class="mcard"><div class="mlabel">CO₂ Avoided</div><div class="mval teal">120t</div><div class="msub">per year vs gas</div></div>
-    </div>
-  </div>
-  <div class="g2" style="margin-bottom:14px">
-    <div class="card">
-      <div class="st">ENERGY FLOWS</div>
-      <div class="row"><span class="rk">Wind input (curtailed)</span><span class="rv teal">400+ MWh/yr</span></div>
-      <div class="row"><span class="rk">Electrolyser efficiency</span><span class="rv">60–70%</span></div>
-      <div class="row"><span class="rk">Heat recovered (WHR)</span><span class="rv teal">20–30% of input</span></div>
-      <div class="row"><span class="rk">H₂ to homes</span><span class="rv">heating &amp; backup</span></div>
-      <div class="row"><span class="rk">Heat to greenhouse</span><span class="rv teal">year-round</span></div>
-    </div>
-    <div class="card">
-      <div class="st">REVENUE BREAKDOWN</div>
-      <div class="row"><span class="rk">H₂ sales (homes)</span><span class="rv teal">€4–6/kg</span></div>
-      <div class="row"><span class="rk">Thermal energy (agro)</span><span class="rv teal">secondary stream</span></div>
-      <div class="row"><span class="rk">Grid balancing services</span><span class="rv">DS3 / FFR</span></div>
-      <div class="row"><span class="rk">Annual revenue target</span><span class="rv teal">€95k/yr</span></div>
-      <div class="row"><span class="rk">Payback (base case)</span><span class="rv amber">7–10 yr</span></div>
-    </div>
-  </div>
-  <div class="card" style="margin-bottom:14px">
-    <div class="st">PHASE TARGETS</div>
-    <div class="row"><span class="rk">Phase 1 (2025–27) — Clare pilot</span><span class="rv blue">€1.5M · 50 homes</span></div>
-    <div class="row"><span class="rk">Phase 2 (2027–30) — Scale Clare</span><span class="rv teal">€21M/yr self-funded</span></div>
-    <div class="row"><span class="rk">Moneypoint H₂ delivery</span><span class="rv teal">2028</span></div>
-    <div class="row"><span class="rk">ESB contract deadline</span><span class="rv amber">2029</span></div>
-    <div class="row"><span class="rk">Phase 3 (2030–35) — National</span><span class="rv purple">100% H₂ districts</span></div>
-    <div class="row"><span class="rk">Phase 4 (2035–45) — Export</span><span class="rv teal">50k+ jobs · €5B+/yr</span></div>
-  </div>
-  <div class="card">
-    <div class="st">AGRO INTEGRATION — KEY DATA</div>
-    <div class="row"><span class="rk">Waste heat available</span><span class="rv teal">20–30% of electrolyser input</span></div>
-    <div class="row"><span class="rk">Greenhouse area (pilot)</span><span class="rv">1 ha</span></div>
-    <div class="row"><span class="rk">Vegetables imported (Ireland)</span><span class="rv amber">80%+</span></div>
-    <div class="row"><span class="rk">Heat delivery temp</span><span class="rv">40–60°C low-grade</span></div>
-    <div class="row"><span class="rk">LCOH reduction via WHR</span><span class="rv teal">secondary revenue offsets cost</span></div>
-  </div>
+  <div id="analytics-content"></div>
 </div>
 
 <!-- ══════════════ INVESTOR ANALYSIS ══════════════ -->
@@ -822,6 +779,46 @@ en:{
   proto_title:'Prototype Demonstration',
   proto_prose:`<p>This video shows a small-scale hydrogen demonstration system based on electrolysis. Electricity is applied to water, splitting it into hydrogen and oxygen gases. The generated hydrogen is then collected and released, demonstrating the basic principle of hydrogen production and use.</p><p>This is an early-stage prototype designed to validate the concept. The goal is to scale this system into a practical solution for storing excess renewable energy, particularly from wind power, and converting it into usable hydrogen.</p>`,
   proto_note:'This prototype validates the core electrolysis principle at bench scale. Full-scale deployment targets County Clare, integrating with EirGrid curtailed wind generation.',
+  an_metrics_title:'PROJECT METRICS',
+  an_metrics:[
+    {lbl:'Curtailed Wind',val:'2.1 TWh',sub:'wasted/year in Ireland'},
+    {lbl:'H₂ Production Cost',val:'€1.5–2.5/kg',sub:'from curtailed wind'},
+    {lbl:'Homes (Phase 1)',val:'50',sub:'County Clare pilot'},
+    {lbl:'CO₂ Avoided',val:'120t',sub:'per year vs gas'}
+  ],
+  an_energy_title:'ENERGY FLOWS',
+  an_energy:[
+    ['Wind input (curtailed)','400+ MWh/yr'],
+    ['Electrolyser efficiency','60–70%'],
+    ['Heat recovered (WHR)','20–30% of input'],
+    ['H₂ to homes','heating &amp; backup'],
+    ['Heat to greenhouse','year-round']
+  ],
+  an_revenue_title:'REVENUE BREAKDOWN',
+  an_revenue:[
+    ['H₂ sales (homes)','€4–6/kg'],
+    ['Thermal energy (agro)','secondary stream'],
+    ['Grid balancing services','DS3 / FFR'],
+    ['Annual revenue target','€95k/yr'],
+    ['Payback (base case)','7–10 yr']
+  ],
+  an_phases_title:'PHASE TARGETS',
+  an_phases:[
+    ['Phase 1 (2025–27) — Clare pilot','€1.5M · 50 homes','blue'],
+    ['Phase 2 (2027–30) — Scale Clare','€21M/yr self-funded','teal'],
+    ['Moneypoint H₂ delivery','2028','teal'],
+    ['ESB contract deadline','2029','amber'],
+    ['Phase 3 (2030–35) — National','100% H₂ districts','purple'],
+    ['Phase 4 (2035–45) — Export','50k+ jobs · €5B+/yr','teal']
+  ],
+  an_agro_title:'AGRO INTEGRATION — KEY DATA',
+  an_agro:[
+    ['Waste heat available','20–30% of electrolyser input','teal'],
+    ['Greenhouse area (pilot)','1 ha',''],
+    ['Vegetables imported (Ireland)','80%+','amber'],
+    ['Heat delivery temp','40–60°C low-grade',''],
+    ['LCOH reduction via WHR','secondary revenue offsets cost','teal']
+  ],
 },
 fr:{
   pills:[
@@ -910,6 +907,46 @@ fr:{
   proto_title:'Démonstration du prototype',
   proto_prose:`<p>Cette vidéo montre un système de démonstration d'hydrogène à petite échelle basé sur l'électrolyse. L'électricité est appliquée à l'eau, la divisant en hydrogène et oxygène. L'hydrogène généré est ensuite collecté et libéré, démontrant le principe de base de la production d'hydrogène.</p><p>Il s'agit d'un prototype en phase précoce conçu pour valider le concept. L'objectif est de faire évoluer ce système vers une solution pratique de stockage d'énergie renouvelable excédentaire, notamment l'énergie éolienne, et de la convertir en hydrogène utilisable.</p>`,
   proto_note:"Ce prototype valide le principe d'électrolyse à l'échelle du banc. Le déploiement à grande échelle cible le comté de Clare, en intégrant la production éolienne curtailed d'EirGrid.",
+  an_metrics_title:'MÉTRIQUES PROJET',
+  an_metrics:[
+    {lbl:'Éolien curtailed',val:'2,1 TWh',sub:'gaspillé/an en Irlande'},
+    {lbl:'Coût production H₂',val:'€1,5–2,5/kg',sub:'éolien curtailed'},
+    {lbl:'Logements (Phase 1)',val:'50',sub:'Pilote Comté de Clare'},
+    {lbl:'CO₂ évité',val:'120t',sub:'par an vs gaz'}
+  ],
+  an_energy_title:'FLUX D\'ÉNERGIE',
+  an_energy:[
+    ['Éolien curtailed (entrée)','400+ MWh/an'],
+    ['Rendement électrolyseur','60–70%'],
+    ['Chaleur récupérée (WHR)','20–30% de l\'entrée'],
+    ['H₂ pour logements','chauffage &amp; appoint'],
+    ['Chaleur vers serre','toute l\'année']
+  ],
+  an_revenue_title:'RÉPARTITION DES REVENUS',
+  an_revenue:[
+    ['Ventes H₂ (logements)','€4–6/kg'],
+    ['Énergie thermique (agro)','flux secondaire'],
+    ['Services d\'équilibrage réseau','DS3 / FFR'],
+    ['Objectif revenus annuels','€95k/an'],
+    ['Retour sur investissement','7–10 ans']
+  ],
+  an_phases_title:'OBJECTIFS PAR PHASE',
+  an_phases:[
+    ['Phase 1 (2025–27) — Pilote Clare','€1,5M · 50 logements','blue'],
+    ['Phase 2 (2027–30) — Mise à l\'échelle','€21M/an autofinancé','teal'],
+    ['Livraison H₂ Moneypoint','2028','teal'],
+    ['Délai contrat ESB','2029','amber'],
+    ['Phase 3 (2030–35) — National','Districts 100% H₂','purple'],
+    ['Phase 4 (2035–45) — Export','50k+ emplois · €5 Mrd+/an','teal']
+  ],
+  an_agro_title:'INTÉGRATION AGRO — DONNÉES CLÉS',
+  an_agro:[
+    ['Chaleur résiduelle disponible','20–30% entrée électrolyseur','teal'],
+    ['Surface serre (pilote)','1 ha',''],
+    ['Légumes importés (Irlande)','80%+','amber'],
+    ['Température livraison chaleur','40–60°C basse temp.',''],
+    ['Réduction LCOH via WHR','revenus secondaires réduisent le coût','teal']
+  ],
 },
 de:{
   pills:[
@@ -998,6 +1035,46 @@ de:{
   proto_title:'Prototyp-Demonstration',
   proto_prose:`<p>Dieses Video zeigt ein kleinskaliges Wasserstoff-Demonstrationssystem auf Basis der Elektrolyse. Strom wird auf Wasser angewendet und spaltet es in Wasserstoff und Sauerstoff. Der erzeugte Wasserstoff wird gesammelt und freigesetzt — das Grundprinzip der Wasserstoffproduktion.</p><p>Dies ist ein Frühphasen-Prototyp zur Validierung des Konzepts. Ziel ist es, dieses System zu einer praktischen Lösung für die Speicherung überschüssiger erneuerbarer Energie, insbesondere aus Windkraft, zu skalieren.</p>`,
   proto_note:'Dieser Prototyp validiert das Elektrolyseprinzip im Labormaßstab. Der großskalige Einsatz zielt auf County Clare ab und integriert EirGrids abgeregelten Windstrom.',
+  an_metrics_title:'PROJEKTKENNZAHLEN',
+  an_metrics:[
+    {lbl:'Abgeregelter Wind',val:'2,1 TWh',sub:'jährlich verschwendet'},
+    {lbl:'H₂-Produktionskosten',val:'€1,5–2,5/kg',sub:'aus abgeregeltem Wind'},
+    {lbl:'Häuser (Phase 1)',val:'50',sub:'Pilotprojekt County Clare'},
+    {lbl:'CO₂ vermieden',val:'120t',sub:'pro Jahr vs Gas'}
+  ],
+  an_energy_title:'ENERGIEFLÜSSE',
+  an_energy:[
+    ['Abgeregelter Wind (Input)','400+ MWh/Jahr'],
+    ['Elektrolyseur-Wirkungsgrad','60–70%'],
+    ['Rückgewonnene Wärme (WHR)','20–30% des Inputs'],
+    ['H₂ für Haushalte','Heizung &amp; Backup'],
+    ['Wärme für Gewächshaus','ganzjährig']
+  ],
+  an_revenue_title:'EINNAHMENAUFSCHLÜSSELUNG',
+  an_revenue:[
+    ['H₂-Verkäufe (Haushalte)','€4–6/kg'],
+    ['Thermische Energie (Agro)','Sekundärstrom'],
+    ['Netzausgleichsdienste','DS3 / FFR'],
+    ['Jahresumsatzziel','€95k/Jahr'],
+    ['Amortisationszeit','7–10 Jahre']
+  ],
+  an_phases_title:'PHASENZIELE',
+  an_phases:[
+    ['Phase 1 (2025–27) — Clare Pilot','€1,5M · 50 Häuser','blue'],
+    ['Phase 2 (2027–30) — Skalierung','€21M/Jahr selbstfinanziert','teal'],
+    ['H₂-Lieferung Moneypoint','2028','teal'],
+    ['ESB-Vertragsfrist','2029','amber'],
+    ['Phase 3 (2030–35) — National','100% H₂-Bezirke','purple'],
+    ['Phase 4 (2035–45) — Export','50k+ Jobs · €5 Mrd+/Jahr','teal']
+  ],
+  an_agro_title:'AGRO-INTEGRATION — KERNDATEN',
+  an_agro:[
+    ['Verfügbare Abwärme','20–30% des Elektrolyseur-Inputs','teal'],
+    ['Gewächshausfläche (Pilot)','1 ha',''],
+    ['Importiertes Gemüse (Irland)','80%+','amber'],
+    ['Wärmeliefertemperatur','40–60°C Niedertemperatur',''],
+    ['LCOH-Senkung via WHR','Nebeneinnahmen reduzieren Kosten','teal']
+  ],
 },
 es:{
   pills:[
@@ -1086,6 +1163,46 @@ es:{
   proto_title:'Demostración del prototipo',
   proto_prose:`<p>Este vídeo muestra un sistema de demostración de hidrógeno a pequeña escala basado en electrólisis. Se aplica electricidad al agua, dividiéndola en hidrógeno y oxígeno. El hidrógeno generado se recoge y libera, demostrando el principio básico de producción de hidrógeno.</p><p>Este es un prototipo en fase temprana diseñado para validar el concepto. El objetivo es escalar este sistema a una solución práctica para almacenar el exceso de energía renovable, especialmente eólica, y convertirla en hidrógeno utilizable.</p>`,
   proto_note:'Este prototipo valida el principio de electrólisis a escala de laboratorio. El despliegue a gran escala tiene como objetivo el condado de Clare, integrando la generación eólica curtailed de EirGrid.',
+  an_metrics_title:'MÉTRICAS DEL PROYECTO',
+  an_metrics:[
+    {lbl:'Viento curtailed',val:'2,1 TWh',sub:'desperdiciado/año en Irlanda'},
+    {lbl:'Coste producción H₂',val:'€1,5–2,5/kg',sub:'viento curtailed'},
+    {lbl:'Hogares (Fase 1)',val:'50',sub:'Piloto Condado de Clare'},
+    {lbl:'CO₂ evitado',val:'120t',sub:'al año vs gas'}
+  ],
+  an_energy_title:'FLUJOS DE ENERGÍA',
+  an_energy:[
+    ['Viento curtailed (entrada)','400+ MWh/año'],
+    ['Eficiencia del electrolizador','60–70%'],
+    ['Calor recuperado (WHR)','20–30% de la entrada'],
+    ['H₂ para hogares','calefacción &amp; respaldo'],
+    ['Calor para invernadero','todo el año']
+  ],
+  an_revenue_title:'DESGLOSE DE INGRESOS',
+  an_revenue:[
+    ['Ventas H₂ (hogares)','€4–6/kg'],
+    ['Energía térmica (agro)','flujo secundario'],
+    ['Servicios de equilibrio de red','DS3 / FFR'],
+    ['Objetivo ingresos anuales','€95k/año'],
+    ['Período de retorno','7–10 años']
+  ],
+  an_phases_title:'OBJETIVOS POR FASE',
+  an_phases:[
+    ['Fase 1 (2025–27) — Piloto Clare','€1,5M · 50 hogares','blue'],
+    ['Fase 2 (2027–30) — Escalado','€21M/año autofinanciado','teal'],
+    ['Entrega H₂ Moneypoint','2028','teal'],
+    ['Plazo contrato ESB','2029','amber'],
+    ['Fase 3 (2030–35) — Nacional','Distritos 100% H₂','purple'],
+    ['Fase 4 (2035–45) — Exportación','50k+ empleos · €5B+/año','teal']
+  ],
+  an_agro_title:'INTEGRACIÓN AGRO — DATOS CLAVE',
+  an_agro:[
+    ['Calor residual disponible','20–30% entrada electrolizador','teal'],
+    ['Área invernadero (piloto)','1 ha',''],
+    ['Verduras importadas (Irlanda)','80%+','amber'],
+    ['Temperatura entrega calor','40–60°C baja temperatura',''],
+    ['Reducción LCOH via WHR','ingresos secundarios reducen coste','teal']
+  ],
 },
 ru:{
   pills:[
@@ -1174,6 +1291,46 @@ ru:{
   proto_title:'Демонстрация прототипа',
   proto_prose:`<p>В этом видео показана небольшая демонстрационная система на основе электролиза воды. Электрический ток разделяет воду на водород и кислород. Полученный водород собирается и высвобождается, демонстрируя базовый принцип производства водорода.</p><p>Это прототип ранней стадии для подтверждения концепции. Цель — масштабировать систему в практическое решение для хранения избыточной возобновляемой энергии (прежде всего ветровой) и её преобразования в водород.</p>`,
   proto_note:'Прототип подтверждает принцип электролиза в лабораторном масштабе. Полноценное внедрение планируется в графстве Клэр с интеграцией излишков ветровой генерации EirGrid.',
+  an_metrics_title:'ПОКАЗАТЕЛИ ПРОЕКТА',
+  an_metrics:[
+    {lbl:'Ограниченный ветер',val:'2,1 ТВт·ч',sub:'теряется в год в Ирландии'},
+    {lbl:'Себестоимость H₂',val:'€1,5–2,5/кг',sub:'из ограниченного ветра'},
+    {lbl:'Домов (Фаза 1)',val:'50',sub:'Пилот в Клэр'},
+    {lbl:'Избежанный CO₂',val:'120т',sub:'в год против газа'}
+  ],
+  an_energy_title:'ЭНЕРГЕТИЧЕСКИЕ ПОТОКИ',
+  an_energy:[
+    ['Ограниченный ветер (вход)','400+ МВт·ч/год'],
+    ['КПД электролизёра','60–70%'],
+    ['Рекуперированное тепло (WHR)','20–30% от входа'],
+    ['H₂ для домов','отопление &amp; резерв'],
+    ['Тепло для теплицы','круглый год']
+  ],
+  an_revenue_title:'СТРУКТУРА ДОХОДОВ',
+  an_revenue:[
+    ['Продажи H₂ (дома)','€4–6/кг'],
+    ['Тепловая энергия (агро)','вторичный поток'],
+    ['Услуги балансировки сети','DS3 / FFR'],
+    ['Целевой годовой доход','€95 тыс./год'],
+    ['Срок окупаемости','7–10 лет']
+  ],
+  an_phases_title:'ЦЕЛИ ПО ФАЗАМ',
+  an_phases:[
+    ['Фаза 1 (2025–27) — Пилот Клэр','€1,5M · 50 домов','blue'],
+    ['Фаза 2 (2027–30) — Масштабирование','€21M/год самофинансирование','teal'],
+    ['Поставка H₂ на Moneypoint','2028','teal'],
+    ['Дедлайн контракта ESB','2029','amber'],
+    ['Фаза 3 (2030–35) — Национальный','Районы 100% H₂','purple'],
+    ['Фаза 4 (2035–45) — Экспорт','50к+ рабочих мест · €5 млрд+/год','teal']
+  ],
+  an_agro_title:'АГРО-ИНТЕГРАЦИЯ — КЛЮЧЕВЫЕ ДАННЫЕ',
+  an_agro:[
+    ['Доступная остаточная теплота','20–30% входа электролизёра','teal'],
+    ['Площадь теплицы (пилот)','1 га',''],
+    ['Импорт овощей (Ирландия)','80%+','amber'],
+    ['Температура подачи тепла','40–60°C низкая',''],
+    ['Снижение LCOH через WHR','вторичный доход снижает стоимость','teal']
+  ],
 }
 };
 
@@ -1650,6 +1807,33 @@ function render(){
   // Prototype
   document.getElementById('proto-title').textContent=t.proto_title;
   document.getElementById('proto-prose').innerHTML=t.proto_prose;
+
+  // Analytics
+  document.getElementById('analytics-content').innerHTML=`
+    <div class="card" style="margin-bottom:14px">
+      <div class="st">${t.an_metrics_title}</div>
+      <div class="g4" style="margin-bottom:0">
+        ${t.an_metrics.map(m=>`<div class="mcard"><div class="mlabel">${m.lbl}</div><div class="mval teal">${m.val}</div><div class="msub">${m.sub}</div></div>`).join('')}
+      </div>
+    </div>
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card">
+        <div class="st">${t.an_energy_title}</div>
+        ${t.an_energy.map(r=>`<div class="row"><span class="rk">${r[0]}</span><span class="rv teal">${r[1]}</span></div>`).join('')}
+      </div>
+      <div class="card">
+        <div class="st">${t.an_revenue_title}</div>
+        ${t.an_revenue.map((r,i)=>`<div class="row"><span class="rk">${r[0]}</span><span class="rv ${i===4?'amber':'teal'}">${r[1]}</span></div>`).join('')}
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="st">${t.an_phases_title}</div>
+      ${t.an_phases.map(r=>`<div class="row"><span class="rk">${r[0]}</span><span class="rv ${r[2]}">${r[1]}</span></div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="st">${t.an_agro_title}</div>
+      ${t.an_agro.map(r=>`<div class="row"><span class="rk">${r[0]}</span><span class="rv ${r[2]}">${r[1]}</span></div>`).join('')}
+    </div>`;
 
 
   // Hub calculator labels
