@@ -224,7 +224,7 @@ textarea.inp{height:85px;resize:vertical}
     <div class="ip-title" id="ip-title"></div>
     <div class="ip-body" id="ip-body"></div>
   </div>
-  <div class="tool-note">This tool shows real-world economics: hydrogen can decarbonise heating today, but ROI depends on cheap electricity and scale.</div>
+  <div class="tool-note" id="tool-note"></div>
 </div>
 
 <!-- WELCOME / INTRODUCTION -->
@@ -568,7 +568,7 @@ textarea.inp{height:85px;resize:vertical}
 <!-- ══════════════ PROTOTYPE DEMO ══════════════ -->
 <div id="tab-proto" class="sec">
   <div class="card">
-    <div class="proto-badge">Early-Stage Prototype</div>
+    <div class="proto-badge" id="proto-badge"></div>
     <div class="proto-grid">
       <!-- VIDEO -->
       <div>
@@ -586,11 +586,11 @@ textarea.inp{height:85px;resize:vertical}
         <div class="proto-text-title" id="proto-title">Prototype Demonstration</div>
         <div class="prose" id="proto-prose"></div>
         <div style="margin-top:20px;display:flex;flex-wrap:wrap;gap:8px">
-          <span class="tag tag-t">Electrolysis</span>
-          <span class="tag tag-t">Green Hydrogen</span>
-          <span class="tag tag-b">Concept Validation</span>
-          <span class="tag tag-a">Early Stage</span>
-          <span class="tag tag-t">Wind Energy Storage</span>
+          <span class="tag tag-t" id="proto-tag-1"></span>
+          <span class="tag tag-t" id="proto-tag-2"></span>
+          <span class="tag tag-b" id="proto-tag-3"></span>
+          <span class="tag tag-a" id="proto-tag-4"></span>
+          <span class="tag tag-t" id="proto-tag-5"></span>
         </div>
       </div>
     </div>
@@ -719,7 +719,7 @@ textarea.inp{height:85px;resize:vertical}
 </div><!-- /outer -->
 <script>
 /* ═══════════════════════════════════════════════
-   TRANSLATIONS — full content for all 5 languages
+   TRANSLATIONS — English only
 ═══════════════════════════════════════════════ */
 const T={
 en:{
@@ -815,6 +815,9 @@ en:{
   proto_title:'Prototype Demonstration',
   proto_prose:`<p>This video shows a small-scale hydrogen demonstration system based on electrolysis. Electricity is applied to water, splitting it into hydrogen and oxygen gases. The generated hydrogen is then collected and released, demonstrating the basic principle of hydrogen production and use.</p><p>This is an early-stage prototype designed to validate the concept. The goal is to scale this system into a practical solution for storing excess renewable energy, particularly from wind power, and converting it into usable hydrogen.</p>`,
   proto_note:'This prototype validates the core electrolysis principle at bench scale. Full-scale deployment targets County Clare, integrating with EirGrid curtailed wind generation.',
+  tool_note:'This tool shows real-world economics: hydrogen can decarbonise heating today, but ROI depends on cheap electricity and scale.',
+  proto_badge:'Early-Stage Prototype',
+  proto_tags:['Electrolysis','Green Hydrogen','Concept Validation','Early Stage','Wind Energy Storage'],
 },
 };
 
@@ -857,7 +860,7 @@ function showTab(id){
    PILL TOGGLE
 ═══════════════════════════════════════════════ */
 function togglePill(id){
-  const t=T[lang];
+  const t=T.en;
   const pill=t.pills.find(p=>p.id===id);
   const panel=document.getElementById('ipanel');
   if(activePill===id){
@@ -891,7 +894,7 @@ function fmtM(n){
 function fmtPct(n){return Math.round(n*10)/10+'%'}
 
 function recalc(){
-  const t=T[lang];
+  const t=T.en;
   const inv=parseFloat(document.getElementById('inv').value);
   const homes=parseInt(document.getElementById('homes').value);
   const price=parseFloat(document.getElementById('price').value);
@@ -1063,7 +1066,7 @@ function calculateCommunityHub(homes, homeSizeM2, curtailmentMWh){
 }
 
 function recalcHub(){
-  const t=T[lang];
+  const t=T.en;
   const homes=parseInt(document.getElementById('hub-homes').value);
   const size=parseInt(document.getElementById('hub-size').value);
   const wind=parseInt(document.getElementById('hub-wind').value);
@@ -1147,7 +1150,7 @@ function renderTlChart(){
    CONTACT FORM
 ═══════════════════════════════════════════════ */
 function submitForm(){
-  const t=T[lang];
+  const t=T.en;
   document.getElementById('ct-thanks').style.display='block';
   document.getElementById('ct-thanks').textContent=t.ct_thanks;
   document.getElementById('ct-btn').disabled=true;
@@ -1155,10 +1158,14 @@ function submitForm(){
 }
 
 /* ═══════════════════════════════════════════════
-   RENDER — full re-render on language change
+   RENDER — English-only content
 ═══════════════════════════════════════════════ */
 function render(){
-  const t=T[lang];
+  const t=T.en;
+  document.documentElement.lang='en';
+
+  // Header / global static strings
+  document.getElementById('tool-note').textContent=t.tool_note;
 
   // Intro
   document.getElementById('intro-title').textContent=t.intro_title;
@@ -1283,8 +1290,10 @@ function render(){
   t.ct_opts.forEach((opt,i)=>document.getElementById('ct-opt'+(i+1)).textContent=opt);
 
   // Prototype
+  document.getElementById('proto-badge').textContent=t.proto_badge;
   document.getElementById('proto-title').textContent=t.proto_title;
   document.getElementById('proto-prose').innerHTML=t.proto_prose;
+  t.proto_tags.forEach((tag,i)=>{const el=document.getElementById('proto-tag-'+(i+1));if(el)el.textContent=tag;});
 
 
   // Hub calculator labels
