@@ -835,7 +835,7 @@ const SCEN={
   base:{rm:1.00, h2PxAdj: 0.0, kWhPerKg:52, elecPx:0.065, maintRate:0.030, compPx:0.45},
   cons:{rm:0.90, h2PxAdj:-0.25, kWhPerKg:54, elecPx:0.085, maintRate:0.035, compPx:0.50},
 };
-let lang='en',scen='base',calcChart=null,tlChart=null,activePill=null;
+let scen='base',calcChart=null,tlChart=null,activePill=null;
 
 /* ═══════════════════════════════════════════════
    TABS
@@ -854,7 +854,7 @@ function showTab(id){
    PILL TOGGLE
 ═══════════════════════════════════════════════ */
 function togglePill(id){
-  const t=T[lang];
+  const t=T.en;
   const pill=t.pills.find(p=>p.id===id);
   const panel=document.getElementById('ipanel');
   if(activePill===id){
@@ -888,7 +888,7 @@ function fmtM(n){
 function fmtPct(n){return Math.round(n*10)/10+'%'}
 
 function recalc(){
-  const t=T[lang];
+  const t=T.en;
   const inv=parseFloat(document.getElementById('inv').value);
   const homes=parseInt(document.getElementById('homes').value);
   const price=parseFloat(document.getElementById('price').value);
@@ -1060,7 +1060,7 @@ function calculateCommunityHub(homes, homeSizeM2, curtailmentMWh){
 }
 
 function recalcHub(){
-  const t=T[lang];
+  const t=T.en;
   const homes=parseInt(document.getElementById('hub-homes').value);
   const size=parseInt(document.getElementById('hub-size').value);
   const wind=parseInt(document.getElementById('hub-wind').value);
@@ -1144,7 +1144,7 @@ function renderTlChart(){
    CONTACT FORM
 ═══════════════════════════════════════════════ */
 function submitForm(){
-  const t=T[lang];
+  const t=T.en;
   document.getElementById('ct-thanks').style.display='block';
   document.getElementById('ct-thanks').textContent=t.ct_thanks;
   document.getElementById('ct-btn').disabled=true;
@@ -1152,11 +1152,11 @@ function submitForm(){
 }
 
 /* ═══════════════════════════════════════════════
-   RENDER — full re-render on language change
+   RENDER — English-only content
 ═══════════════════════════════════════════════ */
 function render(){
-  const t=T[lang];
-  document.documentElement.lang=lang;
+  const t=T.en;
+  document.documentElement.lang='en';
 
   // Header / global static strings
   document.getElementById('tool-note').textContent=t.tool_note;
