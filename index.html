@@ -57,6 +57,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* NAV */
 .nav{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav::-webkit-scrollbar{display:none}
+.nb-investor{color:#e63946;border-left:1px solid var(--border);margin-left:4px;padding-left:12px;text-decoration:none;white-space:nowrap;font-size:0.8rem;letter-spacing:0.03em}
 .nb{padding:9px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
 .nb.on{color:var(--teal);border-bottom-color:var(--teal)}
 .nb:hover:not(.on){color:var(--text)}
@@ -256,6 +257,7 @@ textarea.inp{height:85px;resize:vertical}
   <button class="nb" onclick="showTab('market')" id="nav-market"></button>
   <button class="nb" onclick="showTab('contact')" id="nav-contact"></button>
   <button class="nb" onclick="showTab('proto')" id="nav-proto"></button>
+  <a class="nb nb-investor" href="investor-analysis.html" target="_blank">⚠ Investor Analysis</a>
 </div>
 
 <!-- ══════════════ OVERVIEW ══════════════ -->
