@@ -313,10 +313,62 @@ textarea.inp{height:85px;resize:vertical}
   </div>
 
   <!-- CIRCULAR LOOP -->
-  <div class="card">
+  <div class="card" style="margin-bottom:14px">
     <div class="st" id="ov-cycle-title"></div>
     <div style="display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin-bottom:12px" id="cycle-flow"></div>
     <div class="prose" id="ov-cycle-prose"></div>
+  </div>
+
+  <!-- WHAT €750K BUILDS -->
+  <div class="card" style="margin-bottom:14px;border-color:rgba(0,212,160,0.25)">
+    <div class="st" style="color:var(--teal)">WHAT €750K ACTUALLY BUILDS</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+      <div style="background:rgba(0,212,160,0.06);border:1px solid rgba(0,212,160,0.15);border-radius:8px;padding:14px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--teal);line-height:1">50</div>
+        <div style="color:var(--text2);font-size:0.8rem;margin-top:6px">homes connected<br>&amp; decarbonised</div>
+      </div>
+      <div style="background:rgba(0,212,160,0.06);border:1px solid rgba(0,212,160,0.15);border-radius:8px;padding:14px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--teal);line-height:1">400+</div>
+        <div style="color:var(--text2);font-size:0.8rem;margin-top:6px">MWh/year captured<br>from curtailed wind</div>
+      </div>
+      <div style="background:rgba(0,212,160,0.06);border:1px solid rgba(0,212,160,0.15);border-radius:8px;padding:14px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--teal);line-height:1">120t</div>
+        <div style="color:var(--text2);font-size:0.8rem;margin-top:6px">CO₂/year avoided<br>vs gas heating</div>
+      </div>
+      <div style="background:rgba(0,212,160,0.06);border:1px solid rgba(0,212,160,0.15);border-radius:8px;padding:14px;text-align:center">
+        <div style="font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;color:var(--teal);line-height:1">€95k</div>
+        <div style="color:var(--text2);font-size:0.8rem;margin-top:6px">revenue/year<br>(heat + grid services)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KEY RISKS -->
+  <div class="card">
+    <div class="st">KEY RISKS</div>
+    <p style="color:var(--text2);font-size:0.82rem;margin-bottom:14px">We are transparent about what could go wrong.</p>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.18);border-radius:8px;padding:12px">
+        <span style="color:var(--amber);flex-shrink:0;margin-top:1px">⚡</span>
+        <div>
+          <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:3px">Access to surplus energy is not guaranteed</div>
+          <div style="color:var(--text2);font-size:0.8rem">Curtailment volumes depend on EirGrid grid conditions and interconnector capacity. Mitigated through bilateral agreements with wind operators and diversified input sources.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.18);border-radius:8px;padding:12px">
+        <span style="color:var(--amber);flex-shrink:0;margin-top:1px">📋</span>
+        <div>
+          <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:3px">Permitting for hydrogen storage</div>
+          <div style="color:var(--text2);font-size:0.8rem">COMAH regulations apply to compressed hydrogen above threshold quantities. Phase 1 uses small-scale storage below trigger thresholds while planning pre-application proceeds.</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:flex-start;background:rgba(245,166,35,0.05);border:1px solid rgba(245,166,35,0.18);border-radius:8px;padding:12px">
+        <span style="color:var(--amber);flex-shrink:0;margin-top:1px">📊</span>
+        <div>
+          <div style="color:#fff;font-weight:600;font-size:0.85rem;margin-bottom:3px">CAPEX sensitivity</div>
+          <div style="color:var(--text2);font-size:0.8rem">Electrolyzer and installation costs subject to supply chain variability. Phase 1 uses fixed-price contracts with 30% contingency built in. Use the Calculator tab for your own sensitivity modelling.</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -694,8 +746,8 @@ en:{
   hub_warn:'⚠ Insufficient curtailment for full coverage',
   hub_m:['Total heat demand','Total H₂ demand','Electrolyser size','Install cost','Annual gas cost','Annual H₂ cost','Annual savings','CO₂ avoided'],
   hub_kl:['ROI (10 yr)','CO₂ / yr','Homes','Install cost'],
-  intro_title:'WELCOME',
-  intro_prose:'<p>Welcome. This page presents an independent hydrogen system built on electrolysis, converting surplus wind electricity into usable fuel. It includes a working prototype demonstration, technical specifications, and project economics.</p>',
+  intro_title:'IRELAND IS WASTING 2.1 TWh EVERY YEAR',
+  intro_prose:'<p style="font-size:1.05rem;line-height:1.65;margin-bottom:10px"><strong style="color:#fff">We capture it and turn it into heat, food, and local revenue.</strong></p><p>EirGrid pays wind farms to switch off when the grid is full. That wasted electricity — 2.1 TWh in 2025, enough to power County Dublin — becomes green hydrogen at near-zero input cost. Delivered as heat to 50 homes. As warmth to a greenhouse. As a grid balancing service. <strong>Three revenue streams from one input source no one else is using.</strong></p>',
   about_title:'ABOUT THE AUTHOR',
   about_prose:'<p>This project is developed independently by <a href="https://www.linkedin.com/in/juri-ptitsin-2a75713b7/" target="_blank" rel="noopener noreferrer" style="color:#ffffff">Juri Ptitsin</a>. It focuses on building practical hydrogen systems for converting electricity into usable energy.</p>',
   proto_title:'Prototype Demonstration',
@@ -782,8 +834,8 @@ fr:{
   hub_warn:'⚠ Curtailment insuffisant pour couverture totale',
   hub_m:['Demande totale chaleur','Demande totale H₂','Taille électrolyseur','Coût installation','Coût gaz annuel','Coût H₂ annuel','Économies annuelles','CO₂ évité'],
   hub_kl:['ROI (10 ans)','CO₂ / an','Logements','Coût inst.'],
-  intro_title:'BIENVENUE',
-  intro_prose:"<p>Bienvenue. Cette page présente un projet hydrogène indépendant basé sur l'électrolyse et l'intégration des énergies renouvelables. Elle comprend une démonstration de prototype fonctionnel, des spécifications techniques et les données économiques du projet.</p>",
+  intro_title:"L'IRLANDE GASPILLE 2,1 TWh CHAQUE ANNÉE",
+  intro_prose:"<p style=\"font-size:1.05rem;line-height:1.65;margin-bottom:10px\"><strong style=\"color:#fff\">Nous capturons cette énergie et la transformons en chaleur, nourriture et revenus locaux.</strong></p><p>EirGrid paie les éoliennes pour s'arrêter quand le réseau est saturé. Cette électricité gaspillée — 2,1 TWh en 2025 — devient de l'hydrogène vert à coût d'entrée quasi nul. <strong>Trois sources de revenus à partir d'une seule ressource que personne d'autre n'utilise.</strong></p>",
   about_title:"À PROPOS DE L'AUTEUR",
   about_prose:'<p>Ce projet est développé de manière indépendante par <a href="https://www.linkedin.com/in/juri-ptitsin-2a75713b7/" target="_blank" rel="noopener noreferrer" style="color:#ffffff">Juri Ptitsin</a>. Il se concentre sur la construction de systèmes hydrogène pratiques pour convertir l\'électricité en énergie utilisable.</p>',
   proto_title:'Démonstration du prototype',
@@ -870,8 +922,8 @@ de:{
   hub_warn:'⚠ Unzureichende Abregelung für Vollabdeckung',
   hub_m:['Gesamtwärmebedarf','Gesamter H₂-Bedarf','Elektrolyseurkapazität','Installationskosten','Jährl. Gaskosten','Jährl. H₂-Kosten','Jährl. Einsparung','CO₂ vermieden'],
   hub_kl:['ROI (10 J.)','CO₂ / Jahr','Häuser','Inst.-Kosten'],
-  intro_title:'WILLKOMMEN',
-  intro_prose:'<p>Willkommen. Diese Seite stellt ein unabhängiges Wasserstoffprojekt vor, das auf Elektrolyse und der Integration erneuerbarer Energien basiert. Sie enthält eine funktionierende Prototyp-Demonstration, technische Spezifikationen und Projektökonomie.</p>',
+  intro_title:'IRLAND VERSCHWENDET JEDES JAHR 2,1 TWh',
+  intro_prose:'<p style="font-size:1.05rem;line-height:1.65;margin-bottom:10px"><strong style="color:#fff">Wir nutzen diese Energie und verwandeln sie in Wärme, Nahrung und lokale Einnahmen.</strong></p><p>EirGrid zahlt Windparks dafür, abzuschalten, wenn das Netz voll ist. Dieser verschwendete Strom — 2,1 TWh im Jahr 2025 — wird zu grünem Wasserstoff zu nahezu null Inputkosten. <strong>Drei Einnahmequellen aus einer einzigen Ressource, die sonst niemand nutzt.</strong></p>',
   about_title:'ÜBER DEN AUTOR',
   about_prose:'<p>Dieses Projekt wird unabhängig von <a href="https://www.linkedin.com/in/juri-ptitsin-2a75713b7/" target="_blank" rel="noopener noreferrer" style="color:#ffffff">Juri Ptitsin</a> entwickelt. Es konzentriert sich auf den Aufbau praktischer Wasserstoffsysteme zur Umwandlung von Strom in nutzbare Energie.</p>',
   proto_title:'Prototyp-Demonstration',
@@ -958,8 +1010,8 @@ es:{
   hub_warn:'⚠ Curtailment insuficiente para cobertura total',
   hub_m:['Demanda total calor','Demanda total H₂','Tamaño electrolizador','Coste instalación','Coste gas anual','Coste H₂ anual','Ahorro anual','CO₂ evitado'],
   hub_kl:['ROI (10 años)','CO₂ / año','Hogares','Coste inst.'],
-  intro_title:'BIENVENIDO',
-  intro_prose:'<p>Bienvenido. Esta página presenta un proyecto de hidrógeno independiente basado en electrólisis e integración de energías renovables. Incluye una demostración de prototipo funcional, especificaciones técnicas y datos económicos del proyecto.</p>',
+  intro_title:'IRLANDA DESPERDICIA 2,1 TWh CADA AÑO',
+  intro_prose:'<p style="font-size:1.05rem;line-height:1.65;margin-bottom:10px"><strong style="color:#fff">Lo capturamos y lo convertimos en calor, alimentos e ingresos locales.</strong></p><p>EirGrid paga a los parques eólicos para que se apaguen cuando la red está llena. Esa electricidad desperdiciada — 2,1 TWh en 2025 — se convierte en hidrógeno verde a coste de entrada casi cero. <strong>Tres fuentes de ingresos a partir de un solo recurso que nadie más utiliza.</strong></p>',
   about_title:'SOBRE EL AUTOR',
   about_prose:'<p>Este proyecto es desarrollado de forma independiente por <a href="https://www.linkedin.com/in/juri-ptitsin-2a75713b7/" target="_blank" rel="noopener noreferrer" style="color:#ffffff">Juri Ptitsin</a>. Se centra en la construcción de sistemas de hidrógeno prácticos para convertir electricidad en energía utilizable.</p>',
   proto_title:'Demostración del prototipo',
@@ -1046,8 +1098,8 @@ ru:{
   hub_warn:'⚠ Недостаточное curtailment для полного покрытия',
   hub_m:['Общий спрос на тепло','Общий спрос H₂','Мощность электролизёра','Стоимость установки','Годовые расходы на газ','Годовые расходы H₂','Годовая экономия','Избежанный CO₂'],
   hub_kl:['ROI (10 лет)','CO₂ / год','Домов','Стоимость'],
-  intro_title:'ДОБРО ПОЖАЛОВАТЬ',
-  intro_prose:'<p>Добро пожаловать. На этой странице представлен независимый водородный проект, основанный на электролизе и интеграции возобновляемой энергии. Здесь вы найдёте демонстрацию рабочего прототипа, технические характеристики и экономику проекта.</p>',
+  intro_title:'ИРЛАНДИЯ ТЕРЯЕТ 2,1 ТВт·ч ЕЖЕГОДНО',
+  intro_prose:'<p style="font-size:1.05rem;line-height:1.65;margin-bottom:10px"><strong style="color:#fff">Мы перехватываем эту энергию и превращаем её в тепло, продукты питания и доход.</strong></p><p>EirGrid платит ветровым станциям за отключение, когда сеть переполнена. Эта потерянная электроэнергия — 2,1 ТВт·ч в 2025 году — становится зелёным водородом при практически нулевой стоимости входа. <strong>Три источника дохода из одного ресурса, который больше никто не использует.</strong></p>',
   about_title:'ОБ АВТОРЕ',
   about_prose:'<p>Этот проект разрабатывается независимо автором <a href="https://www.linkedin.com/in/juri-ptitsin-2a75713b7/" target="_blank" rel="noopener noreferrer">Юрий Птицын</a>. Он сосредоточен на создании практических водородных систем для преобразования электроэнергии в пригодную для использования энергию.</p>',
   proto_title:'Демонстрация прототипа',
