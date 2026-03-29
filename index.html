@@ -57,6 +57,7 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* NAV */
 .nav{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav::-webkit-scrollbar{display:none}
+@media(max-width:520px){.nb{padding:8px 9px;font-size:11.5px}}
 .nb.nb-warn{color:#e63946}
 .nb.nb-warn.on{color:#e63946;border-bottom-color:#e63946}
 .nb{padding:9px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
@@ -220,10 +221,10 @@ textarea.inp{height:85px;resize:vertical}
     </div>
     <div class="lang-bar">
       <button class="lb on" onclick="setLang('en')">EN</button>
-      <button class="lb" onclick="setLang('fr')">FR</button>
-      <button class="lb" onclick="setLang('de')">DE</button>
-      <button class="lb" onclick="setLang('es')">ES</button>
       <button class="lb" onclick="setLang('ru')">RU</button>
+      <button class="lb" onclick="setLang('ie')">IE</button>
+      <button class="lb" onclick="setLang('de')">DE</button>
+      <button class="lb" onclick="setLang('fr')">FR</button>
     </div>
   </div>
   <div class="tbar" id="tbar"></div>
@@ -999,9 +1000,9 @@ de:{
   proto_prose:`<p>Dieses Video zeigt ein kleinskaliges Wasserstoff-Demonstrationssystem auf Basis der Elektrolyse. Strom wird auf Wasser angewendet und spaltet es in Wasserstoff und Sauerstoff. Der erzeugte Wasserstoff wird gesammelt und freigesetzt — das Grundprinzip der Wasserstoffproduktion.</p><p>Dies ist ein Frühphasen-Prototyp zur Validierung des Konzepts. Ziel ist es, dieses System zu einer praktischen Lösung für die Speicherung überschüssiger erneuerbarer Energie, insbesondere aus Windkraft, zu skalieren.</p>`,
   proto_note:'Dieser Prototyp validiert das Elektrolyseprinzip im Labormaßstab. Der großskalige Einsatz zielt auf County Clare ab und integriert EirGrids abgeregelten Windstrom.',
 },
-es:{
+ie:{
   pills:[
-    {id:'dropin',label:'Descarbonización plug-in',title:'Descarbonización Drop-In',body:`Irlanda no puede cumplir sus objetivos climáticos 2030 sin descarbonizar la calefacción. La renovación profunda convencional cuesta <span class="stat">€49.600/hogar</span> y es estructuralmente imposible para <span class="stat">~30%</span> de los hogares irlandeses con muros de piedra maciza.<br><br>La caldera H₂ drop-in reemplaza solo el quemador, adaptándose a radiadores y tuberías existentes. <strong>Sin cambios estructurales. Instalada en un día. Coste €3.000–6.000.</strong>`},
+    {id:'dropin',label:'Dícharbónú Drop-In',title:'Dícharbónú Drop-In',body:`Ní féidir le hÉirinn a spriocanna aeráide 2030 a bhaint amach gan an téamh tí a dhícharbónú. Cosnaíonn an t-athmhúnlú domhain coinbhinsiúnta <span class="stat">€49,600/teach</span> agus tá sé dodhéanta ó thaobh struchtúir do <span class="stat">~30%</span> de thithe na hÉireann le ballaí cloiche.<br><br>Cuireann an coire H₂-réidh drop-in an t-aon aonad loisceoirí in ionad — ag oiriúnú do raidiatóirí agus píopaí atá ann cheana. <strong>Gan athruithe struchtúir. Suiteáilte in aon lá amháin. Costas €3,000–6,000.</strong>`},
     {id:'green',label:'Hidrógeno verde',title:'Hidrógeno verde — arbitraje eólico curtailed',body:`EirGrid paga a los generadores para que se <em>apaguen</em> cuando la producción eólica supera la capacidad de la red. En 2025, <span class="stat">2,1 TWh</span> de energía renovable fueron desperdiciados. Capturamos esa energía curtailed a coste casi cero (<span class="stat">~€0,01/kWh</span>) y la convertimos en hidrógeno verde. Coste de producción: <span class="stat">€1,5–2,5/kg</span> vs <span class="stat">€6–10/kg</span> de la red. <strong>Ventaja de coste 4–6×.</strong>`},
     {id:'circular',label:'Economía circular',title:'El bucle de economía circular',body:`El modelo H₂-Retrofit es auto-reforzante: <strong>Viento → H₂ → Calefacción → Subsidios agrícolas → Bosques → Agua limpia → Ahorro sanitario → Reinversión.</strong><br><br>Los ingresos H₂ financian el Pacto 20% voluntario — los agricultores reducen el ganado, plantan bosque nativo y reciben <span class="stat">€12–18k/año</span> de subsidio. <strong>La entropía disminuye. El sistema se auto-sostiene.</strong>`},
     {id:'pilot',label:'Piloto Condado de Clare',title:'Sitio piloto — Condado de Clare',body:`Clare es el piloto ideal: Moneypoint (915 MW, Kilrush) dejó de quemar carbón en junio 2025 y necesita un proveedor H₂ doméstico confirmado antes de 2029.<br><br><strong>Fase 1 (2025–27):</strong> 5–10 viviendas sociales, integración red gas, 12 meses datos. Coste: <span class="stat">€1,5M</span> via DTIF.`},
@@ -1192,13 +1193,14 @@ const SCEN={
   base:{rm:1.00, h2PxAdj: 0.0, kWhPerKg:52, elecPx:0.065, maintRate:0.030, compPx:0.45},
   cons:{rm:0.90, h2PxAdj:-0.25, kWhPerKg:54, elecPx:0.085, maintRate:0.035, compPx:0.50},
 };
-let lang='en',scen='base',calcChart=null,tlChart=null,activePill=null;
+let lang=localStorage.getItem('h2lang')||'en',scen='base',calcChart=null,tlChart=null,activePill=null;
 
 /* ═══════════════════════════════════════════════
    LANGUAGE
 ═══════════════════════════════════════════════ */
 function setLang(l){
   lang=l;
+  localStorage.setItem('h2lang',l);
   document.querySelectorAll('.lb').forEach(b=>b.classList.remove('on'));
   document.querySelector(`.lb[onclick="setLang('${l}')"]`).classList.add('on');
   activePill=null;
