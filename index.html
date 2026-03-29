@@ -57,8 +57,8 @@ body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;fon
 /* NAV */
 .nav{display:flex;gap:0;margin-bottom:20px;border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .nav::-webkit-scrollbar{display:none}
-.nb.nb-investor{color:#e63946;border-left:1px solid var(--border);margin-left:4px;text-decoration:none;font-size:0.8rem;letter-spacing:0.03em}
-.nb.nb-investor:hover{color:#ff6b6b}
+.investor-block{display:block;background:rgba(230,57,70,0.08);border:1px solid rgba(230,57,70,0.35);border-radius:8px;padding:12px 18px;margin-bottom:16px;color:#e63946;text-decoration:none;font-size:0.85rem;font-weight:600;letter-spacing:0.04em;transition:background .15s}
+.investor-block:hover{background:rgba(230,57,70,0.15)}
 .nb{padding:9px 16px;font-size:13px;font-weight:500;cursor:pointer;border:none;background:transparent;color:var(--text2);font-family:'DM Sans',sans-serif;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .15s;white-space:nowrap}
 .nb.on{color:var(--teal);border-bottom-color:var(--teal)}
 .nb:hover:not(.on){color:var(--text)}
@@ -258,8 +258,8 @@ textarea.inp{height:85px;resize:vertical}
   <button class="nb" onclick="showTab('market')" id="nav-market"></button>
   <button class="nb" onclick="showTab('contact')" id="nav-contact"></button>
   <button class="nb" onclick="showTab('proto')" id="nav-proto"></button>
-  <a class="nb nb-investor" href="investor-analysis.html" target="_blank">⚠ Investor Analysis</a>
 </div>
+<a href="investor-analysis.html" target="_blank" class="investor-block">⚠ Investor Analysis — Critical Risk Assessment</a>
 
 <!-- ══════════════ OVERVIEW ══════════════ -->
 <div id="tab-overview" class="sec on">
