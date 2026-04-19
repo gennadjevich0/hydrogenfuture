@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="H₂-Retrofit Ireland — Green Hydrogen from Curtailed Wind. County Clare Pilot.">
+<title>H₂-Retrofit Ireland</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f0e8;--bg2:#ede8df;--ink:#1a1410;--ink2:#4a3f35;--ink3:#8a7a6a;
+  --accent:#c84b1f;--teal:#0d7a5f;--blue:#1a4fa0;--gold:#c49a1a;
+  --border:#d4c8b8;--border2:#c4b49a;--card:#fff9f2;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+.outer{max-width:1060px;margin:0 auto;padding:0 24px 100px}
+.hdr{padding:28px 0 20px;border-bottom:2px solid var(--ink);margin-bottom:32px}
+.hdr-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.brand-name{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.brand-title{font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px}
+.brand-title span{color:var(--accent)}
+.brand-sub{font-size:13px;color:var(--ink3);margin-top:5px}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.lang-toggle{display:flex;gap:0;border:1.5px solid var(--border2);border-radius:3px;overflow:hidden}
+.lt-btn{padding:5px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:none;background:transparent;color:var(--ink3);transition:all .15s}
+.lt-btn.on{background:var(--accent);color:#fff}
+.hdr-pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-size:10px;font-weight:700;letter-spacing:.06em;border:1.5px solid var(--border2);border-radius:3px;color:var(--ink3);background:transparent;cursor:pointer;transition:all .15s;font-family:'Space Mono',monospace;text-transform:uppercase}
+.pill:hover,.pill.on{border-color:var(--accent);color:var(--accent);background:rgba(200,75,31,0.05)}
+#pill-panel{display:none;margin-top:14px;padding:14px 16px;background:rgba(200,75,31,0.04);border:1.5px solid var(--border2);border-radius:4px}
+#pill-title{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.nav{display:flex;border-bottom:1.5px solid var(--border2);margin-bottom:28px;overflow-x:auto;gap:0}
+.nav::-webkit-scrollbar{display:none}
+.nb{padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-family:'Space Mono',monospace;cursor:pointer;border:none;background:transparent;color:var(--ink3);border-bottom:3px solid transparent;margin-bottom:-1.5px;transition:all .15s;white-space:nowrap}
+.nb.on{color:var(--accent);border-bottom-color:var(--accent)}
+.nb:hover:not(.on){color:var(--ink)}
+.nb.warn{color:var(--accent)}.nb.warn.on{color:var(--accent);border-bottom-color:var(--accent)}
+.sec{display:none}.sec.on{display:block}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:640px){.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}.brand-title{font-size:24px}}
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:18px 20px;margin-bottom:0}
+.card.al{border-left:4px solid var(--accent)}.card.tl{border-left:4px solid var(--teal)}.card.rl{border-left:4px solid var(--accent)}
+.mcard{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:14px 16px}
+.mlabel{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:6px}
+.mval{font-size:26px;font-weight:900;line-height:1;letter-spacing:-1px}
+.mval.ac{color:var(--accent)}.mval.tl{color:var(--teal)}.mval.bl{color:var(--blue)}.mval.gl{color:var(--gold)}
+.msub{font-size:11px;color:var(--ink3);margin-top:4px}
+.st{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dotted var(--border);font-size:13px;gap:8px}
+.row:last-child{border:none}
+.rk{color:var(--ink2);flex:1}
+.rv{font-weight:600;text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:12px}
+.rv.ac{color:var(--accent)}.rv.tl{color:var(--teal)}.rv.gl{color:var(--gold)}.rv.rd{color:var(--accent)}.rv.bl{color:var(--blue)}
+.prose{font-size:14px;color:var(--ink2);line-height:1.85}
+.prose p{margin-bottom:12px}.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink);font-weight:600}
+.hbox{padding:12px 16px;border-radius:3px;margin:10px 0;font-size:13px;line-height:1.7}
+.hbox.tl{background:rgba(13,122,95,0.06);border:1px solid rgba(13,122,95,0.22);color:var(--ink2)}
+.hbox.rd{background:rgba(200,75,31,0.05);border:1px solid rgba(200,75,31,0.22);color:var(--ink2)}
+.hbox.gl{background:rgba(196,154,26,0.06);border:1px solid rgba(196,154,26,0.28);color:var(--ink2)}
+.hbox strong{color:var(--ink)}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;letter-spacing:.04em;font-family:'Space Mono',monospace;text-transform:uppercase;margin:2px}
+.tag.t{background:rgba(13,122,95,0.1);color:var(--teal)}.tag.a{background:rgba(200,75,31,0.1);color:var(--accent)}.tag.b{background:rgba(26,79,160,0.1);color:var(--blue)}.tag.g{background:rgba(196,154,26,0.1);color:var(--gold)}
+</style>
+</head>
+<body>
+<div class="outer">
+<div class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="brand-name">County Clare · Ireland · 2025–2045</div>
+      <div class="brand-title"><span>H₂</span>-Retrofit Ireland</div>
+      <div class="brand-sub">Green Hydrogen from Curtailed Wind · Drop-In Home Decarbonisation · Investor Platform</div>
+    </div>
+    <div class="hdr-right">
+      <div class="lang-toggle">
+        <button class="lt-btn on">EN</button>
+        <button class="lt-btn">RU</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="st">Restored Uploaded Site File</div>
+  <div class="prose">
+    <p>This file was added from the uploaded source for restoration purposes.</p>
+    <p>Use this as the base to restore the original site.</p>
+  </div>
+</div>
+</div>
+</body>
+</html>
