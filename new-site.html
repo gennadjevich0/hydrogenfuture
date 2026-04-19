@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hydrogen Future Ireland</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--bg:#08101d;--card:#111a2a;--card2:#0d1624;--line:rgba(255,255,255,.08);--text:#e6edf7;--muted:#9db0c8;--teal:#00d4a0;--blue:#4da3ff;--amber:#ffb84d;--red:#ff6b6b}
+    body{background:linear-gradient(180deg,#08101d 0%,#0b1322 100%);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.6;padding:24px}
+    .wrap{max-width:1180px;margin:0 auto}
+    .hero{padding:20px 0 24px;border-bottom:1px solid var(--line);margin-bottom:22px}
+    .brand{font-family:'Syne',sans-serif;font-size:18px;font-weight:800;color:var(--teal);margin-bottom:14px}
+    h1{font-family:'Syne',sans-serif;font-size:48px;line-height:1.02;max-width:900px;margin-bottom:14px}
+    .sub{max-width:900px;color:var(--muted);font-size:18px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid var(--line)}
+    .btn-main{background:rgba(0,212,160,.12);color:var(--teal);border-color:rgba(0,212,160,.3)}
+    .btn-ghost{background:transparent;color:var(--text)}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0}
+    .card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:18px}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:6px}
+    .metric{font-size:30px;font-weight:800}
+    .sec-title{font-family:'Syne',sans-serif;font-size:24px;margin-bottom:10px}
+    .p{color:var(--muted);font-size:15px}
+    .row{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+    .row:last-child{border-bottom:none}
+    .flow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+    .chip{padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--line);font-size:13px}
+    .chip.arrow{background:transparent;border:none;color:var(--muted)}
+    .timeline{display:grid;gap:12px}
+    .step{padding-left:14px;border-left:3px solid rgba(0,212,160,.35)}
+    .step h3{font-size:16px;margin-bottom:4px}
+    .step p{font-size:14px;color:var(--muted)}
+    .tagline{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 0}
+    .tag{font-size:12px;padding:4px 9px;border-radius:999px;background:rgba(0,212,160,.10);color:var(--teal);border:1px solid rgba(0,212,160,.2)}
+    .footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    @media(max-width:980px){.grid4{grid-template-columns:1fr 1fr}.grid2{grid-template-columns:1fr}}
+    @media(max-width:640px){body{padding:16px}h1{font-size:34px}.grid4{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="brand">Hydrogen Future Ireland</div>
+      <h1>Turning curtailed wind into hydrogen for heat, resilience, and regional growth</h1>
+      <div class="sub">A practical infrastructure concept for Ireland: use surplus renewable electricity to produce green hydrogen, deploy drop-in heating solutions for hard-to-treat homes, and build a scalable pathway from local pilot to national system value.</div>
+      <div class="tagline">
+        <span class="tag">Curtailed wind → value</span>
+        <span class="tag">Drop-in retrofit logic</span>
+        <span class="tag">Pilot → scale</span>
+      </div>
+      <div class="actions">
+        <a class="btn btn-main" href="mailto:gennadjevich0@gmail.com">Contact</a>
+        <a class="btn btn-ghost" href="presentation-site.html">Open fallback site</a>
+      </div>
+    </section>
+
+    <section class="grid4">
+      <div class="card"><div class="eyebrow">Pilot funding target</div><div class="metric">€1.5M</div></div>
+      <div class="card"><div class="eyebrow">Hard-to-treat homes</div><div class="metric">445k</div></div>
+      <div class="card"><div class="eyebrow">Drop-in install</div><div class="metric">€3–6k</div></div>
+      <div class="card"><div class="eyebrow">Curtailed wind</div><div class="metric">2.1 TWh</div></div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="sec-title">The problem</div>
+        <div class="p">Ireland faces a structural mismatch: climate pressure is rising, deep retrofit is expensive, and a large portion of housing stock remains difficult to decarbonise quickly. At the same time, renewable power is sometimes curtailed when the system cannot absorb it.</div>
+        <div class="row"><span>Deep retrofit cost per home</span><strong>€49,600</strong></div>
+        <div class="row"><span>Hard-to-treat segment</span><strong>Very large</strong></div>
+        <div class="row"><span>Policy pressure window</span><strong style="color:var(--amber)">2030</strong></div>
+      </div>
+      <div class="card">
+        <div class="sec-title">The solution</div>
+        <div class="p">Deploy a hydrogen pathway where curtailed or surplus electricity becomes green hydrogen, then use that hydrogen in targeted heating applications where conventional retrofit pathways are too slow, too invasive, or too expensive.</div>
+        <div class="row"><span>Installation logic</span><strong>Drop-in burner path</strong></div>
+        <div class="row"><span>Retrofit burden</span><strong style="color:var(--teal)">Reduced</strong></div>
+        <div class="row"><span>Strategic value</span><strong>Heat + storage + resilience</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="sec-title">System logic</div>
+      <div class="p">This is not only a heating idea. It is a systems concept that links electricity balancing, hydrogen production, rural transition, infrastructure reuse, and future export potential.</div>
+      <div class="flow">
+        <span class="chip">Curtailed wind</span>
+        <span class="chip arrow">→</span>
+        <span class="chip">Electrolysis</span>
+        <span class="chip arrow">→</span>
+        <span class="chip">Green hydrogen</span>
+        <span class="chip arrow">→</span>
+        <span class="chip">Home heat / storage</span>
+        <span class="chip arrow">→</span>
+        <span class="chip">Regional growth</span>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <div class="sec-title">Pilot roadmap</div>
+        <div class="timeline">
+          <div class="step"><h3>Phase 1 — Local pilot</h3><p>Validate the concept in a focused geography with a small number of homes and a clear narrative.</p></div>
+          <div class="step"><h3>Phase 2 — Production integration</h3><p>Connect hydrogen production economics to surplus renewable power and storage logic.</p></div>
+          <div class="step"><h3>Phase 3 — County scale</h3><p>Use the pilot as a policy and investor reference for wider rollout.</p></div>
+          <div class="step"><h3>Phase 4 — National template</h3><p>Position the model as a repeatable Irish energy transition pathway.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="sec-title">Why now</div>
+        <div class="row"><span>Moneypoint transition window</span><strong>Strategic</strong></div>
+        <div class="row"><span>Offshore wind potential</span><strong>Large</strong></div>
+        <div class="row"><span>Need for practical heat solutions</span><strong>Immediate</strong></div>
+        <div class="row"><span>Presentation and funding readiness</span><strong style="color:var(--teal)">Buildable</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="sec-title">Contact</div>
+      <div class="row"><span>Project lead</span><strong>Juri Ptitsin</strong></div>
+      <div class="row"><span>Location</span><strong>County Clare, Ireland</strong></div>
+      <div class="row"><span>Email</span><strong>gennadjevich0@gmail.com</strong></div>
+    </section>
+
+    <div class="footer">Emergency clean build for presentation use. Main legacy site remains untouched by this file.</div>
+  </div>
+</body>
+</html>
