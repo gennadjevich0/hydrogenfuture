@@ -1,1 +1,860 @@
-file:///Users/juriptitsin/Downloads/index%20(1).html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="H₂-Retrofit Ireland — Green Hydrogen from Curtailed Wind. County Clare Pilot.">
+<title>H₂-Retrofit Ireland</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f0e8;--bg2:#ede8df;--ink:#1a1410;--ink2:#4a3f35;--ink3:#8a7a6a;
+  --accent:#c84b1f;--teal:#0d7a5f;--blue:#1a4fa0;--gold:#c49a1a;
+  --border:#d4c8b8;--border2:#c4b49a;--card:#fff9f2;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.6;min-height:100vh}
+.outer{max-width:1060px;margin:0 auto;padding:0 24px 100px}
+.hdr{padding:28px 0 20px;border-bottom:2px solid var(--ink);margin-bottom:32px}
+.hdr-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.brand-name{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.brand-title{font-size:34px;font-weight:900;line-height:1;letter-spacing:-1.5px}
+.brand-title span{color:var(--accent)}
+.brand-sub{font-size:13px;color:var(--ink3);margin-top:5px}
+.hdr-right{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.lang-toggle{display:flex;gap:0;border:1.5px solid var(--border2);border-radius:3px;overflow:hidden}
+.lt-btn{padding:5px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;cursor:pointer;border:none;background:transparent;color:var(--ink3);transition:all .15s}
+.lt-btn.on{background:var(--accent);color:#fff}
+.hdr-pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;font-size:10px;font-weight:700;letter-spacing:.06em;border:1.5px solid var(--border2);border-radius:3px;color:var(--ink3);background:transparent;cursor:pointer;transition:all .15s;font-family:'Space Mono',monospace;text-transform:uppercase}
+.pill:hover,.pill.on{border-color:var(--accent);color:var(--accent);background:rgba(200,75,31,0.05)}
+#pill-panel{display:none;margin-top:14px;padding:14px 16px;background:rgba(200,75,31,0.04);border:1.5px solid var(--border2);border-radius:4px}
+#pill-title{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+.nav{display:flex;border-bottom:1.5px solid var(--border2);margin-bottom:28px;overflow-x:auto;gap:0}
+.nav::-webkit-scrollbar{display:none}
+.nb{padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-family:'Space Mono',monospace;cursor:pointer;border:none;background:transparent;color:var(--ink3);border-bottom:3px solid transparent;margin-bottom:-1.5px;transition:all .15s;white-space:nowrap}
+.nb.on{color:var(--accent);border-bottom-color:var(--accent)}
+.nb:hover:not(.on){color:var(--ink)}
+.nb.warn{color:var(--accent)}.nb.warn.on{color:var(--accent);border-bottom-color:var(--accent)}
+.sec{display:none}.sec.on{display:block}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:640px){.g4{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr}.g2{grid-template-columns:1fr}.brand-title{font-size:24px}}
+.card{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:18px 20px;margin-bottom:0}
+.card.al{border-left:4px solid var(--accent)}.card.tl{border-left:4px solid var(--teal)}.card.rl{border-left:4px solid var(--accent)}
+.mcard{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:14px 16px}
+.mlabel{font-size:10px;font-weight:700;color:var(--ink3);letter-spacing:.1em;text-transform:uppercase;font-family:'Space Mono',monospace;margin-bottom:6px}
+.mval{font-size:26px;font-weight:900;line-height:1;letter-spacing:-1px}
+.mval.ac{color:var(--accent)}.mval.tl{color:var(--teal)}.mval.bl{color:var(--blue)}.mval.gl{color:var(--gold)}
+.msub{font-size:11px;color:var(--ink3);margin-top:4px}
+.st{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px dotted var(--border);font-size:13px;gap:8px}
+.row:last-child{border:none}
+.rk{color:var(--ink2);flex:1}
+.rv{font-weight:600;text-align:right;flex-shrink:0;font-family:'Space Mono',monospace;font-size:12px}
+.rv.ac{color:var(--accent)}.rv.tl{color:var(--teal)}.rv.gl{color:var(--gold)}.rv.rd{color:var(--accent)}.rv.bl{color:var(--blue)}
+.prose{font-size:14px;color:var(--ink2);line-height:1.85}
+.prose p{margin-bottom:12px}.prose p:last-child{margin-bottom:0}
+.prose strong{color:var(--ink);font-weight:600}
+.hbox{padding:12px 16px;border-radius:3px;margin:10px 0;font-size:13px;line-height:1.7}
+.hbox.tl{background:rgba(13,122,95,0.06);border:1px solid rgba(13,122,95,0.22);color:var(--ink2)}
+.hbox.rd{background:rgba(200,75,31,0.05);border:1px solid rgba(200,75,31,0.22);color:var(--ink2)}
+.hbox.gl{background:rgba(196,154,26,0.06);border:1px solid rgba(196,154,26,0.28);color:var(--ink2)}
+.hbox strong{color:var(--ink)}
+.tag{display:inline-block;font-size:10px;font-weight:700;padding:2px 7px;border-radius:2px;letter-spacing:.04em;font-family:'Space Mono',monospace;text-transform:uppercase;margin:2px}
+.tag.t{background:rgba(13,122,95,0.1);color:var(--teal)}.tag.a{background:rgba(200,75,31,0.1);color:var(--accent)}.tag.b{background:rgba(26,79,160,0.1);color:var(--blue)}.tag.g{background:rgba(196,154,26,0.1);color:var(--gold)}
+.calc-hero{background:var(--ink);border-radius:6px;padding:28px;margin-bottom:20px;color:#f5f0e8}
+.ch-label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:6px}
+.ch-title{font-size:28px;font-weight:900;letter-spacing:-1px;color:#f5f0e8;margin-bottom:4px}
+.ch-title span{color:#e8a060}
+.ch-sub{font-size:13px;color:rgba(245,240,232,0.55);margin-bottom:24px}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+@media(max-width:560px){.calc-grid{grid-template-columns:1fr}}
+.inp-lbl{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.5);margin-bottom:8px}
+.big-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.big-inp{padding:9px 14px;background:rgba(245,240,232,0.07);border:1.5px solid rgba(245,240,232,0.15);border-radius:3px;color:#f5f0e8;font-family:'Space Mono',monospace;font-size:18px;font-weight:700;width:140px;outline:none;transition:border .15s;-moz-appearance:textfield}
+.big-inp::-webkit-outer-spin-button,.big-inp::-webkit-inner-spin-button{-webkit-appearance:none}
+.big-inp:focus{border-color:#e8a060}
+.big-unit{font-size:13px;color:rgba(245,240,232,0.4);font-family:'Space Mono',monospace}
+.preset-btns{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.pb{padding:3px 9px;font-family:'Space Mono',monospace;font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;border:1px solid rgba(245,240,232,0.18);border-radius:2px;background:transparent;color:rgba(245,240,232,0.45);cursor:pointer;transition:all .15s}
+.pb:hover{border-color:#e8a060;color:#e8a060}
+.rng-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.rng-row input[type=range]{flex:1;accent-color:#e8a060;cursor:pointer}
+.rng-val{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:#e8a060;min-width:80px;text-align:right}
+.result-box{background:rgba(245,240,232,0.05);border:1px solid rgba(245,240,232,0.1);border-radius:4px;padding:20px;margin-bottom:16px}
+.result-lbl{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:8px}
+.result-price{font-size:52px;font-weight:900;letter-spacing:-2px;line-height:1;color:#e8a060}
+.result-unit{font-size:15px;color:rgba(245,240,232,0.45);font-family:'Space Mono',monospace;margin-left:8px}
+.result-vs{font-size:13px;color:rgba(245,240,232,0.5);margin-top:8px}
+.breakdown-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:560px){.breakdown-grid{grid-template-columns:1fr}}
+.bd-item{background:rgba(245,240,232,0.04);border:1px solid rgba(245,240,232,0.08);border-radius:3px;padding:12px;text-align:center}
+.bd-val{font-family:'Space Mono',monospace;font-size:15px;font-weight:700;color:#e8a060;margin-bottom:4px}
+.bd-lbl{font-size:11px;color:rgba(245,240,232,0.4);line-height:1.4}
+.scen-tabs{display:flex;gap:6px;margin-bottom:14px}
+.stab{padding:5px 14px;font-size:10px;font-weight:700;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.05em;cursor:pointer;border:1.5px solid var(--border2);border-radius:3px;color:var(--ink3);background:transparent;transition:all .15s}
+.stab.on{border-color:var(--accent);color:var(--accent);background:rgba(200,75,31,0.05)}
+.slr{margin-bottom:11px}
+.slr-top{display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px;color:var(--ink2)}
+.slr-top span:last-child{font-family:'Space Mono',monospace;font-weight:700;color:var(--ink)}
+.slr input[type=range]{width:100%;accent-color:var(--accent)}
+.ch-wrap{position:relative;width:100%;height:200px;margin-top:14px}
+.tl{padding-left:4px}
+.tli{position:relative;padding:0 0 20px 22px;border-left:2px solid var(--border2)}
+.tli:last-child{border-left-color:transparent}
+.tldot{position:absolute;left:-6px;top:4px;width:10px;height:10px;border-radius:50%;border:2px solid currentColor;background:var(--bg)}
+.tlyear{font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;margin-bottom:2px}
+.tltitle{font-size:15px;font-weight:700;margin-bottom:3px;letter-spacing:-.3px}
+.tltext{font-size:12px;color:var(--ink3);line-height:1.6}
+.ccard{border:1.5px solid var(--border);border-radius:4px;padding:16px;background:var(--card)}
+.ccard.best{border-color:var(--teal);border-top-width:3px}
+.cbest{font-family:'Space Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.cname{font-size:14px;font-weight:700;margin-bottom:3px}
+.cprice{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;margin-bottom:8px}
+.cbar-bg{height:4px;background:var(--bg2);border-radius:2px;margin-bottom:10px}
+.cbar{height:4px;border-radius:2px}
+.clist{font-size:12px;color:var(--ink2);line-height:1.9}
+.proto-wrap{display:grid;grid-template-columns:290px 1fr;gap:24px;align-items:start}
+@media(max-width:680px){.proto-wrap{grid-template-columns:1fr}}
+.vid-frame{position:relative;width:100%;padding-bottom:177%;border-radius:4px;overflow:hidden;background:var(--ink);border:1.5px solid var(--border)}
+.vid-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.live-badge{display:inline-flex;align-items:center;gap:6px;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:2px;background:rgba(200,75,31,0.08);border:1px solid rgba(200,75,31,0.25);color:var(--accent);margin-bottom:14px}
+.live-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.risk-item{border-left:3px solid var(--accent);background:rgba(200,75,31,0.04);border-radius:0 4px 4px 0;padding:13px 16px;margin-bottom:10px}
+.risk-title{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.risk-body{font-size:12px;color:var(--ink2);line-height:1.65}
+.inp-c{width:100%;padding:9px 13px;background:var(--bg2);border:1.5px solid var(--border2);border-radius:3px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:14px;margin-bottom:10px;outline:none;transition:border .15s}
+.inp-c:focus{border-color:var(--accent)}
+.inp-c option{background:var(--bg)}
+textarea.inp-c{height:90px;resize:vertical}
+.btn{padding:10px 26px;background:var(--accent);color:#fff;border:none;border-radius:3px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:opacity .15s}
+.btn:hover{opacity:.85}
+.clink{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;color:var(--accent);text-decoration:none;padding:8px 16px;border:1.5px solid var(--accent);border-radius:3px;transition:all .15s;font-family:'Space Mono',monospace;text-transform:uppercase;letter-spacing:.04em}
+.clink:hover{background:var(--accent);color:#fff}
+</style>
+</head>
+<body>
+<div class="outer">
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div>
+      <div class="brand-name" id="t-location">County Clare · Ireland · 2025–2045</div>
+      <div class="brand-title"><span>H₂</span>-Retrofit Ireland</div>
+      <div class="brand-sub" id="t-sub">Green Hydrogen from Curtailed Wind · Drop-In Home Decarbonisation · Investor Platform</div>
+    </div>
+    <div class="hdr-right">
+      <div class="lang-toggle">
+        <button class="lt-btn on" onclick="setLang('en')">EN</button>
+        <button class="lt-btn" onclick="setLang('ru')">RU</button>
+      </div>
+      <div class="hdr-pills">
+        <span class="pill" onclick="togglePill(this,'dropin')" id="pill-dropin">Drop-In Tech</span>
+        <span class="pill" onclick="togglePill(this,'curtailed')" id="pill-curtailed">Curtailed Wind</span>
+        <span class="pill" onclick="togglePill(this,'circular')" id="pill-circular">Circular Economy</span>
+        <span class="pill" onclick="togglePill(this,'pilot')" id="pill-pilot">Clare Pilot</span>
+      </div>
+    </div>
+  </div>
+  <div id="pill-panel">
+    <div id="pill-title"></div>
+    <div id="pill-body" class="prose" style="font-size:13px"></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav" id="main-nav">
+  <button class="nb on" onclick="showTab('overview')" id="nav-overview">Overview</button>
+  <button class="nb" onclick="showTab('calc')" id="nav-calc">H₂ Calculator</button>
+  <button class="nb" onclick="showTab('timeline')" id="nav-timeline">Timeline</button>
+  <button class="nb" onclick="showTab('market')" id="nav-market">Market</button>
+  <button class="nb" onclick="showTab('proto')" id="nav-proto">Prototype</button>
+  <button class="nb" onclick="showTab('analytics')" id="nav-analytics">Analytics</button>
+  <button class="nb" onclick="showTab('contact')" id="nav-contact">Contact</button>
+  <button class="nb warn" onclick="showTab('investor')" id="nav-investor">⚠ Risk Analysis</button>
+</div>
+
+<!-- ══ OVERVIEW ══ -->
+<div id="tab-overview" class="sec on">
+  <div class="g4">
+    <div class="mcard"><div class="mlabel" id="t-m1l">Pilot Funding</div><div class="mval ac">€1.5M</div><div class="msub" id="t-m1s">DTIF + Clare CC</div></div>
+    <div class="mcard"><div class="mlabel" id="t-m2l">Market Size</div><div class="mval">445k</div><div class="msub" id="t-m2s">hard-to-treat homes</div></div>
+    <div class="mcard"><div class="mlabel" id="t-m3l">Install Cost</div><div class="mval tl">€3–6k</div><div class="msub" id="t-m3s">vs €49.6k deep retrofit</div></div>
+    <div class="mcard"><div class="mlabel" id="t-m4l">Jobs Created</div><div class="mval bl">50k+</div><div class="msub" id="t-m4s">by Phase 4</div></div>
+  </div>
+
+  <div class="card al" style="margin-bottom:16px">
+    <div class="st" id="t-prob-title">The Problem — Ireland's Retrofit Crisis</div>
+    <div class="prose" id="t-prob-body">
+      <p>Ireland has a legally binding commitment: cut GHG emissions <strong>51% by 2030</strong>. Current trajectory: ~29%. The gap lives almost entirely in residential heating — <strong>500,000 homes need to be decarbonised by 2030.</strong> We've completed 55,000.</p>
+      <p>The conventional prescription — deep retrofit at €49,600 per home — is structurally impossible for roughly <strong>30% of Irish housing stock</strong>. Pre-1940s solid-wall stone construction has no cavity to fill. Heat pumps require low-temperature radiators these homes don't have.</p>
+      <p>Only 12% of Irish households say they would try hydrogen heating, despite 53% wanting to change their heating system. <strong>The market exists — the demonstration is missing.</strong></p>
+    </div>
+    <div class="g2" style="margin-top:14px;margin-bottom:0">
+      <div>
+        <div class="row"><span class="rk" id="t-r1k">Retrofit target 2030</span><span class="rv">500,000</span></div>
+        <div class="row"><span class="rk" id="t-r2k">Completed to date</span><span class="rv">55,000</span></div>
+        <div class="row"><span class="rk" id="t-r3k">Hard-to-treat (no solution)</span><span class="rv gl">~30%</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="rk" id="t-r4k">Deep retrofit cost / home</span><span class="rv gl">€49,600</span></div>
+        <div class="row"><span class="rk" id="t-r5k">Total market without H₂</span><span class="rv gl">€22B</span></div>
+        <div class="row"><span class="rk" id="t-r6k">EU fines if targets missed</span><span class="rv rd">€8B+</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card tl" style="margin-bottom:16px">
+    <div class="st" id="t-sol-title">The Solution — Drop-In H₂ Technology</div>
+    <div class="prose" id="t-sol-body">
+      <p>The H₂-ready boiler replaces only the gas burner — fitting existing radiators, pipework, thermostat, and zone controls without modification. <strong>Zero structural changes. Installed in one day. Cost: €3,000–6,000.</strong></p>
+      <p>Fuel: green hydrogen produced from curtailed wind electricity at ~€0.01/kWh. Production cost: <strong>€1.5–2.5/kg versus €6–10/kg from grid electricity</strong> — a 4–6× cost advantage unique to Ireland's wind surplus. Only water vapour emitted.</p>
+    </div>
+    <div class="g2" style="margin-top:14px;margin-bottom:0">
+      <div>
+        <div class="row"><span class="rk" id="t-s1k">Installation cost</span><span class="rv tl">€3,000–6,000</span></div>
+        <div class="row"><span class="rk" id="t-s2k">Installation time</span><span class="rv tl" id="t-s2v">1 day</span></div>
+        <div class="row"><span class="rk" id="t-s3k">Structural changes</span><span class="rv tl" id="t-s3v">Zero</span></div>
+      </div>
+      <div>
+        <div class="row"><span class="rk" id="t-s4k">Boiler efficiency</span><span class="rv">98%</span></div>
+        <div class="row"><span class="rk" id="t-s5k">H₂ cost (curtailed wind)</span><span class="rv tl">€1.5–2.5/kg</span></div>
+        <div class="row"><span class="rk" id="t-s6k">H₂ cost (grid electricity)</span><span class="rv gl">€6–10/kg</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="st" id="t-loop-title">Circular Economy Loop</div>
+    <div style="display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin-bottom:14px">
+      <span class="tag t" id="t-tag1">Wind 2.1 TWh</span><span style="color:var(--ink3)">→</span>
+      <span class="tag b" id="t-tag2">Electrolysis</span><span style="color:var(--ink3)">→</span>
+      <span class="tag t" id="t-tag3">Green H₂</span><span style="color:var(--ink3)">→</span>
+      <span class="tag t" id="t-tag4">Home Heat</span><span style="color:var(--ink3)">→</span>
+      <span class="tag a" id="t-tag5">Farm Subsidies</span><span style="color:var(--ink3)">→</span>
+      <span class="tag t" id="t-tag6">Forests + SAC</span><span style="color:var(--ink3)">→</span>
+      <span class="tag b" id="t-tag7">Clean Water</span><span style="color:var(--ink3)">→</span>
+      <span class="tag g" id="t-tag8">Health Savings</span><span style="color:var(--ink3)" id="t-reinvest">→ reinvest →</span>
+    </div>
+    <div class="prose" id="t-loop-body">
+      <p>Curtailed wind at ~€0.01/kWh produces H₂ at €1.5–2.5/kg. Sold at €4–6/kg, each kilogram generates €2–4 margin. That margin funds the <strong>20% Covenant</strong>: farmers receive €12–18k/yr to voluntarily reduce herd by 20% over 10 years, plant native forest, accumulate carbon credits from Year 5.</p>
+      <p>Forest buffer zones reduce nitrogen runoff — cutting Ireland's €1B+/yr water remediation bill. <strong>Money stops leaving Ireland. Entropy decreases. The system self-sustains after Year 3.</strong></p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px;border-color:var(--teal)">
+    <div class="st" id="t-builds-title">What €750k Actually Builds</div>
+    <div class="g4" style="margin-bottom:0">
+      <div style="text-align:center;padding:14px;background:rgba(13,122,95,0.06);border-radius:3px"><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--teal)">50</div><div style="font-size:11px;color:var(--ink3);margin-top:4px" id="t-b1">homes decarbonised</div></div>
+      <div style="text-align:center;padding:14px;background:rgba(13,122,95,0.06);border-radius:3px"><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--teal)">400+</div><div style="font-size:11px;color:var(--ink3);margin-top:4px" id="t-b2">MWh/yr captured</div></div>
+      <div style="text-align:center;padding:14px;background:rgba(13,122,95,0.06);border-radius:3px"><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--teal)">120t</div><div style="font-size:11px;color:var(--ink3);margin-top:4px" id="t-b3">CO₂/yr avoided</div></div>
+      <div style="text-align:center;padding:14px;background:rgba(13,122,95,0.06);border-radius:3px"><div style="font-family:'Space Mono',monospace;font-size:28px;font-weight:700;color:var(--teal)">€95k</div><div style="font-size:11px;color:var(--ink3);margin-top:4px" id="t-b4">revenue/year</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="st" id="t-risks-title">Key Risks — We Are Transparent</div>
+    <div class="hbox gl" id="t-risk1"><strong>⚡ Energy access not guaranteed</strong> — curtailment volumes depend on EirGrid grid conditions. Mitigated via bilateral wind operator agreements.</div>
+    <div class="hbox gl" id="t-risk2"><strong>📋 Hydrogen storage permitting</strong> — COMAH regulations apply. Phase 1 uses sub-threshold scale while pre-application proceeds.</div>
+    <div class="hbox gl" id="t-risk3"><strong>📊 CAPEX sensitivity</strong> — electrolyser costs subject to supply chain variability. Phase 1 uses fixed-price contracts with 30% contingency.</div>
+  </div>
+</div>
+
+<!-- ══ CALCULATOR ══ -->
+<div id="tab-calc" class="sec">
+  <div class="calc-hero">
+    <div class="ch-label" id="t-calc-label">Green Hydrogen Cost Calculator</div>
+    <div class="ch-title" id="t-calc-title">What does <span>H₂ cost</span> to produce?</div>
+    <div class="ch-sub" id="t-calc-sub">Enter the electricity price — get the real production cost of green hydrogen</div>
+    <div class="calc-grid">
+      <div>
+        <div class="inp-lbl" id="t-elec-lbl">Electricity price (€/kWh)</div>
+        <div class="big-row">
+          <input type="number" class="big-inp" id="elec-price" value="0.065" step="0.005" min="0.001" max="0.5" oninput="calcH2()">
+          <span class="big-unit">€ / kWh</span>
+        </div>
+        <div class="preset-btns">
+          <button class="pb" onclick="setElec(0.01)" id="t-pb1">Curtailed €0.01</button>
+          <button class="pb" onclick="setElec(0.05)" id="t-pb2">Wind PPA €0.05</button>
+          <button class="pb" onclick="setElec(0.12)" id="t-pb3">Market €0.12</button>
+          <button class="pb" onclick="setElec(0.27)" id="t-pb4">Irish retail €0.27</button>
+        </div>
+      </div>
+      <div>
+        <div class="inp-lbl" id="t-eff-lbl">Electrolyser efficiency (kWh per kg H₂)</div>
+        <div class="rng-row">
+          <input type="range" min="40" max="65" step="1" value="52" id="eff" oninput="calcH2()">
+          <span class="rng-val" id="eff-v">52 kWh/kg</span>
+        </div>
+        <div class="inp-lbl" style="margin-top:6px" id="t-cap-lbl">CAPEX + O&M + compression (€/kg)</div>
+        <div class="rng-row">
+          <input type="range" min="0.2" max="3" step="0.1" value="0.8" id="capex-add" oninput="calcH2()">
+          <span class="rng-val" id="capex-v">€0.80/kg</span>
+        </div>
+      </div>
+    </div>
+    <div class="result-box">
+      <div class="result-lbl" id="t-res-lbl">Green Hydrogen Production Cost</div>
+      <div style="display:flex;align-items:baseline;flex-wrap:wrap;gap:6px">
+        <div class="result-price" id="h2-price">—</div>
+        <div class="result-unit" id="t-res-unit">€ / kg H₂</div>
+      </div>
+      <div class="result-vs" id="h2-vs"></div>
+    </div>
+    <div class="breakdown-grid" id="h2-breakdown"></div>
+  </div>
+
+  <div class="card" style="margin-bottom:16px">
+    <div class="st" id="t-proj-title">Project Economics — Phase 1 Pilot</div>
+    <div class="scen-tabs">
+      <button class="stab on" onclick="setScen('base',this)" id="t-scen-base">Base Case</button>
+      <button class="stab" onclick="setScen('opt',this)" id="t-scen-opt">Optimistic</button>
+      <button class="stab" onclick="setScen('cons',this)" id="t-scen-cons">Conservative</button>
+    </div>
+    <div class="g2">
+      <div>
+        <div class="st" id="t-params">Parameters</div>
+        <div class="slr"><div class="slr-top"><span id="t-si1">Investment (€M)</span><span id="sv-inv">€5M</span></div><input type="range" min="1" max="20" step="0.5" value="5" id="si-inv" oninput="recalcProj()"></div>
+        <div class="slr"><div class="slr-top"><span id="t-si2">H₂ output (t/yr)</span><span id="sv-h2">300t</span></div><input type="range" min="50" max="2000" step="50" value="300" id="si-h2" oninput="recalcProj()"></div>
+        <div class="slr"><div class="slr-top"><span id="t-si3">H₂ sale price (€/kg)</span><span id="sv-px">€6.5/kg</span></div><input type="range" min="3" max="10" step="0.25" value="6.5" id="si-px" oninput="recalcProj()"></div>
+        <div class="slr"><div class="slr-top"><span id="t-si4">Discount rate (%)</span><span id="sv-disc">8%</span></div><input type="range" min="3" max="15" step="1" value="8" id="si-disc" oninput="recalcProj()"></div>
+      </div>
+      <div>
+        <div class="st" id="t-results">Results</div>
+        <div id="proj-results"></div>
+        <div class="ch-wrap"><canvas id="projChart"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="st" id="t-assume">Model Assumptions</div>
+    <div class="row"><span class="rk" id="t-a1k">Electrolyser type</span><span class="rv" id="t-a1v">PEM, system-level</span></div>
+    <div class="row"><span class="rk" id="t-a2k">Energy demand range</span><span class="rv">47–54 kWh/kg H₂</span></div>
+    <div class="row"><span class="rk" id="t-a3k">Curtailed wind cost</span><span class="rv tl">~€0.01–0.08/kWh</span></div>
+    <div class="row"><span class="rk" id="t-a4k">Compression & storage</span><span class="rv">€0.35–0.50/kg</span></div>
+    <div class="row"><span class="rk" id="t-a5k">Annual O&M</span><span class="rv">2.5–3.5% of CAPEX</span></div>
+    <div class="row"><span class="rk" id="t-a6k">Irish retail electricity</span><span class="rv gl">€0.27/kWh avg</span></div>
+    <div class="row"><span class="rk" id="t-a7k">H₂ market price (retail)</span><span class="rv gl">€6–10/kg</span></div>
+  </div>
+</div>
+
+<!-- ══ TIMELINE ══ -->
+<div id="tab-timeline" class="sec">
+  <div class="g2">
+    <div class="card">
+      <div class="st" id="t-phases">Phase Roadmap</div>
+      <div class="tl">
+        <div class="tli"><div class="tldot" style="color:var(--blue)"></div><div class="tlyear" style="color:var(--blue)" id="t-ph1y">Phase 1 · 2025–2027</div><div class="tltitle" id="t-ph1t">Clare Pilot</div><div class="tltext" id="t-ph1b">5–10 social homes · gas network integration · 12-month performance data · DTIF €1.5M · Ballyallia Lake SAC baseline</div></div>
+        <div class="tli"><div class="tldot" style="color:var(--teal)"></div><div class="tlyear" style="color:var(--teal)" id="t-ph2y">Phase 2 · 2027–2030</div><div class="tltitle" id="t-ph2t">Scale Clare</div><div class="tltext" id="t-ph2b">Electrolyser self-funded €21M/yr · first H₂ delivery Moneypoint 2028 · ESB contract 2029 · 20% Covenant launches</div></div>
+        <div class="tli"><div class="tldot" style="color:var(--gold)"></div><div class="tlyear" style="color:var(--gold)" id="t-ph3y">Phase 3 · 2030–2035</div><div class="tltitle" id="t-ph3t">National Template</div><div class="tltext" id="t-ph3b">First 100% H₂ residential districts · Clare → national model · H₂ export via Shannon deepwater port</div></div>
+        <div class="tli"><div class="tldot" style="color:var(--accent)"></div><div class="tlyear" style="color:var(--accent)" id="t-ph4y">Phase 4 · 2035–2045</div><div class="tltitle" id="t-ph4t">Energy Independence</div><div class="tltext" id="t-ph4b">Ireland H₂ exporter · 2M ha native woodland · SACs restored · 50k+ jobs · €5B+ annual H₂ export revenue</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="st" id="t-ms">Key Milestones</div>
+      <div class="row"><span class="rk" id="t-ms1">Clare pilot starts</span><span class="rv bl">2026</span></div>
+      <div class="row"><span class="rk" id="t-ms2">Electrolyser self-funded</span><span class="rv bl">2027</span></div>
+      <div class="row"><span class="rk" id="t-ms3">First Moneypoint delivery</span><span class="rv tl">2028</span></div>
+      <div class="row"><span class="rk" id="t-ms4">ESB contract confirmed</span><span class="rv tl">2029</span></div>
+      <div class="row"><span class="rk" id="t-ms5">20% H₂ grid blending</span><span class="rv gl">2028</span></div>
+      <div class="row"><span class="rk" id="t-ms6">First 100% H₂ district</span><span class="rv gl">2030s</span></div>
+      <div class="row"><span class="rk" id="t-ms7">2M ha native woodland</span><span class="rv tl">2045</span></div>
+      <div class="row"><span class="rk" id="t-ms8">€5B+ H₂ export revenue</span><span class="rv ac">2040s</span></div>
+      <div class="ch-wrap" style="height:170px"><canvas id="tlChart"></canvas></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:0">
+    <div class="st" id="t-mp-title">Moneypoint — The 2029 Window</div>
+    <div class="prose" id="t-mp-body"><p>Moneypoint (Kilrush, Co. Clare) stopped burning coal in June 2025. ESB needs a domestic H₂ supplier confirmed before 2029. Our curtailed wind revenues accumulate <span class="tag t">€21M/yr</span> — <span class="tag t">€63M over 3 years</span> self-funds a commercial electrolyser at Shannon. First delivery: <span class="tag b">2028</span>. <strong>We solve ESB's supplier problem. This is collaboration, not competition.</strong></p></div>
+  </div>
+  <div class="card" style="margin-top:16px">
+    <div class="st" id="t-cov-title">The 20% Covenant — Voluntary Farmer Transition</div>
+    <div class="prose" id="t-cov-body"><p>The 20% Covenant succeeds because <strong>it is voluntary, verifiable, and profitable.</strong> Farmers commit to 20% livestock reduction over 10 years in exchange for <span class="tag t">€12,000–18,000/yr</span> H₂ transition subsidy plus carbon credits from Year 5. ICBF verifies via ear-tag data. No one loses income. No one is coerced.</p></div>
+  </div>
+</div>
+
+<!-- ══ MARKET ══ -->
+<div id="tab-market" class="sec">
+  <div class="g3">
+    <div class="mcard"><div class="mlabel" id="t-mk1l">Curtailed Wind 2025</div><div class="mval gl">2.1 TWh</div><div class="msub" id="t-mk1s">wasted annually</div></div>
+    <div class="mcard"><div class="mlabel" id="t-mk2l">Offshore Wind Potential</div><div class="mval bl">254 GW</div><div class="msub" id="t-mk2s">SEAI estimate</div></div>
+    <div class="mcard"><div class="mlabel" id="t-mk3l">H₂ Export by 2035</div><div class="mval tl">5 GW</div><div class="msub" id="t-mk3s">from offshore wind</div></div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <div class="st" id="t-absurd-title">The Thermodynamic Absurdity</div>
+    <div class="prose" id="t-absurd-body"><p>Ireland sits in the Atlantic wind corridor. <strong>Yet Ireland imports ~70% of its energy and spends €8B+ annually on fossil fuels.</strong> Surplus wind is curtailed — while Ireland simultaneously imports expensive gas. <span class="tag g">2.1 TWh wasted in 2025</span> = enough to power County Dublin for a year. <strong>Double the cost. Zero the benefit.</strong></p></div>
+  </div>
+  <div class="g2" style="margin-bottom:16px">
+    <div class="card">
+      <div class="st" id="t-ifa-title">IFA €0.05 Mechanism</div>
+      <div class="row"><span class="rk" id="t-ifa1">Market price / kWh</span><span class="rv">€0.27</span></div>
+      <div class="row"><span class="rk" id="t-ifa2">IFA curtailed price</span><span class="rv tl">€0.05</span></div>
+      <div class="row"><span class="rk" id="t-ifa3">Farmer savings / kWh</span><span class="rv tl">€0.22</span></div>
+      <div class="row"><span class="rk" id="t-ifa4">H₂ fund levy</span><span class="rv">€0.01/kWh</span></div>
+      <div class="row"><span class="rk" id="t-ifa5">PSO Levy annual pool</span><span class="rv">€37.5M</span></div>
+      <div class="row"><span class="rk" id="t-ifa6">Pilot — 4% redirect</span><span class="rv tl">€1.5M</span></div>
+      <div class="hbox tl" style="margin-top:10px;margin-bottom:0" id="t-ifa-note">Three outcomes from one price signal. <strong>Zero new taxes. Zero government budget.</strong></div>
+    </div>
+    <div class="card">
+      <div class="st" id="t-fund-title">H₂ Fund Accumulation</div>
+      <div class="row"><span class="rk" id="t-f1">Curtailed revenue / yr</span><span class="rv tl">€21M/yr</span></div>
+      <div class="row"><span class="rk" id="t-f2">Self-funded in 3 years</span><span class="rv tl">€63M</span></div>
+      <div class="row"><span class="rk" id="t-f3">Farmer transition subsidy</span><span class="rv">€12–18k/yr</span></div>
+      <div class="row"><span class="rk" id="t-f4">Moneypoint capacity</span><span class="rv">915 MW</span></div>
+      <div class="row"><span class="rk" id="t-f5">ESB decision deadline</span><span class="rv gl">2029</span></div>
+      <div class="row"><span class="rk" id="t-f6">First H₂ delivery</span><span class="rv tl">2028</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;flex-wrap:wrap;gap:8px"><span class="rk" id="t-inv-k">H₂ Pilot investment</span><span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--teal)" id="t-inv-v">€1.5M → multiple ROI</span></div>
+    <div style="height:1px;background:var(--border)"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;flex-wrap:wrap;gap:8px"><span class="rk" style="color:var(--accent)" id="t-fine-k">EU fines if 2030 targets missed</span><span style="font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--accent)">€8B+ — pure loss</span></div>
+    <div class="hbox rd" style="margin-bottom:0" id="t-fine-note">The choice is binary: <strong>pay €8B+ permanently with zero asset created</strong> — or invest €1.5M and build a self-sustaining H₂ economy.</div>
+  </div>
+  <div class="st" id="t-cmp-title">Solution Comparison — Hard-to-Treat Homes</div>
+  <div class="g4" style="margin-bottom:16px">
+    <div class="ccard best"><div class="cbest" id="t-c1b">✓ Recommended</div><div class="cname">H₂ Drop-In</div><div class="cprice" style="color:var(--teal)">€3–6k</div><div class="cbar-bg"><div class="cbar" style="width:12%;background:var(--teal)"></div></div><div class="clist" id="t-c1l">✓ 1-day install<br>✓ No structural changes<br>✓ Solid stone walls OK<br>✓ Zero emissions (H₂O)<br>✓ Existing radiators OK<br>✓ Curtailed wind fuel</div></div>
+    <div class="ccard"><div class="cname">Heat Pump</div><div class="cprice" style="color:var(--gold)">€12k+</div><div class="cbar-bg"><div class="cbar" style="width:35%;background:var(--gold)"></div></div><div class="clist" id="t-c2l">✗ New radiators needed<br>✗ Wall insulation first<br>✗ Solid walls — fail<br>~ Good for new builds<br>~ COP 2–4×<br>~ Grid electricity</div></div>
+    <div class="ccard"><div class="cname">Solar PV</div><div class="cprice" style="color:var(--gold)">€8k</div><div class="cbar-bg"><div class="cbar" style="width:24%;background:var(--gold)"></div></div><div class="clist" id="t-c3l">✗ Low solar yield (IE)<br>✗ Electricity not heat<br>✗ South roof required<br>~ H₂ complement<br>~ Battery adds cost<br>~ No boiler replacement</div></div>
+    <div class="ccard"><div class="cname">Deep Retrofit</div><div class="cprice" style="color:var(--accent)">€49.6k</div><div class="cbar-bg"><div class="cbar" style="width:100%;background:var(--accent)"></div></div><div class="clist" id="t-c4l">✗ Unaffordable for most<br>✗ Months of works<br>✗ Solid walls — fail<br>✗ Misses 30% of homes<br>~ Max efficiency<br>~ SEAI grants partial</div></div>
+  </div>
+</div>
+
+<!-- ══ PROTOTYPE ══ -->
+<div id="tab-proto" class="sec">
+  <div class="card">
+    <div class="live-badge" id="t-proto-badge">Early-Stage Prototype</div>
+    <div class="proto-wrap">
+      <div><div class="vid-frame"><iframe src="https://www.youtube.com/embed/dZAJy4WKacs" title="H₂-Retrofit Ireland Prototype" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+      <div>
+        <div class="st" id="t-proto-title">Prototype Demonstration</div>
+        <div class="prose" id="t-proto-body">
+          <p>This video shows a small-scale hydrogen demonstration system based on electrolysis. Electricity is applied to water, splitting it into hydrogen and oxygen gases. The generated hydrogen is then collected and released — validating the core principle at bench scale.</p>
+          <p>This is an early-stage prototype designed to validate the concept. The goal is to scale this system into a practical solution for storing excess renewable energy from wind power, converting it into usable hydrogen for home heating.</p>
+          <p><strong>Full-scale deployment targets County Clare, integrating with EirGrid curtailed wind generation.</strong></p>
+        </div>
+        <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:5px" id="t-proto-tags">
+          <span class="tag t">Electrolysis</span><span class="tag t">Green Hydrogen</span><span class="tag b">Concept Validation</span><span class="tag a">Early Stage</span><span class="tag t">Wind Energy Storage</span>
+        </div>
+        <div class="hbox tl" style="margin-top:16px" id="t-proto-note"><strong>What this proves:</strong> The core electrolysis principle works. Water + electricity = hydrogen. The same physics scales to MW-class industrial PEM electrolysers. The technology is commercially available today.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ANALYTICS ══ -->
+<div id="tab-analytics" class="sec">
+  <div class="g4" style="margin-bottom:20px">
+    <div class="mcard"><div class="mlabel" id="t-an1l">Curtailed Wind</div><div class="mval ac">2.1 TWh</div><div class="msub" id="t-an1s">wasted/year in Ireland</div></div>
+    <div class="mcard"><div class="mlabel" id="t-an2l">H₂ Cost (wind)</div><div class="mval tl">€1.5–2.5/kg</div><div class="msub" id="t-an2s">from curtailed source</div></div>
+    <div class="mcard"><div class="mlabel" id="t-an3l">Phase 1 Homes</div><div class="mval">50</div><div class="msub" id="t-an3s">County Clare pilot</div></div>
+    <div class="mcard"><div class="mlabel" id="t-an4l">CO₂ Avoided</div><div class="mval tl">120t</div><div class="msub" id="t-an4s">per year vs gas</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="st" id="t-ef-title">Energy Flows</div>
+      <div class="row"><span class="rk" id="t-ef1">Wind input (curtailed)</span><span class="rv tl">400+ MWh/yr</span></div>
+      <div class="row"><span class="rk" id="t-ef2">Electrolyser efficiency</span><span class="rv">60–70%</span></div>
+      <div class="row"><span class="rk" id="t-ef3">Heat recovered (WHR)</span><span class="rv tl">20–30% of input</span></div>
+      <div class="row"><span class="rk" id="t-ef4">H₂ delivered to homes</span><span class="rv" id="t-ef4v">heating + backup</span></div>
+      <div class="row"><span class="rk" id="t-ef5">Heat to greenhouse</span><span class="rv tl" id="t-ef5v">year-round</span></div>
+    </div>
+    <div class="card">
+      <div class="st" id="t-rev-title">Revenue Breakdown</div>
+      <div class="row"><span class="rk" id="t-rv1">H₂ sales (homes)</span><span class="rv tl">€4–6/kg</span></div>
+      <div class="row"><span class="rk" id="t-rv2">Thermal energy (agro)</span><span class="rv tl" id="t-rv2v">secondary stream</span></div>
+      <div class="row"><span class="rk" id="t-rv3">Grid balancing (DS3/FFR)</span><span class="rv bl" id="t-rv3v">flexibility</span></div>
+      <div class="row"><span class="rk" id="t-rv4">Annual revenue target</span><span class="rv tl">€95k/yr</span></div>
+      <div class="row"><span class="rk" id="t-rv5">Payback (base case)</span><span class="rv gl">7–10 yr</span></div>
+    </div>
+  </div>
+  <div class="card" style="margin-top:0">
+    <div class="st" id="t-pt-title">Phase Targets</div>
+    <div class="row"><span class="rk" id="t-pt1">Phase 1 (2025–27)</span><span class="rv bl">€1.5M · 50 homes</span></div>
+    <div class="row"><span class="rk" id="t-pt2">Phase 2 (2027–30)</span><span class="rv tl">€21M/yr self-funded</span></div>
+    <div class="row"><span class="rk" id="t-pt3">Moneypoint H₂ delivery</span><span class="rv tl">2028</span></div>
+    <div class="row"><span class="rk" id="t-pt4">ESB contract deadline</span><span class="rv gl">2029</span></div>
+    <div class="row"><span class="rk" id="t-pt5">Phase 3 (2030–35)</span><span class="rv" id="t-pt5v">100% H₂ districts</span></div>
+    <div class="row"><span class="rk" id="t-pt6">Phase 4 (2035–45)</span><span class="rv tl">50k+ jobs · €5B+/yr</span></div>
+    <div class="ch-wrap"><canvas id="analyticsChart"></canvas></div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div id="tab-contact" class="sec">
+  <div class="g2">
+    <div class="card">
+      <div class="st" id="t-ct-title">Project Contacts</div>
+      <div class="row"><span class="rk" id="t-ct1k">Project Lead</span><span class="rv">Juri Ptitsin</span></div>
+      <div class="row"><span class="rk" id="t-ct2k">Phone / WhatsApp</span><span class="rv">+353 86 244 5827</span></div>
+      <div class="row"><span class="rk" id="t-ct3k">Institution</span><span class="rv">UCC</span></div>
+      <div class="row"><span class="rk" id="t-ct4k">Funding Target</span><span class="rv">DTIF €1.5M+ · SEAI</span></div>
+      <div class="row"><span class="rk" id="t-ct5k">Pilot Site</span><span class="rv">Ballyallia Lake SAC 000014</span></div>
+      <div style="margin-top:16px;padding:16px;background:rgba(200,75,31,0.04);border:1.5px solid rgba(200,75,31,0.2);border-radius:4px">
+        <div style="font-size:20px;font-weight:900;letter-spacing:-.5px;margin-bottom:2px">Juri Ptitsin</div>
+        <div style="font-family:'Space Mono',monospace;font-size:10px;color:var(--ink3);letter-spacing:.06em;text-transform:uppercase" id="t-ct-role">Project Lead · H₂-Retrofit Ireland</div>
+        <div style="font-size:12px;color:var(--ink3);margin-top:8px" id="t-ct-note">Developed independently as a working prototype for pilot evaluation.</div>
+      </div>
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <a href="tel:+353862445827" class="clink">📞 +353 86 244 5827</a>
+        <a href="mailto:juri.ptitsin@student.ucc.ie?subject=H2-Retrofit%20Enquiry" class="clink">✉ Email</a>
+      </div>
+      <div class="card" style="margin-top:14px;background:var(--bg2)">
+        <div class="st" id="t-why-title">Why Invest Now</div>
+        <div class="prose" style="font-size:13px" id="t-why-body"><p><strong>First-mover window closes 2029</strong> — ESB needs a supplier confirmed before their Moneypoint deadline. DTIF funding round is open. PSO Levy redirect requires only a ministerial decision. <strong>Infrastructure, policy window, and market deadline all align in 2025–2027.</strong></p></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="st" id="t-form-title">Investor Enquiry</div>
+      <input class="inp-c" type="text" id="t-f-name" placeholder="Full name">
+      <input class="inp-c" type="email" id="t-f-email" placeholder="Email address">
+      <select class="inp-c" id="t-f-select">
+        <option id="t-fo0">Area of interest...</option>
+        <option id="t-fo1">Strategic investor</option>
+        <option id="t-fo2">Government / policy</option>
+        <option id="t-fo3">Research / academia</option>
+        <option id="t-fo4">Media / press</option>
+      </select>
+      <textarea class="inp-c" id="t-f-msg" placeholder="Message or questions..."></textarea>
+      <button class="btn" id="t-f-btn" onclick="this.textContent=curLang==='ru'?'Отправлено ✓':'Sent ✓';this.style.background='var(--teal)'">Send Enquiry</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INVESTOR RISK ══ -->
+<div id="tab-investor" class="sec">
+  <div class="card rl">
+    <div class="st" style="color:var(--accent);border-color:rgba(200,75,31,0.25)" id="t-inv-title">Critical Investor Risk Analysis</div>
+    <p style="font-size:13px;color:var(--ink2);margin-bottom:20px" id="t-inv-sub">Independent risk assessment — West of Ireland, 50 homes + 1 ha greenhouse</p>
+    <div class="st" id="t-top5">Top 5 Risks</div>
+    <div class="risk-item"><div class="risk-title" id="t-rsk1t">1. Feedstock is not a resource — it's a scheduling problem</div><div class="risk-body" id="t-rsk1b">Curtailment is managed by EirGrid through constraint payments. You need signed offtake agreements with wind operators. As Ireland adds interconnectors, curtailment drops — your cheapest input disappears.</div></div>
+    <div class="risk-item"><div class="risk-title" id="t-rsk2t">2. Hydrogen storage near homes will not get planning permission easily</div><div class="risk-body" id="t-rsk2b">Compressed hydrogen above certain thresholds is a major hazard under COMAH regulations. No Irish local authority has approved a residential-adjacent hydrogen storage facility.</div></div>
+    <div class="risk-item"><div class="risk-title" id="t-rsk3t">3. District heating CAPEX is the invisible killer</div><div class="risk-body" id="t-rsk3b">Delivering heat to 50 dispersed rural homes requires insulated piping, heat exchangers, controls, and metering. Cost: €1.5M–€3M before buying a single electrolyzer.</div></div>
+    <div class="risk-item"><div class="risk-title" id="t-rsk4t">4. Three revenue streams that conflict with each other</div><div class="risk-body" id="t-rsk4b">Heat supply needs continuous output. Grid balancing needs dispatchable response. Greenhouse needs sustained low-grade heat. A curtailment-fed electrolyzer cannot optimise for all three simultaneously.</div></div>
+    <div class="risk-item"><div class="risk-title" id="t-rsk5t">5. 50 homes is a demonstration priced as a business</div><div class="risk-body" id="t-rsk5b">Electrolysis economics only work at multi-MW scale. At pilot scale, CAPEX per delivered kWh is 5–10× more expensive than a heat pump.</div></div>
+    <div class="hbox rd" style="margin-top:16px" id="t-bottom-line"><strong>Bottom line:</strong> Technically interesting concept on unvalidated assumptions. Spend €50K–€100K on feasibility first — real vendor quotes, site studies, planning pre-application — before asking for serious capital.</div>
+  </div>
+</div>
+
+</div>
+<script>
+// ═══════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════
+const TR={
+en:{
+  location:'County Clare · Ireland · 2025–2045',
+  sub:'Green Hydrogen from Curtailed Wind · Drop-In Home Decarbonisation · Investor Platform',
+  pills:['Drop-In Tech','Curtailed Wind','Circular Economy','Clare Pilot'],
+  nav:['Overview','H₂ Calculator','Timeline','Market','Prototype','Analytics','Contact','⚠ Risk Analysis'],
+  m1l:'Pilot Funding',m1s:'DTIF + Clare CC',m2l:'Market Size',m2s:'hard-to-treat homes',m3l:'Install Cost',m3s:'vs €49.6k deep retrofit',m4l:'Jobs Created',m4s:'by Phase 4',
+  'prob-title':"The Problem — Ireland's Retrofit Crisis",
+  'prob-body':'<p>Ireland has a legally binding commitment: cut GHG emissions <strong>51% by 2030</strong>. Current trajectory: ~29%. <strong>500,000 homes need to be decarbonised by 2030.</strong> We\'ve completed 55,000.</p><p>Deep retrofit at €49,600 per home is structurally impossible for roughly <strong>30% of Irish housing stock</strong>. Pre-1940s solid-wall stone construction has no cavity to fill. Heat pumps require low-temperature radiators these homes don\'t have.</p><p>Only 12% of Irish households say they would try hydrogen heating, despite 53% wanting to change. <strong>The market exists — the demonstration is missing.</strong></p>',
+  r1k:'Retrofit target 2030',r2k:'Completed to date',r3k:'Hard-to-treat (no solution)',r4k:'Deep retrofit cost / home',r5k:'Total market without H₂',r6k:'EU fines if targets missed',
+  'sol-title':'The Solution — Drop-In H₂ Technology',
+  'sol-body':'<p>The H₂-ready boiler replaces only the gas burner — fitting existing radiators, pipework, thermostat, and zone controls. <strong>Zero structural changes. Installed in one day. Cost: €3,000–6,000.</strong></p><p>Fuel: green hydrogen from curtailed wind at ~€0.01/kWh. Production cost: <strong>€1.5–2.5/kg versus €6–10/kg from grid electricity</strong> — a 4–6× cost advantage. Only water vapour emitted.</p>',
+  s1k:'Installation cost',s2k:'Installation time',s2v:'1 day',s3k:'Structural changes',s3v:'Zero',s4k:'Boiler efficiency',s5k:'H₂ cost (curtailed wind)',s6k:'H₂ cost (grid electricity)',
+  'loop-title':'Circular Economy Loop',
+  tag1:'Wind 2.1 TWh',tag2:'Electrolysis',tag3:'Green H₂',tag4:'Home Heat',tag5:'Farm Subsidies',tag6:'Forests + SAC',tag7:'Clean Water',tag8:'Health Savings',reinvest:'→ reinvest →',
+  'loop-body':'<p>Curtailed wind at ~€0.01/kWh produces H₂ at €1.5–2.5/kg. Sold at €4–6/kg, each kilogram generates €2–4 margin. That margin funds the <strong>20% Covenant</strong>: farmers receive €12–18k/yr to voluntarily reduce herd by 20%, plant native forest, accumulate carbon credits from Year 5.</p><p>Forest buffer zones reduce nitrogen runoff — cutting Ireland\'s €1B+/yr water remediation bill. <strong>Money stops leaving Ireland. Entropy decreases. The system self-sustains after Year 3.</strong></p>',
+  'builds-title':'What €750k Actually Builds',b1:'homes decarbonised',b2:'MWh/yr captured',b3:'CO₂/yr avoided',b4:'revenue/year',
+  'risks-title':'Key Risks — We Are Transparent',
+  risk1:'<strong>⚡ Energy access not guaranteed</strong> — curtailment volumes depend on EirGrid grid conditions. Mitigated via bilateral wind operator agreements.',
+  risk2:'<strong>📋 Hydrogen storage permitting</strong> — COMAH regulations apply. Phase 1 uses sub-threshold scale while pre-application proceeds.',
+  risk3:'<strong>📊 CAPEX sensitivity</strong> — electrolyser costs subject to supply chain variability. Phase 1 uses fixed-price contracts with 30% contingency.',
+  'calc-label':'Green Hydrogen Cost Calculator',
+  'calc-title':'What does <span>H₂ cost</span> to produce?',
+  'calc-sub':'Enter the electricity price — get the real production cost of green hydrogen',
+  'elec-lbl':'Electricity price (€/kWh)',pb1:'Curtailed €0.01',pb2:'Wind PPA €0.05',pb3:'Market €0.12',pb4:'Irish retail €0.27',
+  'eff-lbl':'Electrolyser efficiency (kWh per kg H₂)','cap-lbl':'CAPEX + O&M + compression (€/kg)',
+  'res-lbl':'Green Hydrogen Production Cost','res-unit':'€ / kg H₂',
+  'proj-title':'Project Economics — Phase 1 Pilot','scen-base':'Base Case','scen-opt':'Optimistic','scen-cons':'Conservative',
+  params:'Parameters',si1:'Investment (€M)',si2:'H₂ output (t/yr)',si3:'H₂ sale price (€/kg)',si4:'Discount rate (%)',results:'Results',
+  assume:'Model Assumptions',a1k:'Electrolyser type',a1v:'PEM, system-level',a2k:'Energy demand range',a3k:'Curtailed wind cost',a4k:'Compression & storage',a5k:'Annual O&M',a6k:'Irish retail electricity',a7k:'H₂ market price (retail)',
+  phases:'Phase Roadmap',ph1y:'Phase 1 · 2025–2027',ph1t:'Clare Pilot',ph1b:'5–10 social homes · gas network integration · 12-month performance data · DTIF €1.5M · Ballyallia Lake SAC baseline',
+  ph2y:'Phase 2 · 2027–2030',ph2t:'Scale Clare',ph2b:'Electrolyser self-funded €21M/yr · first H₂ delivery Moneypoint 2028 · ESB contract 2029 · 20% Covenant launches',
+  ph3y:'Phase 3 · 2030–2035',ph3t:'National Template',ph3b:'First 100% H₂ residential districts · Clare → national model · H₂ export via Shannon deepwater port',
+  ph4y:'Phase 4 · 2035–2045',ph4t:'Energy Independence',ph4b:'Ireland H₂ exporter · 2M ha native woodland · SACs restored · 50k+ jobs · €5B+ annual H₂ export revenue',
+  ms:'Key Milestones',ms1:'Clare pilot starts',ms2:'Electrolyser self-funded',ms3:'First Moneypoint delivery',ms4:'ESB contract confirmed',ms5:'20% H₂ grid blending',ms6:'First 100% H₂ district',ms7:'2M ha native woodland',ms8:'€5B+ H₂ export revenue',
+  'mp-title':'Moneypoint — The 2029 Window',
+  'mp-body':'<p>Moneypoint (Kilrush, Co. Clare) stopped burning coal in June 2025. ESB needs a domestic H₂ supplier confirmed before 2029. Our curtailed wind revenues accumulate <span class="tag t">€21M/yr</span> — <span class="tag t">€63M over 3 years</span> self-funds a commercial electrolyser at Shannon. First delivery: <span class="tag b">2028</span>. <strong>We solve ESB\'s supplier problem. This is collaboration, not competition.</strong></p>',
+  'cov-title':'The 20% Covenant — Voluntary Farmer Transition',
+  'cov-body':'<p>The 20% Covenant succeeds because <strong>it is voluntary, verifiable, and profitable.</strong> Farmers commit to 20% livestock reduction over 10 years in exchange for <span class="tag t">€12,000–18,000/yr</span> H₂ transition subsidy plus carbon credits from Year 5. ICBF verifies via ear-tag data. No one loses income. No one is coerced.</p>',
+  mk1l:'Curtailed Wind 2025',mk1s:'wasted annually',mk2l:'Offshore Wind Potential',mk2s:'SEAI estimate',mk3l:'H₂ Export by 2035',mk3s:'from offshore wind',
+  'absurd-title':'The Thermodynamic Absurdity',
+  'absurd-body':'<p>Ireland sits in the Atlantic wind corridor. <strong>Yet Ireland imports ~70% of its energy and spends €8B+ annually on fossil fuels.</strong> Surplus wind is curtailed while Ireland simultaneously imports expensive gas. <span class="tag g">2.1 TWh wasted in 2025</span> = enough to power County Dublin for a year. <strong>Double the cost. Zero the benefit.</strong></p>',
+  'ifa-title':'IFA €0.05 Mechanism',ifa1:'Market price / kWh',ifa2:'IFA curtailed price',ifa3:'Farmer savings / kWh',ifa4:'H₂ fund levy',ifa5:'PSO Levy annual pool',ifa6:'Pilot — 4% redirect',
+  'ifa-note':'Three outcomes from one price signal. <strong>Zero new taxes. Zero government budget.</strong>',
+  'fund-title':'H₂ Fund Accumulation',f1:'Curtailed revenue / yr',f2:'Self-funded in 3 years',f3:'Farmer transition subsidy',f4:'Moneypoint capacity',f5:'ESB decision deadline',f6:'First H₂ delivery',
+  'inv-k':'H₂ Pilot investment','inv-v':'€1.5M → multiple ROI','fine-k':'EU fines if 2030 targets missed',
+  'fine-note':'The choice is binary: <strong>pay €8B+ permanently with zero asset created</strong> — or invest €1.5M and build a self-sustaining H₂ economy.',
+  'cmp-title':'Solution Comparison — Hard-to-Treat Homes',c1b:'✓ Recommended',
+  c1l:'✓ 1-day install<br>✓ No structural changes<br>✓ Solid stone walls OK<br>✓ Zero emissions (H₂O)<br>✓ Existing radiators OK<br>✓ Curtailed wind fuel',
+  c2l:'✗ New radiators needed<br>✗ Wall insulation first<br>✗ Solid walls — fail<br>~ Good for new builds<br>~ COP 2–4×<br>~ Grid electricity',
+  c3l:'✗ Low solar yield (IE)<br>✗ Electricity not heat<br>✗ South roof required<br>~ H₂ complement<br>~ Battery adds cost<br>~ No boiler replacement',
+  c4l:'✗ Unaffordable for most<br>✗ Months of works<br>✗ Solid walls — fail<br>✗ Misses 30% of homes<br>~ Max efficiency<br>~ SEAI grants partial',
+  'proto-badge':'Early-Stage Prototype','proto-title':'Prototype Demonstration',
+  'proto-body':'<p>This video shows a small-scale hydrogen demonstration system based on electrolysis. Electricity is applied to water, splitting it into hydrogen and oxygen gases. The generated hydrogen is then collected and released — validating the core principle at bench scale.</p><p>This is an early-stage prototype designed to validate the concept. The goal is to scale this system into a practical solution for storing excess renewable energy from wind power, converting it into usable hydrogen for home heating.</p><p><strong>Full-scale deployment targets County Clare, integrating with EirGrid curtailed wind generation.</strong></p>',
+  'proto-note':'<strong>What this proves:</strong> The core electrolysis principle works. Water + electricity = hydrogen. The same physics scales to MW-class industrial PEM electrolysers. The technology is commercially available today.',
+  an1l:'Curtailed Wind',an1s:'wasted/year in Ireland',an2l:'H₂ Cost (wind)',an2s:'from curtailed source',an3l:'Phase 1 Homes',an3s:'County Clare pilot',an4l:'CO₂ Avoided',an4s:'per year vs gas',
+  'ef-title':'Energy Flows',ef1:'Wind input (curtailed)',ef2:'Electrolyser efficiency',ef3:'Heat recovered (WHR)',ef4:'H₂ delivered to homes',ef4v:'heating + backup',ef5:'Heat to greenhouse',ef5v:'year-round',
+  'rev-title':'Revenue Breakdown',rv1:'H₂ sales (homes)',rv2:'Thermal energy (agro)',rv2v:'secondary stream',rv3:'Grid balancing (DS3/FFR)',rv3v:'flexibility',rv4:'Annual revenue target',rv5:'Payback (base case)',
+  'pt-title':'Phase Targets',pt1:'Phase 1 (2025–27)',pt2:'Phase 2 (2027–30)',pt3:'Moneypoint H₂ delivery',pt4:'ESB contract deadline',pt5:'Phase 3 (2030–35)',pt5v:'100% H₂ districts',pt6:'Phase 4 (2035–45)',
+  'ct-title':'Project Contacts',ct1k:'Project Lead',ct2k:'Phone / WhatsApp',ct3k:'Institution',ct4k:'Funding Target',ct5k:'Pilot Site',
+  'ct-role':'Project Lead · H₂-Retrofit Ireland','ct-note':'Developed independently as a working prototype for pilot evaluation.',
+  'why-title':'Why Invest Now',
+  'why-body':'<p><strong>First-mover window closes 2029</strong> — ESB needs a supplier confirmed before their Moneypoint deadline. DTIF funding round is open. PSO Levy redirect requires only a ministerial decision. <strong>Infrastructure, policy window, and market deadline all align in 2025–2027.</strong></p>',
+  'form-title':'Investor Enquiry',fname:'Full name',femail:'Email address',fmsg:'Message or questions...',fbtn:'Send Enquiry',
+  fo0:'Area of interest...',fo1:'Strategic investor',fo2:'Government / policy',fo3:'Research / academia',fo4:'Media / press',
+  'inv-title':'Critical Investor Risk Analysis','inv-sub':'Independent risk assessment — West of Ireland, 50 homes + 1 ha greenhouse',top5:'Top 5 Risks',
+  rsk1t:'1. Feedstock is not a resource — it\'s a scheduling problem',rsk1b:'Curtailment is managed by EirGrid through constraint payments. You need signed offtake agreements with wind operators. As Ireland adds interconnectors, curtailment drops — your cheapest input disappears.',
+  rsk2t:'2. Hydrogen storage near homes will not get planning permission easily',rsk2b:'Compressed hydrogen above certain thresholds is a major hazard under COMAH regulations. No Irish local authority has approved a residential-adjacent hydrogen storage facility.',
+  rsk3t:'3. District heating CAPEX is the invisible killer',rsk3b:'Delivering heat to 50 dispersed rural homes requires insulated piping, heat exchangers, controls, and metering. Cost: €1.5M–€3M before buying a single electrolyzer.',
+  rsk4t:'4. Three revenue streams that conflict with each other',rsk4b:'Heat supply needs continuous output. Grid balancing needs dispatchable response. Greenhouse needs sustained low-grade heat. A curtailment-fed electrolyzer cannot optimise for all three simultaneously.',
+  rsk5t:'5. 50 homes is a demonstration priced as a business',rsk5b:'Electrolysis economics only work at multi-MW scale. At pilot scale, CAPEX per delivered kWh is 5–10× more expensive than a heat pump.',
+  'bottom-line':'<strong>Bottom line:</strong> Technically interesting concept on unvalidated assumptions. Spend €50K–€100K on feasibility first — real vendor quotes, site studies, planning pre-application — before asking for serious capital.',
+  vsText:(tot,grid,adv,e)=>`<strong style="color:#6dd4a8">vs €${grid.toFixed(2)}/kg</strong> from Irish grid electricity`+(tot<grid?` — <strong style="color:#6dd4a8">${adv}× cheaper</strong>`:'')+( e<=0.02?' <span style="color:#e8a060">← curtailed wind advantage</span>':''),
+  bdlbl1:'Electricity cost',bdlbl2:'CAPEX + O&M\n+ compression',bdlbl3:'Total production\ncost H₂',
+  projLabels:['H₂ Revenue','OPEX','Gross Profit','NPV 10yr'],
+  rLabels:['H₂ Revenue','Total OPEX','Gross Profit','NPV (10yr)','IRR','Payback'],yr:'yr',
+  pillData:{
+    dropin:{t:'Drop-In Decarbonisation',b:'The H₂-ready boiler replaces only the gas burner — fitting existing radiators and pipework. <strong>Zero structural changes. One day install. €3,000–6,000.</strong> The only viable decarbonisation pathway for hard-to-treat homes.'},
+    curtailed:{t:'Green Hydrogen from Curtailed Wind',b:'EirGrid pays generators to switch off when wind exceeds grid capacity. In 2025, <strong>2.1 TWh</strong> was wasted. We capture that at near-zero cost and convert it to green hydrogen at <strong>€1.5–2.5/kg</strong> vs €6–10/kg from grid electricity.'},
+    circular:{t:'Circular Economy Loop',b:'H₂ revenues fund the 20% Covenant — farmers reduce livestock, plant woodland, receive <strong>€12–18k/yr</strong> subsidy. Forest buffers reduce nitrogen runoff. Health savings reinvest into new H₂ infrastructure. <strong>The system self-sustains.</strong>'},
+    pilot:{t:'County Clare Pilot Site',b:'Clare is ideal: Moneypoint (915 MW) stopped burning coal June 2025 and needs a domestic H₂ supplier before 2029. <strong>Phase 1 (2025–27):</strong> 5–10 social homes, 12 months performance data. Cost: €1.5M via DTIF.'}
+  }
+},
+ru:{
+  location:'Графство Клэр · Ирландия · 2025–2045',
+  sub:'Зелёный водород из невостребованной ветроэнергии · Котлы замены H₂ · Инвестиционная платформа',
+  pills:['Технология замены','Невост. ветер','Циклическая экономика','Пилот Клэр'],
+  nav:['Обзор','Калькулятор H₂','Хронология','Рынок','Прототип','Аналитика','Контакты','⚠ Анализ рисков'],
+  m1l:'Финансирование пилота',m1s:'DTIF + совет Клэр',m2l:'Размер рынка',m2s:'домов без решения',m3l:'Стоимость установки',m3s:'vs €49.6k глубокий ретрофит',m4l:'Рабочих мест',m4s:'к Фазе 4',
+  'prob-title':'Проблема — кризис декарбонизации жилья в Ирландии',
+  'prob-body':'<p>Ирландия имеет юридически обязывающее обязательство: сократить выбросы ПГ на <strong>51% к 2030 году</strong>. Текущая траектория: ~29%. Разрыв почти полностью в жилищном отоплении — <strong>500 000 домов нужно декарбонизировать к 2030 году.</strong> Выполнено 55 000.</p><p>Традиционное решение — глубокий ретрофит за €49 600 за дом — структурно невозможно примерно для <strong>30% жилого фонда Ирландии</strong>. Дома до 1940-х годов с цельными каменными стенами не имеют полостей. Тепловые насосы требуют низкотемпературных радиаторов, которых в этих домах нет.</p><p>Только 12% ирландских домохозяйств готовы попробовать водородное отопление, хотя 53% хотят его изменить. <strong>Рынок существует — не хватает демонстрации.</strong></p>',
+  r1k:'Цель ретрофита к 2030',r2k:'Выполнено на сегодня',r3k:'Без решения (30%)',r4k:'Стоимость глубокого ретрофита',r5k:'Общий рынок без H₂',r6k:'Штрафы ЕС при срыве целей',
+  'sol-title':'Решение — технология замены на H₂',
+  'sol-body':'<p>Котёл H₂-ready заменяет только газовую горелку — подходит к существующим радиаторам, трубам, термостату без модификаций. <strong>Никаких структурных изменений. Установка за один день. Стоимость: €3 000–6 000.</strong></p><p>Топливо: зелёный водород из невостребованной ветроэнергии (~€0,01/кВтч). Себестоимость: <strong>€1,5–2,5/кг против €6–10/кг из сетевого электричества</strong> — преимущество в 4–6 раз. Выбросов нет.</p>',
+  s1k:'Стоимость установки',s2k:'Время установки',s2v:'1 день',s3k:'Структурные изменения',s3v:'Ноль',s4k:'КПД котла',s5k:'Стоимость H₂ (ветер)',s6k:'Стоимость H₂ (сеть)',
+  'loop-title':'Петля циклической экономики',
+  tag1:'Ветер 2.1 ТВтч',tag2:'Электролиз',tag3:'Зелёный H₂',tag4:'Отопление домов',tag5:'Субсидии фермерам',tag6:'Леса + SAC',tag7:'Чистая вода',tag8:'Экономия здоровья',reinvest:'→ реинвест →',
+  'loop-body':'<p>Невостребованный ветер по ~€0,01/кВтч даёт H₂ по €1,5–2,5/кг. Продаётся по €4–6/кг — маржа €2–4 на кг. Эта маржа финансирует <strong>Завет 20%</strong>: фермеры получают €12–18 тыс./год за добровольное сокращение стада на 20% в течение 10 лет, посадку лесов, углеродные кредиты с 5-го года.</p><p>Лесные буферы снижают вымывание азота — экономя €1 млрд+/год на очистке воды. <strong>Деньги остаются в Ирландии. Энтропия снижается. Система самоокупается после 3-го года.</strong></p>',
+  'builds-title':'Что строит €750 тыс.',b1:'домов декарбонизировано',b2:'МВтч/год уловлено',b3:'тонн CO₂/год избегнуто',b4:'выручки/год',
+  'risks-title':'Ключевые риски — мы прозрачны',
+  risk1:'<strong>⚡ Доступ к энергии не гарантирован</strong> — объёмы ограничений зависят от условий сети EirGrid. Снижается через двусторонние соглашения.',
+  risk2:'<strong>📋 Разрешения на хранение водорода</strong> — применяются нормы COMAH. Фаза 1 использует объёмы ниже пороговых значений.',
+  risk3:'<strong>📊 Чувствительность CAPEX</strong> — стоимость электролизёров зависит от цепочки поставок. Фаза 1 использует контракты с фиксированной ценой и резервом 30%.',
+  'calc-label':'Калькулятор себестоимости зелёного водорода',
+  'calc-title':'Сколько стоит производство <span>H₂</span>?',
+  'calc-sub':'Введите цену электричества — получите реальную себестоимость зелёного водорода',
+  'elec-lbl':'Цена электроэнергии (€/кВтч)',pb1:'Невостр. ветер €0.01',pb2:'Ветер PPA €0.05',pb3:'Рынок €0.12',pb4:'Ирл. розница €0.27',
+  'eff-lbl':'КПД электролизёра (кВтч на кг H₂)','cap-lbl':'CAPEX + О&М + сжатие (€/кг)',
+  'res-lbl':'Себестоимость зелёного водорода','res-unit':'€ / кг H₂',
+  'proj-title':'Экономика проекта — Пилот Фазы 1','scen-base':'Базовый','scen-opt':'Оптимистичный','scen-cons':'Консервативный',
+  params:'Параметры',si1:'Инвестиции (€ млн)',si2:'Производство H₂ (т/год)',si3:'Цена продажи H₂ (€/кг)',si4:'Ставка дисконтирования (%)',results:'Результаты',
+  assume:'Допущения модели',a1k:'Тип электролизёра',a1v:'PEM, системный уровень',a2k:'Потребление энергии',a3k:'Цена невостр. ветра',a4k:'Сжатие и хранение',a5k:'Ежегодное О&М',a6k:'Розничное электричество (ИРЛ)',a7k:'Рыночная цена H₂',
+  phases:'Дорожная карта фаз',ph1y:'Фаза 1 · 2025–2027',ph1t:'Пилот Клэр',ph1b:'5–10 социальных домов · интеграция с газовой сетью · 12 месяцев данных · DTIF €1,5 млн · мониторинг SAC Балляллиа',
+  ph2y:'Фаза 2 · 2027–2030',ph2t:'Масштабирование Клэр',ph2b:'Электролизёр самофинансируется (€21 млн/год) · первая поставка на Moneypoint 2028 · контракт ESB 2029 · запуск Завета 20%',
+  ph3y:'Фаза 3 · 2030–2035',ph3t:'Национальный шаблон',ph3b:'Первые 100% H₂ жилые районы · Клэр → национальная модель · экспорт H₂ через порт Шеннон',
+  ph4y:'Фаза 4 · 2035–2045',ph4t:'Энергетическая независимость',ph4b:'Ирландия — экспортёр H₂ · 2 млн га леса · восстановление SAC · 50 тыс.+ рабочих мест · €5 млрд+/год',
+  ms:'Ключевые этапы',ms1:'Старт пилота Клэр',ms2:'Самофинансирование электролизёра',ms3:'Первая поставка в Moneypoint',ms4:'Подтверждение контракта ESB',ms5:'20% смешивания H₂ в сети',ms6:'Первый 100% H₂ район',ms7:'2 млн га леса',ms8:'€5 млрд+ экспорт H₂',
+  'mp-title':'Монейпойнт — окно 2029 года',
+  'mp-body':'<p>Монейпойнт (Килраш, Клэр) прекратил сжигание угля в июне 2025 года. ESB нужен отечественный поставщик H₂ до 2029 года. Наши доходы от ветра накапливают <span class="tag t">€21 млн/год</span> — <span class="tag t">€63 млн за 3 года</span> самофинансируют коммерческий электролизёр на Шенноне. Первая поставка: <span class="tag b">2028</span>. <strong>Мы решаем проблему ESB. Это сотрудничество, а не конкуренция.</strong></p>',
+  'cov-title':'Завет 20% — добровольный переход фермеров',
+  'cov-body':'<p>Завет 20% работает потому, что <strong>он добровольный, верифицируемый и выгодный.</strong> Фермеры обязуются сократить поголовье на 20% за 10 лет в обмен на <span class="tag t">€12 000–18 000/год</span> субсидии + углеродные кредиты с 5-го года. ICBF верифицирует через бирки ушей. Никто не теряет доход. Никакого принуждения.</p>',
+  mk1l:'Невостр. ветер 2025',mk1s:'растрачивается ежегодно',mk2l:'Потенциал оффшорного ветра',mk2s:'оценка SEAI',mk3l:'Экспорт H₂ к 2035',mk3s:'от оффшорного ветра',
+  'absurd-title':'Термодинамический абсурд',
+  'absurd-body':'<p>Ирландия находится в атлантическом ветровом коридоре. <strong>Но Ирландия импортирует ~70% энергии и тратит €8 млрд+ в год на ископаемое топливо.</strong> Избыточный ветер ограничивается, пока Ирландия импортирует дорогой газ. <span class="tag g">2,1 ТВтч растрачено в 2025</span> = достаточно для питания Дублина год. <strong>Двойные расходы. Нулевая польза.</strong></p>',
+  'ifa-title':'Механизм €0,05 ИФА',ifa1:'Рыночная цена / кВтч',ifa2:'Цена ИФА (ограничения)',ifa3:'Экономия фермера / кВтч',ifa4:'Сбор в фонд H₂',ifa5:'Ежегодный пул сбора PSO',ifa6:'Пилот — перенаправление 4%',
+  'ifa-note':'Три результата от одного ценового сигнала. <strong>Ноль новых налогов. Ноль бюджета.</strong>',
+  'fund-title':'Накопление фонда H₂',f1:'Выручка от ветра/год',f2:'Самофинансируется за 3 года',f3:'Субсидия фермеру',f4:'Мощность Монейпойнта',f5:'Срок решения ESB',f6:'Первая поставка H₂',
+  'inv-k':'Инвестиции в пилот H₂','inv-v':'€1,5 млн → кратный ROI','fine-k':'Штрафы ЕС при срыве целей 2030',
+  'fine-note':'Выбор двоичный: <strong>заплатить €8 млрд+ безвозвратно без активов</strong> — или вложить €1,5 млн и построить самоокупаемую экономику H₂.',
+  'cmp-title':'Сравнение решений — дома с цельными стенами',c1b:'✓ Рекомендуется',
+  c1l:'✓ Установка за 1 день<br>✓ Без структурных изменений<br>✓ Каменные стены — ОК<br>✓ Нулевые выбросы (H₂O)<br>✓ Существующие радиаторы<br>✓ Невостребованный ветер',
+  c2l:'✗ Нужны новые радиаторы<br>✗ Сначала утепление стен<br>✗ Каменные стены — провал<br>~ Хорошо для новостроек<br>~ КПД 2–4×<br>~ Сетевое электричество',
+  c3l:'✗ Мало солнца (Ирл.)<br>✗ Электричество, не тепло<br>✗ Нужна южная крыша<br>~ Дополнение к H₂<br>~ Батареи увеличивают стоимость<br>~ Котёл не заменяет',
+  c4l:'✗ Недоступно для большинства<br>✗ Месяцы работ<br>✗ Каменные стены — провал<br>✗ Не решает 30% домов<br>~ Макс. эффективность<br>~ Частичные гранты SEAI',
+  'proto-badge':'Ранний прототип','proto-title':'Демонстрация прототипа',
+  'proto-body':'<p>Это видео показывает малогабаритную демонстрационную систему водорода на основе электролиза. Электричество подаётся на воду, разлагая её на водород и кислород. Полученный водород собирается — подтверждая основной принцип на лабораторном масштабе.</p><p>Это ранний прототип для проверки концепции. Цель — масштабировать эту систему до практического решения для хранения избыточной ветроэнергии в виде водорода для отопления домов.</p><p><strong>Полномасштабное развёртывание нацелено на графство Клэр с интеграцией невостребованной ветрогенерации EirGrid.</strong></p>',
+  'proto-note':'<strong>Что это доказывает:</strong> Основной принцип электролиза работает. Вода + электричество = водород. Та же физика масштабируется до промышленных PEM-электролизёров. Технология коммерчески доступна сегодня.',
+  an1l:'Невостр. ветер',an1s:'растрачивается/год в Ирландии',an2l:'Стоимость H₂ (ветер)',an2s:'от невостр. источника',an3l:'Домов Фазы 1',an3s:'пилот графства Клэр',an4l:'Избегнуто CO₂',an4s:'в год vs газ',
+  'ef-title':'Потоки энергии',ef1:'Ввод ветра (ограничения)',ef2:'КПД электролизёра',ef3:'Утилизированное тепло',ef4:'H₂ в дома',ef4v:'отопление + резерв',ef5:'Тепло в теплицу',ef5v:'круглогодично',
+  'rev-title':'Структура выручки',rv1:'Продажа H₂ (дома)',rv2:'Тепловая энергия (агро)',rv2v:'вторичный поток',rv3:'Балансировка сети (DS3)',rv3v:'гибкость',rv4:'Целевая выручка/год',rv5:'Окупаемость (базовый)',
+  'pt-title':'Цели по фазам',pt1:'Фаза 1 (2025–27)',pt2:'Фаза 2 (2027–30)',pt3:'Поставка H₂ в Монейпойнт',pt4:'Срок контракта ESB',pt5:'Фаза 3 (2030–35)',pt5v:'100% H₂ районы',pt6:'Фаза 4 (2035–45)',
+  'ct-title':'Контакты проекта',ct1k:'Руководитель проекта',ct2k:'Телефон / WhatsApp',ct3k:'Учреждение',ct4k:'Цель финансирования',ct5k:'Пилотный участок',
+  'ct-role':'Руководитель проекта · H₂-Retrofit Ireland','ct-note':'Разработано независимо как рабочий прототип для пилотной оценки.',
+  'why-title':'Почему инвестировать сейчас',
+  'why-body':'<p><strong>Окно первопроходца закрывается в 2029</strong> — ESB нужен поставщик до дедлайна Монейпойнта. Раунд финансирования DTIF открыт. Перенаправление сбора PSO требует только решения министра. <strong>Инфраструктура, политическое окно и рыночный дедлайн совпадают в 2025–2027 годах.</strong></p>',
+  'form-title':'Запрос инвестора',fname:'Полное имя',femail:'Email адрес',fmsg:'Сообщение или вопросы...',fbtn:'Отправить запрос',
+  fo0:'Область интереса...',fo1:'Стратегический инвестор',fo2:'Государство / политика',fo3:'Исследования / академия',fo4:'СМИ / пресса',
+  'inv-title':'Критический анализ рисков для инвестора','inv-sub':'Независимая оценка рисков — запад Ирландии, 50 домов + 1 га теплицы',top5:'Топ 5 рисков',
+  rsk1t:'1. Сырьё — не ресурс, а задача планирования',rsk1b:'Ограничениями управляет EirGrid через платежи за ограничения. Нужны подписанные соглашения с операторами ветра. По мере добавления интерконнекторов ограничения снизятся — ваш дешёвый источник исчезнет.',
+  rsk2t:'2. Хранение водорода рядом с домами не получит разрешение легко',rsk2b:'Сжатый водород выше определённых порогов является объектом повышенной опасности по нормам COMAH. Ни один орган местного самоуправления в Ирландии не утвердил хранилище водорода рядом с жильём.',
+  rsk3t:'3. CAPEX тепловой сети — невидимый убийца',rsk3b:'Доставка тепла в 50 разрозненных сельских домов требует утеплённых труб, теплообменников и приборов учёта. Стоимость: €1,5–3 млн до покупки электролизёра.',
+  rsk4t:'4. Три потока выручки, которые конфликтуют',rsk4b:'Подача тепла требует непрерывной работы. Балансировка сети требует диспетчерского реагирования. Теплица — постоянного тепла низкого качества. Электролизёр на ограничениях не может оптимизировать всё одновременно.',
+  rsk5t:'5. 50 домов — это демонстрация с ценой бизнеса',rsk5b:'Экономика электролиза работает только при мощности нескольких МВт. На пилотном масштабе CAPEX на кВтч в 5–10 раз дороже теплового насоса.',
+  'bottom-line':'<strong>Итог:</strong> Технически интересная концепция на непроверенных допущениях при слишком малом масштабе для коммерции. Сначала потратьте €50–100 тыс. на ТЭО — реальные котировки поставщиков, исследования участка, предварительное согласование — прежде чем просить серьёзный капитал.',
+  vsText:(tot,grid,adv,e)=>`<strong style="color:#6dd4a8">vs €${grid.toFixed(2)}/кг</strong> из ирландского сетевого электричества`+(tot<grid?` — <strong style="color:#6dd4a8">в ${adv} раза дешевле</strong>`:'')+( e<=0.02?' <span style="color:#e8a060">← преимущество невостребованного ветра</span>':''),
+  bdlbl1:'Стоимость эл-ва',bdlbl2:'CAPEX + О&М\n+ сжатие',bdlbl3:'Общая себестоимость\nH₂',
+  projLabels:['Выручка H₂','OPEX','Валовая прибыль','NPV 10 лет'],
+  rLabels:['Выручка H₂','Общий OPEX','Валовая прибыль','NPV (10 лет)','IRR','Окупаемость'],yr:'лет',
+  pillData:{
+    dropin:{t:'Технология замены',b:'Котёл H₂-ready заменяет только горелку — подходит к существующим радиаторам. <strong>Никаких структурных изменений. Установка за 1 день. €3 000–6 000.</strong> Единственный путь декарбонизации для домов с цельными стенами.'},
+    curtailed:{t:'Зелёный H₂ из невостребованного ветра',b:'EirGrid платит генераторам за отключение при избытке ветра. В 2025 году растрачено <strong>2,1 ТВтч</strong>. Мы улавливаем это по ~€0,01/кВтч и превращаем в водород по <strong>€1,5–2,5/кг</strong> против €6–10/кг из сети.'},
+    circular:{t:'Петля циклической экономики',b:'Доходы от H₂ финансируют Завет 20% — фермеры сокращают стадо, сажают лес, получают <strong>€12–18 тыс./год</strong>. Лесные буферы снижают загрязнение азотом. Экономия на здоровье реинвестируется в H₂. <strong>Система самоокупается.</strong>'},
+    pilot:{t:'Пилотный участок графства Клэр',b:'Клэр идеален: Монейпойнт (915 МВт) прекратил сжигание угля в июне 2025 и нуждается в отечественном поставщике H₂ до 2029 года. <strong>Фаза 1 (2025–27):</strong> 5–10 социальных домов, 12 месяцев данных. Стоимость: €1,5 млн через DTIF.'}
+  }
+}
+};
+
+let curLang='en';
+function setLang(l){
+  curLang=l;
+  document.querySelectorAll('.lt-btn').forEach((b,i)=>b.classList.toggle('on',i===(l==='en'?0:1)));
+  const t=TR[l];
+  // Header
+  document.getElementById('t-location').textContent=t.location;
+  document.getElementById('t-sub').textContent=t.sub;
+  // Pills labels
+  ['dropin','curtailed','circular','pilot'].forEach((id,i)=>{document.getElementById('pill-'+id).childNodes[0].textContent=t.pills[i];});
+  // Nav
+  const navIds=['nav-overview','nav-calc','nav-timeline','nav-market','nav-proto','nav-analytics','nav-contact','nav-investor'];
+  navIds.forEach((id,i)=>{document.getElementById(id).textContent=t.nav[i];});
+  // All text IDs
+  const ids=['m1l','m1s','m2l','m2s','m3l','m3s','m4l','m4s','prob-title','r1k','r2k','r3k','r4k','r5k','r6k','sol-title','s1k','s2k','s2v','s3k','s3v','s4k','s5k','s6k','loop-title','tag1','tag2','tag3','tag4','tag5','tag6','tag7','tag8','reinvest','builds-title','b1','b2','b3','b4','risks-title','calc-label','elec-lbl','pb1','pb2','pb3','pb4','eff-lbl','cap-lbl','res-lbl','res-unit','proj-title','scen-base','scen-opt','scen-cons','params','si1','si2','si3','si4','results','assume','a1k','a1v','a2k','a3k','a4k','a5k','a6k','a7k','phases','ph1y','ph1t','ph1b','ph2y','ph2t','ph2b','ph3y','ph3t','ph3b','ph4y','ph4t','ph4b','ms','ms1','ms2','ms3','ms4','ms5','ms6','ms7','ms8','mp-title','cov-title','mk1l','mk1s','mk2l','mk2s','mk3l','mk3s','absurd-title','ifa-title','ifa1','ifa2','ifa3','ifa4','ifa5','ifa6','fund-title','f1','f2','f3','f4','f5','f6','inv-k','inv-v','fine-k','cmp-title','c1b','proto-badge','proto-title','an1l','an1s','an2l','an2s','an3l','an3s','an4l','an4s','ef-title','ef1','ef2','ef3','ef4','ef4v','ef5','ef5v','rev-title','rv1','rv2','rv2v','rv3','rv3v','rv4','rv5','pt-title','pt1','pt2','pt3','pt4','pt5','pt5v','pt6','ct-title','ct1k','ct2k','ct3k','ct4k','ct5k','ct-role','ct-note','why-title','form-title','fname','femail','fmsg','fbtn','fo0','fo1','fo2','fo3','fo4','inv-title','inv-sub','top5','rsk1t','rsk1b','rsk2t','rsk2b','rsk3t','rsk3b','rsk4t','rsk4b','rsk5t','rsk5b'];
+  ids.forEach(id=>{
+    const el=document.getElementById('t-'+id);
+    if(!el) return;
+    const val=t[id];
+    if(val===undefined) return;
+    // Use innerHTML for known HTML fields
+    const htmlFields=['prob-body','sol-body','loop-body','mp-body','cov-body','absurd-body','ifa-note','fine-note','why-body','proto-body','proto-note','rsk1b','rsk2b','rsk3b','rsk4b','rsk5b','bottom-line','risk1','risk2','risk3','calc-title','ifa-note'];
+    if(htmlFields.includes(id)) el.innerHTML=val;
+    else el.textContent=val;
+  });
+  // Special innerHTML fields
+  ['prob-body','sol-body','loop-body','mp-body','cov-body','absurd-body','ifa-note','fine-note','why-body','proto-body','proto-note','bottom-line'].forEach(id=>{
+    const el=document.getElementById('t-'+id);
+    if(el && t[id]) el.innerHTML=t[id];
+  });
+  ['risk1','risk2','risk3'].forEach(id=>{
+    const el=document.getElementById('t-'+id);
+    if(el && t[id]) el.innerHTML=t[id];
+  });
+  document.getElementById('t-calc-title').innerHTML=t['calc-title'];
+  // Placeholders
+  document.getElementById('t-f-name').placeholder=t.fname;
+  document.getElementById('t-f-email').placeholder=t.femail;
+  document.getElementById('t-f-msg').placeholder=t.fmsg;
+  document.getElementById('t-f-btn').textContent=t.fbtn;
+  // Re-run calc to update text
+  calcH2();
+  recalcProj();
+  // Reset active pill
+  if(ap){
+    document.getElementById('pill-title').textContent=t.pillData[ap].t;
+    document.getElementById('pill-body').innerHTML=t.pillData[ap].b;
+  }
+}
+
+// PILLS
+let ap=null;
+function togglePill(el,id){
+  const p=document.getElementById('pill-panel');
+  if(ap===id){p.style.display='none';el.classList.remove('on');ap=null;return;}
+  document.querySelectorAll('.pill').forEach(x=>x.classList.remove('on'));
+  el.classList.add('on');
+  const d=TR[curLang].pillData[id];
+  document.getElementById('pill-title').textContent=d.t;
+  document.getElementById('pill-body').innerHTML=d.b;
+  p.style.display='block';ap=id;
+}
+
+// TABS
+function showTab(id){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('on'));
+  document.querySelectorAll('.nb').forEach(b=>b.classList.remove('on'));
+  document.getElementById('tab-'+id).classList.add('on');
+  const m={overview:0,calc:1,timeline:2,market:3,proto:4,analytics:5,contact:6,investor:7};
+  if(m[id]!==undefined) document.querySelectorAll('.nb')[m[id]].classList.add('on');
+  if(id==='calc'){calcH2();recalcProj();}
+  if(id==='timeline') drawTl();
+  if(id==='analytics') drawAnalytics();
+}
+
+// H2 CALC
+function setElec(v){document.getElementById('elec-price').value=v;calcH2();}
+function calcH2(){
+  const e=parseFloat(document.getElementById('elec-price').value)||0.065;
+  const eff=parseFloat(document.getElementById('eff').value)||52;
+  const cap=parseFloat(document.getElementById('capex-add').value)||0.8;
+  document.getElementById('eff-v').textContent=eff+' kWh/kg';
+  document.getElementById('capex-v').textContent='€'+cap.toFixed(2)+'/kg';
+  const ec=e*eff, tot=ec+cap, grid=0.27*eff+cap, adv=(grid/tot).toFixed(1);
+  const el=document.getElementById('h2-price');
+  el.textContent='€'+tot.toFixed(2);
+  el.style.color=tot<=3?'#6dd4a8':tot<=6?'#e8a060':'#e06060';
+  document.getElementById('h2-vs').innerHTML=TR[curLang].vsText(tot,grid,adv,e);
+  const t=TR[curLang];
+  document.getElementById('h2-breakdown').innerHTML=`
+    <div class="bd-item"><div class="bd-val">€${ec.toFixed(2)}/kg</div><div class="bd-lbl">${t.bdlbl1}<br>(${eff} kWh × €${e}/kWh)</div></div>
+    <div class="bd-item"><div class="bd-val">€${cap.toFixed(2)}/kg</div><div class="bd-lbl">${t.bdlbl2}</div></div>
+    <div class="bd-item"><div class="bd-val" style="color:${tot<=3?'#6dd4a8':tot<=6?'#e8a060':'#e06060'}">€${tot.toFixed(2)}/kg</div><div class="bd-lbl">${t.bdlbl3}</div></div>`;
+}
+
+// PROJECT ECONOMICS
+let pChart=null;
+const SCEN={base:{inv:5,h2:300,px:6.5,disc:8},opt:{inv:7,h2:500,px:7.5,disc:7},cons:{inv:4,h2:180,px:5.5,disc:10}};
+function setScen(s,btn){
+  document.querySelectorAll('.stab').forEach(b=>b.classList.remove('on'));btn.classList.add('on');
+  const d=SCEN[s];
+  document.getElementById('si-inv').value=d.inv;document.getElementById('si-h2').value=d.h2;
+  document.getElementById('si-px').value=d.px;document.getElementById('si-disc').value=d.disc;
+  recalcProj();
+}
+function recalcProj(){
+  const inv=+document.getElementById('si-inv').value,h2=+document.getElementById('si-h2').value,
+    px=+document.getElementById('si-px').value,disc=+document.getElementById('si-disc').value/100;
+  document.getElementById('sv-inv').textContent='€'+inv+'M';
+  document.getElementById('sv-h2').textContent=h2+'t';
+  document.getElementById('sv-px').textContent='€'+px+'/kg';
+  document.getElementById('sv-disc').textContent=(disc*100)+'%';
+  const h2Rev=h2*1000*px,capex=inv*1e6,opex=h2*1000*52*0.065+h2*1000*0.45+capex*0.03,gp=h2Rev-opex;
+  let npv=-capex;for(let i=1;i<=10;i++) npv+=gp/Math.pow(1+disc,i);
+  let irr=0;for(let r=0.01;r<2;r+=0.001){let v=-capex;for(let i=1;i<=10;i++) v+=gp/Math.pow(1+r,i);if(v<0){irr=r-0.001;break;}}
+  const pay=gp>0?(capex/gp).toFixed(1):'N/A';
+  const f=v=>'€'+(v/1e6).toFixed(2)+'M',c=v=>v>=0?'tl':'rd';
+  const t=TR[curLang];
+  document.getElementById('proj-results').innerHTML=`
+    <div class="row"><span class="rk">${t.rLabels[0]}</span><span class="rv tl">${f(h2Rev)}</span></div>
+    <div class="row"><span class="rk">${t.rLabels[1]}</span><span class="rv gl">${f(opex)}</span></div>
+    <div class="row"><span class="rk">${t.rLabels[2]}</span><span class="rv ${c(gp)}">${f(gp)}</span></div>
+    <div class="row"><span class="rk">${t.rLabels[3]}</span><span class="rv ${c(npv)}">${f(npv)}</span></div>
+    <div class="row"><span class="rk">${t.rLabels[4]}</span><span class="rv ${irr>0.1?'tl':'gl'}">${(irr*100).toFixed(1)}%</span></div>
+    <div class="row"><span class="rk">${t.rLabels[5]}</span><span class="rv">${pay} ${t.yr}</span></div>`;
+  const ctx=document.getElementById('projChart').getContext('2d');
+  if(pChart) pChart.destroy();
+  pChart=new Chart(ctx,{type:'bar',data:{labels:t.projLabels,datasets:[{data:[h2Rev/1e6,opex/1e6,gp/1e6,npv/1e6],backgroundColor:['rgba(13,122,95,0.7)','rgba(196,154,26,0.7)',gp>=0?'rgba(13,122,95,0.85)':'rgba(200,75,31,0.7)',npv>=0?'rgba(13,122,95,0.55)':'rgba(200,75,31,0.55)'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10}}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10},callback:v=>v+'M'}}}}});
+}
+
+let tlC=null,anC=null;
+function drawTl(){
+  const ctx=document.getElementById('tlChart');if(!ctx)return;if(tlC)tlC.destroy();
+  tlC=new Chart(ctx,{type:'bar',data:{labels:['Ph.1','Ph.2','Ph.3','Ph.4'],datasets:[{data:[1.5,63,300,1000],backgroundColor:['rgba(26,79,160,0.7)','rgba(13,122,95,0.7)','rgba(196,154,26,0.7)','rgba(200,75,31,0.7)'],borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10}}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10},callback:v=>'€'+v+'M'}}}}});
+}
+function drawAnalytics(){
+  const ctx=document.getElementById('analyticsChart');if(!ctx)return;if(anC)anC.destroy();
+  anC=new Chart(ctx,{type:'line',data:{labels:['2025','2027','2028','2029','2030','2035','2040','2045'],datasets:[{label:'H₂ €M',data:[0,1.5,21,63,150,500,1500,5000],borderColor:'rgba(13,122,95,0.8)',backgroundColor:'rgba(13,122,95,0.07)',tension:.4,fill:true},{label:'Homes',data:[0,10,50,200,1000,50000,200000,445000],borderColor:'rgba(200,75,31,0.7)',backgroundColor:'rgba(200,75,31,0.04)',tension:.4,yAxisID:'y2',fill:false}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#4a3f35',font:{size:11}}}},scales:{x:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10}}},y:{grid:{color:'rgba(0,0,0,0.04)'},ticks:{color:'#8a7a6a',font:{size:10},callback:v=>'€'+v+'M'},position:'left'},y2:{ticks:{color:'rgba(200,75,31,0.6)',font:{size:10},callback:v=>v>999?Math.round(v/1000)+'k':v},position:'right',grid:{display:false}}}}});
+}
+calcH2();recalcProj();
+</script>
+</body>
+</html>
