@@ -66,6 +66,16 @@ footer{font-size:12px;letter-spacing:.03em}
 .research-section{margin:27px 0}.research-section h3{margin-bottom:9px}.research-section p{line-height:1.8}
 .research-sources{border-top:2px solid #d7e3e5;padding-top:20px;margin-top:35px}
 .research-sources ol{padding-left:22px}.research-sources li{padding:8px 0}.research-sources small{display:block;color:#6b7c85;margin-top:3px}
+
+.research-news-head{padding:14px 4px 20px}.research-news-head h2{font-size:clamp(27px,4vw,36px);margin:5px 0}.research-news-head p{color:#526a75}
+.research-news-list{display:grid;grid-template-columns:1fr;gap:16px;max-width:840px}
+.research-news-entry{margin:0!important;padding:clamp(21px,4vw,34px)}
+.research-news-date{font-size:13px;font-weight:800;color:#0b6974;letter-spacing:.025em}.research-news-date span{color:#74858d;font-weight:600}
+.research-news-entry h3{font-size:clamp(21px,3vw,26px);line-height:1.3;margin:12px 0}.research-news-entry h3 a{color:#112b39;text-decoration:none}
+.research-news-entry h3 a:hover{text-decoration:underline}
+.research-news-entry p{font-size:15px;line-height:1.7;color:#536b75;max-width:690px}
+.research-news-link{display:inline-block;margin-top:9px;color:#0b6570!important;font-weight:800;text-decoration:none!important;border-bottom:1px solid #0b6570;padding-bottom:2px}
+.research-news-link:hover{text-decoration:underline!important}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
@@ -135,31 +145,33 @@ const RESEARCH_CATEGORIES=[
  {id:"market",en:"Energy markets",ru:"Энергетические рынки"}
 ];
 let researchCategory="all",researchArticle=null;
+if(location.hash.startsWith('#research/')){researchArticle=decodeURIComponent(location.hash.slice(10));active='research'}else if(location.hash==='#research'){active='research'}
 function researchEscape(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function researchNavigate(id){
+ researchArticle=id;
+ history.replaceState(null,"",id?"#research/"+encodeURIComponent(id):"#research");
+ renderResearch();
+ document.getElementById("research").scrollIntoView({block:"start",behavior:"smooth"});
+}
 function renderResearch(){
  const root=document.getElementById("researchJournal");if(!root)return;
  const ru=lang==="ru",local=k=>ru?k.ru:k.en;
- const filtered=ARTICLES.filter(a=>researchCategory==="all"||a.category===researchCategory);
- const selected=ARTICLES.find(a=>a.id===researchArticle);
  const dateFmt=d=>new Intl.DateTimeFormat(ru?"ru-RU":"en-IE",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"}).format(new Date(d+"T12:00:00Z"));
+ const selected=ARTICLES.find(a=>a.id===researchArticle);
  if(selected){
-  const category=RESEARCH_CATEGORIES.find(c=>c.id===selected.category);
-  root.innerHTML='<button type="button" class="research-back" id="researchBack">← '+(ru?"Все публикации":"Back to all articles")+'</button>'+
-   '<article class="card research-story"><div class="eyebrow">'+researchEscape(local(category))+' · '+dateFmt(selected.date)+' · '+(ru?"№":"No.")+' '+String(ARTICLES.indexOf(selected)+1).padStart(2,"0")+'</div>'+
+  root.innerHTML='<button type="button" class="research-back" id="researchBack">← '+(ru?"Назад к статьям":"Back to articles")+'</button>'+
+   '<article class="card research-story"><div class="eyebrow">'+dateFmt(selected.date)+' · '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===selected.category)))+'</div>'+
    '<h2>'+researchEscape(local(selected.title))+'</h2><p class="research-lede">'+researchEscape(local(selected.excerpt))+'</p>'+
    local(selected.body).map(p=>'<section class="research-section"><h3>'+researchEscape(p[0])+'</h3><p>'+researchEscape(p[1])+'</p></section>').join('')+
-   '<div class="research-sources"><h3>'+(ru?"Источники и материалы для проверки":"Sources & further verification")+'</h3><p class="note">'+(ru?"Ссылки ведут на официальные сайты организаций, а не на конкретные наборы данных. Цифровые выводы будут публиковаться с точными ссылками на отчёты.":"These links lead to official organisation websites, not specific datasets. Future numerical findings will cite the exact reports used.")+'</p>'+
+   '<div class="research-sources"><h3>'+(ru?"Первоисточники и дополнительные материалы":"Sources & further reading")+'</h3><p class="note">'+(ru?"Ниже — официальные ресурсы для проверки темы. Эта вводная статья не приводит статистику из конкретных отчётов.":"Official resources for checking this topic are listed below. This introductory article does not claim statistics from specific reports.")+'</p>'+
    '<ol>'+selected.sources.map(src=>'<li><a href="'+researchEscape(src.url)+'" target="_blank" rel="noopener noreferrer">'+researchEscape(src.name)+' ↗</a><small>'+researchEscape(local(src.detail))+'</small></li>').join('')+'</ol></div></article>';
-  document.getElementById("researchBack").onclick=()=>{researchArticle=null;renderResearch()};
+  document.getElementById("researchBack").onclick=()=>researchNavigate(null);
  }else{
-  root.innerHTML='<div class="card research-intro"><div class="eyebrow">'+(ru?"Независимый исследовательский журнал":"Independent research journal")+'</div><h2>Research & Insights</h2><p>'+(ru?"Статьи об энергетике Ирландии: ветер, приливы, водород, электрические сети и экономика. Выберите тему и откройте публикацию для чтения.":"Articles on Ireland’s energy future: wind, tidal power, hydrogen, electricity networks and economics. Select a topic and open an article to read.")+'</p><p class="note">'+(ru?"Новые публикации добавляются после проверки материалов.":"New issues are published as research is completed and reviewed.")+'</p></div>'+
-  '<div class="research-filter" aria-label="'+(ru?"Фильтр статей":"Article filter")+'">'+RESEARCH_CATEGORIES.map(c=>'<button type="button" data-research-category="'+c.id+'" aria-pressed="'+(researchCategory===c.id)+'">'+researchEscape(local(c))+'</button>').join('')+'</div>'+
-  (filtered.length?'<div class="research-grid">'+filtered.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<button type="button" class="research-tile" data-article="'+a.id+'"><span class="research-tile-category">'+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span><span class="research-tile-date">'+dateFmt(a.date)+' · '+(ru?"Статья №":"Article No.")+String(ARTICLES.indexOf(a)+1).padStart(2,"0")+'</span><strong>'+researchEscape(local(a.title))+'</strong><span>'+researchEscape(local(a.excerpt))+'</span><span class="research-read">'+(ru?"Читать статью →":"Read article →")+'</span></button>').join('')+'</div>':'<div class="card"><h3>'+(ru?"Статей по этой теме пока нет":"No articles in this category yet")+'</h3><p>'+(ru?"Здесь появятся публикации после подготовки и проверки источников.":"New articles will appear here once research and source checks are complete.")+'</p></div>');
-  root.querySelectorAll('[data-research-category]').forEach(b=>b.onclick=()=>{researchCategory=b.dataset.researchCategory;renderResearch()});
-  root.querySelectorAll('[data-article]').forEach(b=>b.onclick=()=>{researchArticle=b.dataset.article;renderResearch();root.scrollIntoView({block:"start",behavior:"smooth"})});
+  root.innerHTML='<div class="research-news-head"><div class="eyebrow">'+(ru?"Архив публикаций":"Publication archive")+'</div><h2>Research & Insights</h2><p>'+(ru?"Исследования энергетики Ирландии. Нажмите «Читать далее», чтобы открыть статью целиком.":"Research on Ireland’s energy future. Select “Read more” to open a complete article.")+'</p></div>'+
+  '<div class="research-news-list">'+ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<article class="card research-news-entry"><div class="research-news-date">'+dateFmt(a.date)+' <span>· '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span></div><h3><a href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+researchEscape(local(a.title))+'</a></h3><p>'+researchEscape(local(a.excerpt))+'</p><a class="research-news-link" href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+(ru?"Читать далее →":"Read more →")+'</a></article>').join('')+'</div>';
+  root.querySelectorAll('[data-article]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();researchNavigate(a.dataset.article)}));
  }
 }
-
 function render(){document.documentElement.lang=lang;const t=L[lang];document.querySelectorAll('[data-i]').forEach(el=>el.textContent=t[el.dataset.i]);document.getElementById('enBtn').setAttribute('aria-pressed',lang==='en');document.getElementById('ruBtn').setAttribute('aria-pressed',lang==='ru');document.getElementById('tabs').innerHTML=ids.map((id,i)=>'<button type="button" data-tab="'+id+'" role="tab" aria-selected="'+(active===id)+'">'+t.tabs[i]+'</button>').join('');ids.forEach(id=>{const p=document.getElementById(id);p.innerHTML=t[id];p.classList.toggle('active',id===active)});document.getElementById('tabs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;render();document.getElementById(active).scrollIntoView({block:'start',behavior:'smooth'})}));if(active==='calculator'){document.querySelectorAll('#calculator input').forEach(i=>i.addEventListener('input',calculate));calculate()}visualExtras();renderResearch()}
 
 function visualExtras(){
