@@ -115,6 +115,11 @@ main:before{display:none!important}
  body:before{display:block!important}
  body:after{display:block!important}
 }
+
+/* Single language selector only, in header */
+.site-toolbar,.mobile-langs,[data-language]{display:none!important}
+.tabs{top:0!important}
+.langs{flex-shrink:0}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
