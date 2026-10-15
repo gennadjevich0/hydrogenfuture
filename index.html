@@ -101,6 +101,20 @@ a,.panel a{color:#216e7b}
 .research-search-wrap input{color:#194450!important}
 .research-search-wrap input::placeholder{color:#6a8b8e!important}
 @media(max-width:650px){body{background-attachment:scroll!important;background:linear-gradient(155deg,#d1e9e5 0%,#a6d4d5 44%,#c0e2df 100%)!important}.card,.panel .card{background:rgba(246,255,253,.53)!important}}
+
+/* Visible layered aqua wallpaper: large flowing curved ribbons on mobile and desktop */
+html{background:#b9deda!important}
+body{position:relative;background:linear-gradient(165deg,#dcefea 0%,#c1e4e0 34%,#a3d1d4 72%,#d4eae4 100%)!important;background-attachment:fixed!important}
+body:before{display:block!important;content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1!important;background:linear-gradient(150deg,#b0dedb,#72c4cc 58%,#b1e2df);clip-path:polygon(0 26%,12% 22%,26% 24%,40% 33%,54% 36%,70% 30%,84% 20%,100% 15%,100% 65%,85% 70%,69% 74%,53% 69%,38% 61%,22% 58%,8% 64%,0 70%);filter:blur(1px)}
+body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(145deg,rgba(228,255,249,.62),rgba(133,205,208,.45));clip-path:polygon(0 67%,14% 59%,29% 61%,44% 69%,60% 76%,78% 72%,100% 56%,100% 100%,0 100%)}
+header,main,footer{position:relative;z-index:1}
+main:before{display:none!important}
+.panel .card,.card{background:rgba(244,255,253,.57)!important}
+@media(max-width:650px){
+ body{background:linear-gradient(165deg,#dcefea 0%,#c1e4e0 34%,#a3d1d4 72%,#d4eae4 100%)!important;background-attachment:fixed!important}
+ body:before{display:block!important}
+ body:after{display:block!important}
+}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><div class="site-toolbar"><div class="langs mobile-langs"><button type="button" data-language="ru">Русский</button><button type="button" data-language="en">EN</button></div></div><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
