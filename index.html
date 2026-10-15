@@ -96,6 +96,8 @@ footer{font-size:12px;letter-spacing:.03em}
 .research-news-date{font-size:11px!important;line-height:1.3}
 .research-news-link{font-size:12px!important;margin:0!important;padding:0!important}
 @media(max-width:600px){.research-news-entry{padding:10px 12px 11px!important}.research-news-entry h3{font-size:16px!important}}
+
+.research-search{max-width:850px;margin:0 0 13px}.research-search label{display:block;font-size:12px;font-weight:800;color:#426673;margin-bottom:6px}.research-search-wrap{display:flex;align-items:center;gap:9px;border:1px solid #ccdce0;background:#fff;border-radius:12px;padding:0 13px}.research-search-wrap:focus-within{border-color:#0b6974;box-shadow:0 0 0 3px #0b69741b}.research-search-wrap span{font-size:26px;color:#0b6974}.research-search input{border:0;outline:0;background:transparent;width:100%;padding:12px 0;font:inherit;font-size:15px;color:#173743}.research-search-count{font-size:12px;color:#54717b;padding-top:5px}.research-news-entry[hidden]{display:none!important}.research-no-results{padding:18px;color:#526a75}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
@@ -164,7 +166,7 @@ const RESEARCH_CATEGORIES=[
  {id:"hydrogen",en:"Green hydrogen",ru:"Зелёный водород"},
  {id:"market",en:"Energy markets",ru:"Энергетические рынки"}
 ];
-let researchCategory="all",researchArticle=null;
+let researchCategory="all",researchArticle=null,researchQuery="";
 if(location.hash.startsWith('#research/')){researchArticle=decodeURIComponent(location.hash.slice(10));active='research'}else if(location.hash==='#research'){active='research'}
 function researchEscape(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
 function researchNavigate(id){
@@ -188,7 +190,22 @@ function renderResearch(){
   document.getElementById("researchBack").onclick=()=>researchNavigate(null);
  }else{
   root.innerHTML='<div class="research-news-head"><div class="eyebrow">'+(ru?"Архив публикаций":"Publication archive")+'</div><h2>Research & Insights</h2><p>'+(ru?"Исследования энергетики Ирландии. Нажмите «Читать далее», чтобы открыть статью целиком.":"Research on Ireland’s energy future. Select “Read more” to open a complete article.")+'</p></div>'+
-  '<div class="research-news-list">'+ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<article class="card research-news-entry"><div class="research-news-date">'+dateFmt(a.date)+' <span>· '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span></div><h3><a href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+researchEscape(local(a.title))+'</a></h3><p>'+researchEscape(local(a.excerpt))+'</p><a class="research-news-link" href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+(ru?"Читать далее →":"Read more →")+'</a></article>').join('')+'</div>';
+  '<div class="research-search"><label for="researchSearch">'+(ru?"Поиск по статьям":"Search articles")+'</label><div class="research-search-wrap"><span aria-hidden="true">⌕</span><input id="researchSearch" type="search" autocomplete="off" placeholder="'+(ru?"Например: ветер, водород, приливы…":"Try wind, hydrogen, tidal…")+'" value="'+researchEscape(researchQuery)+'"></div><div class="research-search-count" id="researchSearchCount" aria-live="polite"></div></div>'+
+  '<div class="research-news-list" id="researchNewsList">'+ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<article class="card research-news-entry"><div class="research-news-date">'+dateFmt(a.date)+' <span>· '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span></div><h3><a href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+researchEscape(local(a.title))+'</a></h3><p>'+researchEscape(local(a.excerpt))+'</p><a class="research-news-link" href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+(ru?"Читать далее →":"Read more →")+'</a></article>').join('')+'</div>';
+  const search=document.getElementById("researchSearch"),entries=[...root.querySelectorAll(".research-news-entry")];
+  const normalize=v=>String(v).toLocaleLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").trim();
+  function filterResearch(){
+   researchQuery=search.value;const q=normalize(researchQuery);let visible=0;
+   ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach((a,i)=>{
+    const cat=RESEARCH_CATEGORIES.find(c=>c.id===a.category);
+    const content=[a.date,a.title.en,a.title.ru,a.excerpt.en,a.excerpt.ru,cat.en,cat.ru,...a.body.en.flat(),...a.body.ru.flat()].join(" ");
+    const match=!q||normalize(content).includes(q);entries[i].hidden=!match;if(match)visible++;
+   });
+   document.getElementById("researchSearchCount").textContent=q?(ru?"Найдено статей: ":"Articles found: ")+visible:"";
+   let empty=root.querySelector(".research-no-results");
+   if(!visible){if(!empty){empty=document.createElement("p");empty.className="research-no-results";document.getElementById("researchNewsList").after(empty)}empty.textContent=ru?"Ничего не найдено. Попробуйте другое слово.":"No matching articles. Try another keyword."}else if(empty)empty.remove();
+  }
+  search.addEventListener("input",filterResearch);filterResearch();
   root.querySelectorAll('[data-article]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();researchNavigate(a.dataset.article)}));
  }
 }
