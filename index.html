@@ -1,64 +1,54 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Independent concept for Ireland's renewable electricity, wind surplus and green hydrogen."><title>Hydrogen Future Ireland — Independent Concept</title>
 <style>
-:root{color-scheme:light;--bg:#edf3f3;--ink:#173b43;--muted:#5a7378;--line:#d3e2e3;--green:#146b73;--accent:#e2f0f0;--white:#fff}
+:root{color-scheme:dark;--bg:#07556b;--ink:#fff;--muted:#d5f6f8;--line:#91eaf0;--green:#1ebcc9;--accent:#23b5be;--white:rgba(18,155,175,.27)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:#edf3f3}
-body{margin:0;background:#edf3f3;color:var(--ink);font:16px/1.6 system-ui,-apple-system,Arial,sans-serif}
-header{background:#175a65;color:#fff;padding:32px max(20px,calc((100vw - 1100px)/2)) 35px}
-header p{color:#e0f1f2;max-width:790px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.badge{display:inline-block;border:1px solid #a6d5d9;padding:6px 12px;border-radius:99px;color:#e4f8f8;font-size:12px}
+html{scroll-behavior:smooth;background:#07556b}
+body{margin:0;min-height:100vh;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;background:radial-gradient(ellipse at 90% 4%,#4ed0d3 0%,transparent 43%),radial-gradient(ellipse at 0% 80%,#46b8a8 0%,transparent 42%),linear-gradient(145deg,#005470 0%,#087e98 49%,#034763 100%);background-attachment:fixed}
+header{padding:24px max(20px,calc((100vw - 1100px)/2)) 24px;background:transparent}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.badge{display:inline-block;border:1px solid #b0f7f866;border-radius:99px;padding:6px 11px;font-size:11px;letter-spacing:.06em;color:#d9fbfd}
 .langs{display:flex;gap:6px}
-.langs button,.tabs button,button.action,.research-back{font:inherit;cursor:pointer;border:1px solid #bdd4d7;border-radius:11px;padding:10px 14px;background:#fff;color:#204750}
-.langs button[aria-pressed=true],.tabs button[aria-selected=true],button.action{background:#146b73;color:#fff;border-color:#146b73}
-h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:15px 0}
-h2{font-size:clamp(23px,3vw,29px);line-height:1.25;margin:0 0 12px}
-h3{font-size:20px;line-height:1.3;margin:0 0 10px}
-p{margin:8px 0 14px}
-main{max-width:1100px;margin:0 auto;padding:20px 18px 65px}
-.tabs{position:sticky;top:0;z-index:20;display:flex;gap:7px;overflow-x:auto;padding:9px 0 14px;background:#edf3f3;scrollbar-width:thin}
-.tabs button{white-space:nowrap;flex-shrink:0}
+.langs button{font:inherit;font-size:13px;font-weight:700;border:1px solid #b9ffff66;background:#ffffff24;color:#fff;border-radius:13px;padding:10px 14px;cursor:pointer}
+.langs button[aria-pressed=true]{background:#57e2eb;color:#043c53}
+h1{font-size:clamp(30px,5vw,51px);line-height:1.13;letter-spacing:-.035em;margin:19px 0 12px}
+header p{color:#e1fbfb;max-width:750px}
+main{max-width:1100px;margin:0 auto;padding:0 18px 70px}
+.tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:8px;margin:0 0 20px;border-radius:23px;background:#ffffff19;border:1px solid #b5ffff70;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.tabs button{flex-shrink:0;white-space:nowrap;font:inherit;font-size:14px;border-radius:15px;border:1px solid transparent;background:transparent;color:#fff;padding:12px 15px;cursor:pointer}
+.tabs button[aria-selected=true]{background:#56ddea;color:#064458;border-color:#abffffaa;box-shadow:0 4px 14px #003c5550;font-weight:750}
 .panel{display:none}.panel.active{display:block}
-.card,.panel .card{background:#fff;border:1px solid #d3e2e3;border-radius:17px;padding:22px;margin:0 0 17px;box-shadow:0 3px 12px #173b4310}
-.card.highlight{background:#e2f0f0}
-.grid,.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;margin:0 0 18px}
+.card,.panel .card{background:linear-gradient(125deg,#16a7bd4d,#057b9a55);border:1px solid #a7f6fa75;border-radius:25px;padding:clamp(21px,4vw,32px);margin:0 0 15px;box-shadow:inset 0 1px #ffffff38,0 8px 24px #003f581f;color:#fff}
+.card.highlight{background:linear-gradient(125deg,#26c4ca55,#0783a655)}
+.card p,.card h2,.card h3,.card strong,.card li{color:#fff}
+h2{font-size:clamp(24px,3vw,33px);line-height:1.2;margin:0 0 14px}
+h3{font-size:clamp(21px,2.4vw,26px);margin:0 0 11px}
+p{margin:8px 0 14px}
+.grid,.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:18px}
 .grid .card,.steps .card{margin:0}
-.eyebrow{font-size:12px;letter-spacing:.11em;text-transform:uppercase;font-weight:800;color:#16717a;margin-bottom:8px}
-.note{font-size:13px;color:#5a7378}
-a{color:#146b73}a:hover{text-decoration:none}
-.field{display:flex;flex-direction:column;gap:5px}
-.field input,.field select,.research-search-wrap input{width:100%;font:inherit;border:1px solid #b6ced0;border-radius:10px;background:#fff;color:#173b43;padding:11px}
-.result{background:#e2f0f0;border-radius:12px;padding:16px}
-.result small{display:block;color:#4f6d72}
-.metric{font-size:29px;font-weight:800;color:#146b73}
-.steps{counter-reset:step}
-.steps>.card:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#146b73;color:#fff;font-size:20px;font-weight:800;margin-bottom:17px}
-.viz-shell{background:#175a65;color:#fff;border-radius:17px;padding:22px;margin-bottom:18px}
-.viz-shell .eyebrow,.viz-shell p{color:#e3f6f6}
-.viz-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
-.viz-node{border:1px solid #8cbec3;border-radius:12px;padding:16px;background:#ffffff12}
-.viz-node small{color:#d0e9eb}
-.viz-symbol{font-size:28px}
-.chart-wrap{overflow:auto;background:#fff;border-radius:12px;padding:12px}
-.chart-wrap svg{width:100%;min-width:300px}
-.chart-legend{display:flex;flex-wrap:wrap;gap:14px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#b8ffff;margin-bottom:10px}
+.note{font-size:13px;color:#d2f2f4}
+a{color:#c4ffff}a:hover{color:#fff}
+.field{display:flex;flex-direction:column;gap:6px}
+.field input,.field select,.research-search-wrap input{width:100%;font:inherit;padding:11px;border:1px solid #c4ffff8c;border-radius:12px;background:#e4ffff;color:#064357}
+.result{border:1px solid #b5ffff66;border-radius:14px;background:#ffffff24;padding:17px}
+.result small{display:block;color:#d7f6f6}.metric{font-size:29px;font-weight:800}
+button.action,.research-back{font:inherit;font-weight:700;cursor:pointer;border:1px solid #b5ffff8c;border-radius:13px;background:#20b9c9;color:#073e54;padding:11px 16px}
+.steps{counter-reset:step}.steps>.card:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#48d5de;color:#064357;font-size:21px;font-weight:800;margin-bottom:15px}
+.viz-shell{background:#005e7a65;border:1px solid #b5ffff80;border-radius:24px;padding:23px;margin-bottom:18px}
+.viz-shell p{color:#e8ffff}.viz-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}.viz-node{padding:15px;border:1px solid #a4f7fa78;border-radius:15px;background:#ffffff16}.viz-node small{color:#c7eff2}.viz-symbol{font-size:26px}
+.chart-wrap{overflow:auto;background:#f1ffff;border-radius:13px;padding:12px}.chart-wrap svg{width:100%;min-width:300px}
+.chart-legend{display:flex;flex-wrap:wrap;gap:12px}
 .overview-topic{cursor:pointer;outline-offset:3px}
-.overview-readmore{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:16px;padding-top:12px;border-top:1px solid #d3e2e3;color:#146b73;font-weight:750}
-.overview-dots{font-size:19px;letter-spacing:3px}
-.overview-detail{border-top:1px solid #d3e2e3;margin-top:15px;padding-top:15px}
+.overview-readmore{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #b5ffff66;margin-top:17px;padding-top:13px;color:#c8ffff;font-weight:750}
+.overview-dots{letter-spacing:4px;font-size:19px}
+.overview-detail{border-top:1px solid #b5ffff66;padding-top:14px;margin-top:15px}
 #overview .overview-topic[aria-expanded=true]{grid-column:1/-1}
-.research-news-list{display:grid;gap:13px}
-.research-news-entry{padding:20px}
-.research-news-date{font-size:13px;color:#557279}
-.research-news-link{font-weight:750}
-.research-search{margin:18px 0}
-.research-search-wrap{display:flex;align-items:center;gap:8px;padding:5px 12px;border:1px solid #d3e2e3;background:#fff;border-radius:12px}
-.research-search-wrap input{border:0}
-.market-visual svg{width:100%;height:auto;max-height:250px}
-.market-visual svg text{fill:#173b43}
-footer{text-align:center;padding:26px;color:#5a7378}
-@media(max-width:600px){header{padding:24px 18px 28px}main{padding:14px 14px 50px}.grid,.steps{grid-template-columns:1fr}.card{padding:19px}.tabs button{padding:10px 12px}}
+.research-news-list{display:grid;gap:14px}.research-news-date{font-size:13px;color:#c2edf0}.research-news-link{font-weight:750}
+.research-search{margin:18px 0}.research-search-wrap{display:flex;align-items:center;gap:8px;border:1px solid #a4f7fa78;border-radius:13px;padding:6px 12px;background:#ffffff1c}.research-search-wrap input{background:transparent;color:#fff;border:0}.research-search-wrap input::placeholder{color:#d4f5f7}
+footer{text-align:center;color:#d6f5f6;padding:25px}
+@media(max-width:600px){header{padding:20px 18px 23px}main{padding:0 14px 55px}.grid,.steps{grid-template-columns:1fr}.tabs button{padding:10px 13px}.card{padding:22px}}
+@media(prefers-reduced-transparency:reduce){.tabs{backdrop-filter:none;-webkit-backdrop-filter:none}}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
