@@ -148,6 +148,34 @@ nav,.tabs{backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur
 .research-search-wrap{background:rgba(255,255,255,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 @media(min-width:720px){.research-news-entry{display:grid;grid-template-columns:155px 1fr;column-gap:18px;align-items:start}.research-news-image{grid-row:1/5;height:110px;margin:0}.research-news-date,.research-news-entry h3,.research-news-entry p,.research-news-link{grid-column:2}}
 @media(prefers-reduced-transparency:reduce){.tabs,.panel>.card,.panel>.grid>.card{backdrop-filter:none;-webkit-backdrop-filter:none;background:#f8fbfb}}
+
+/* Consistent Liquid Glass visual system across every page */
+.panel{position:relative}
+.panel>.card,.panel>.grid>.card,.panel .steps>.card,.panel .card,.panel .result,.panel .viz-shell,.panel .chart-wrap,.panel .research-news-entry{border:1px solid rgba(255,255,255,.85);border-radius:24px;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 16px 40px rgba(13,64,81,.1);backdrop-filter:blur(22px) saturate(145%);-webkit-backdrop-filter:blur(22px) saturate(145%)}
+.panel .card:not(.viz-shell),.panel .steps>.card{background:linear-gradient(145deg,rgba(255,255,255,.82),rgba(236,249,251,.65))}
+.panel .card.highlight{background:linear-gradient(115deg,rgba(218,246,246,.83),rgba(255,255,255,.68))}
+.panel .grid>.card:before{background:linear-gradient(90deg,#087f83,#84dfe1)}
+.panel .steps>.card{border-top:3px solid #138f89}
+.panel .steps>.card:before{background:linear-gradient(140deg,#06777c,#28b6b5)}
+.panel .field input,.panel .field select,.panel .research-search-wrap,.panel button.action{background:rgba(255,255,255,.68);border:1px solid rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:inset 0 1px #fff,0 4px 14px #123b4510}
+.panel .result{background:linear-gradient(135deg,rgba(218,247,245,.82),rgba(232,243,255,.72))}
+.panel .viz-shell{background:linear-gradient(115deg,rgba(5,39,59,.95),rgba(10,103,109,.82))}
+.panel>.card:first-child{position:relative;overflow:hidden}
+.panel>.card:first-child:before{content:"";position:absolute;inset:0 0 auto 0;height:125px;pointer-events:none;opacity:.2;background:linear-gradient(180deg,transparent,#fff),var(--section-image) center/cover no-repeat;mask-image:linear-gradient(#000,transparent)}
+#overview{--section-image:url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1000&q=80')}
+#calculator{--section-image:url('https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1000&q=80')}
+#timeline{--section-image:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1000&q=80')}
+#market{--section-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1000&q=80')}
+#prototype{--section-image:url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1000&q=80')}
+#analytics{--section-image:url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&q=80')}
+#risks{--section-image:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1000&q=80')}
+#research{--section-image:url('https://images.unsplash.com/photo-1497436072909-60f362e1d4b1?w=1000&q=80')}
+#contact{--section-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000&q=80')}
+.panel .card h2,.panel .card h3,.panel .card p{position:relative}
+.section-photo{width:100%;height:145px;object-fit:cover;border-radius:18px;display:block;margin:0 0 17px;box-shadow:0 8px 24px #063a4a20}
+.section-photo-caption{font-size:11px;color:#65818a;margin-top:-12px;margin-bottom:14px}
+@media(min-width:850px){.section-photo{height:185px}}
+@media(prefers-reduced-transparency:reduce){.panel .card{background:#f8fcfc!important;backdrop-filter:none;-webkit-backdrop-filter:none}}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
@@ -277,6 +305,24 @@ function overviewMiniChart(){
  slider.addEventListener('input',update);update();
 }
 const OVERVIEW_PHOTOS=["https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1497436072909-60f362e1d4b1?w=1200&q=85&fit=crop"];
+
+function enhanceAllSections(){
+ const photos={
+ timeline:'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1100&q=80',
+ market:'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1100&q=80',
+ prototype:'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1100&q=80',
+ analytics:'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1100&q=80',
+ risks:'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1100&q=80',
+ contact:'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1100&q=80'
+ };
+ for(const [id,url] of Object.entries(photos)){
+  const panel=document.getElementById(id);if(!panel)return;
+  const card=panel.querySelector(':scope > .card');if(!card||card.querySelector('.section-photo'))continue;
+  const img=document.createElement('img');img.className='section-photo';img.src=url;img.loading='lazy';img.alt='';img.onerror=()=>img.remove();
+  const heading=card.querySelector('h2');if(heading)heading.before(img);else card.prepend(img);
+ }
+}
+
 function setupOverview(){
  const panel=document.getElementById('overview');if(!panel)return;
  const grid=[...panel.querySelectorAll('.grid')].find(g=>g.querySelectorAll(':scope > .card').length===4);if(!grid)return;
@@ -291,7 +337,7 @@ function setupOverview(){
   const toggle=()=>{overviewOpen=overviewOpen===i?null:i;setupOverview()};card.onclick=toggle;card.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();toggle()}};
  });
 }
-function render(){document.documentElement.lang=lang;const t=L[lang];document.querySelectorAll('[data-i]').forEach(el=>el.textContent=t[el.dataset.i]);document.getElementById('enBtn').setAttribute('aria-pressed',lang==='en');document.getElementById('ruBtn').setAttribute('aria-pressed',lang==='ru');document.getElementById('tabs').innerHTML=ids.map((id,i)=>'<button type="button" data-tab="'+id+'" role="tab" aria-selected="'+(active===id)+'">'+t.tabs[i]+'</button>').join('');ids.forEach(id=>{const p=document.getElementById(id);p.innerHTML=t[id];p.classList.toggle('active',id===active)});document.getElementById('tabs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;render();document.getElementById(active).scrollIntoView({block:'start',behavior:'smooth'})}));if(active==='calculator'){document.querySelectorAll('#calculator input').forEach(i=>i.addEventListener('input',calculate));calculate()}visualExtras();setupOverview();overviewMiniChart();renderResearch()}
+function render(){document.documentElement.lang=lang;const t=L[lang];document.querySelectorAll('[data-i]').forEach(el=>el.textContent=t[el.dataset.i]);document.getElementById('enBtn').setAttribute('aria-pressed',lang==='en');document.getElementById('ruBtn').setAttribute('aria-pressed',lang==='ru');document.getElementById('tabs').innerHTML=ids.map((id,i)=>'<button type="button" data-tab="'+id+'" role="tab" aria-selected="'+(active===id)+'">'+t.tabs[i]+'</button>').join('');ids.forEach(id=>{const p=document.getElementById(id);p.innerHTML=t[id];p.classList.toggle('active',id===active)});document.getElementById('tabs').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{active=b.dataset.tab;render();document.getElementById(active).scrollIntoView({block:'start',behavior:'smooth'})}));if(active==='calculator'){document.querySelectorAll('#calculator input').forEach(i=>i.addEventListener('input',calculate));calculate()}visualExtras();setupOverview();overviewMiniChart();renderResearch();enhanceAllSections()}
 
 function visualExtras(){
  const overview=document.getElementById('overview');
