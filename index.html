@@ -146,7 +146,7 @@ textarea.inp-c{height:90px;resize:vertical}
     <div>
       <div class="brand-name" id="t-location">County Clare · Ireland · 2025–2045</div>
       <div class="brand-title"><span>H₂</span>-Retrofit Ireland</div>
-      <div class="brand-sub" id="t-sub">Green Hydrogen from Curtailed Wind · Drop-In Home Decarbonisation · Investor Platform</div>
+      <div class="brand-sub" id="t-sub">Green Hydrogen from Curtailed Wind · Hydrogen Blending Feasibility · Research Concept</div>
     </div>
     <div class="hdr-right">
       <div class="lang-toggle">
@@ -154,7 +154,7 @@ textarea.inp-c{height:90px;resize:vertical}
         <button class="lt-btn" onclick="setLang('ru')">RU</button>
       </div>
       <div class="hdr-pills">
-        <span class="pill" onclick="togglePill(this,'dropin')" id="pill-dropin">Drop-In Tech</span>
+        <span class="pill" onclick="togglePill(this,'dropin')" id="pill-dropin">H₂ Blending</span>
         <span class="pill" onclick="togglePill(this,'curtailed')" id="pill-curtailed">Curtailed Wind</span>
         <span class="pill" onclick="togglePill(this,'circular')" id="pill-circular">Circular Economy</span>
         <span class="pill" onclick="togglePill(this,'pilot')" id="pill-pilot">Clare Pilot</span>
@@ -180,6 +180,7 @@ textarea.inp-c{height:90px;resize:vertical}
 </div>
 
 <!-- ══ OVERVIEW ══ -->
+<div class="hbox gl" style="margin-bottom:18px"><strong>Research concept / Исследовательская концепция.</strong> Up to 20% H₂ by volume is approximately 7% by energy and may reduce direct CO₂ per unit of heat by around 6–7%, not 20%. Compatibility, Irish network approval, safety, lifecycle emissions and costs require validation. Funding, contracts, delivery, revenue and deployment forecasts below are unverified scenarios. / До 20% H₂ по объёму — около 7% энергии; ориентировочное снижение прямых выбросов CO₂ — 6–7%. Совместимость котлов, разрешения, безопасность, экономика и сроки требуют проверки.</div>
 <div id="tab-overview" class="sec on">
   <div class="g4">
     <div class="mcard"><div class="mlabel" id="t-m1l">Pilot Funding</div><div class="mval ac">€1.5M</div><div class="msub" id="t-m1s">DTIF + Clare CC</div></div>
@@ -210,11 +211,8 @@ textarea.inp-c{height:90px;resize:vertical}
   </div>
 
   <div class="card tl" style="margin-bottom:16px">
-    <div class="st" id="t-sol-title">The Solution — Drop-In H₂ Technology</div>
-    <div class="prose" id="t-sol-body">
-      <p>The H₂-ready boiler replaces only the gas burner — fitting existing radiators, pipework, thermostat, and zone controls without modification. <strong>Zero structural changes. Installed in one day. Cost: €3,000–6,000.</strong></p>
-      <p>Fuel: green hydrogen produced from curtailed wind electricity at ~€0.01/kWh. Production cost: <strong>€1.5–2.5/kg versus €6–10/kg from grid electricity</strong> — a 4–6× cost advantage unique to Ireland's wind surplus. Only water vapour emitted.</p>
-    </div>
+    <div class="st" id="t-sol-title">The Concept — Hydrogen Blending Feasibility</div>
+    <div class="prose" id="t-sol-body"><p>The project explores <strong>blending up to 20% green hydrogen by volume</strong> into natural gas for existing gas-heated buildings, rather than replacing gas boilers with 100% hydrogen appliances. At 20 vol% H₂, hydrogen contributes about 7% of the energy and may reduce direct CO₂ emissions per unit of heat by approximately 6–7%, subject to gas composition and appliance efficiency.</p><p>Research is required on Irish gas-network authorisation, appliance compatibility, meters, injection safety, lifecycle emissions, NOx, curtailed-wind availability and commercial viability. No grid injection or domestic conversion is currently authorised by this project.</p></div>
     <div class="g2" style="margin-top:14px;margin-bottom:0">
       <div>
         <div class="row"><span class="rk" id="t-s1k">Installation cost</span><span class="rv tl">€3,000–6,000</span></div>
@@ -362,7 +360,7 @@ textarea.inp-c{height:90px;resize:vertical}
       <div class="row"><span class="rk" id="t-ms2">Electrolyser self-funded</span><span class="rv bl">2027</span></div>
       <div class="row"><span class="rk" id="t-ms3">First Moneypoint delivery</span><span class="rv tl">2028</span></div>
       <div class="row"><span class="rk" id="t-ms4">ESB contract confirmed</span><span class="rv tl">2029</span></div>
-      <div class="row"><span class="rk" id="t-ms5">20% H₂ grid blending</span><span class="rv gl">2028</span></div>
+      <div class="row"><span class="rk" id="t-ms5">20% H₂ blending feasibility</span><span class="rv gl">Research</span></div>
       <div class="row"><span class="rk" id="t-ms6">First 100% H₂ district</span><span class="rv gl">2030s</span></div>
       <div class="row"><span class="rk" id="t-ms7">2M ha native woodland</span><span class="rv tl">2045</span></div>
       <div class="row"><span class="rk" id="t-ms8">€5B+ H₂ export revenue</span><span class="rv ac">2040s</span></div>
@@ -550,15 +548,15 @@ textarea.inp-c{height:90px;resize:vertical}
 const TR={
 en:{
   location:'County Clare · Ireland · 2025–2045',
-  sub:'Green Hydrogen from Curtailed Wind · Drop-In Home Decarbonisation · Investor Platform',
-  pills:['Drop-In Tech','Curtailed Wind','Circular Economy','Clare Pilot'],
+  sub:'Green Hydrogen from Curtailed Wind · Hydrogen Blending Feasibility · Research Concept',
+  pills:['H₂ Blending','Curtailed Wind','Circular Economy','Clare Pilot'],
   nav:['Overview','H₂ Calculator','Timeline','Market','Prototype','Analytics','Contact','⚠ Risk Analysis'],
   m1l:'Pilot Funding',m1s:'DTIF + Clare CC',m2l:'Market Size',m2s:'hard-to-treat homes',m3l:'Install Cost',m3s:'vs €49.6k deep retrofit',m4l:'Jobs Created',m4s:'by Phase 4',
   'prob-title':"The Problem — Ireland's Retrofit Crisis",
   'prob-body':'<p>Ireland has a legally binding commitment: cut GHG emissions <strong>51% by 2030</strong>. Current trajectory: ~29%. <strong>500,000 homes need to be decarbonised by 2030.</strong> We\'ve completed 55,000.</p><p>Deep retrofit at €49,600 per home is structurally impossible for roughly <strong>30% of Irish housing stock</strong>. Pre-1940s solid-wall stone construction has no cavity to fill. Heat pumps require low-temperature radiators these homes don\'t have.</p><p>Only 12% of Irish households say they would try hydrogen heating, despite 53% wanting to change. <strong>The market exists — the demonstration is missing.</strong></p>',
   r1k:'Retrofit target 2030',r2k:'Completed to date',r3k:'Hard-to-treat (no solution)',r4k:'Deep retrofit cost / home',r5k:'Total market without H₂',r6k:'EU fines if targets missed',
-  'sol-title':'The Solution — Drop-In H₂ Technology',
-  'sol-body':'<p>The H₂-ready boiler replaces only the gas burner — fitting existing radiators, pipework, thermostat, and zone controls. <strong>Zero structural changes. Installed in one day. Cost: €3,000–6,000.</strong></p><p>Fuel: green hydrogen from curtailed wind at ~€0.01/kWh. Production cost: <strong>€1.5–2.5/kg versus €6–10/kg from grid electricity</strong> — a 4–6× cost advantage. Only water vapour emitted.</p>',
+  'sol-title':'The Concept — Hydrogen Blending Feasibility',
+  'sol-body':'<p>The project explores <strong>blending up to 20% green hydrogen by volume</strong> into natural gas for existing gas-heated buildings, rather than replacing gas boilers with 100% hydrogen appliances. At 20 vol% H₂, hydrogen contributes about 7% of the energy and may reduce direct CO₂ emissions per unit of heat by approximately 6–7%, subject to gas composition and appliance efficiency.</p><p>Research is required on Irish gas-network authorisation, appliance compatibility, meters, injection safety, lifecycle emissions, NOx, curtailed-wind availability and commercial viability. No grid injection or domestic conversion is currently authorised by this project.</p>',
   s1k:'Installation cost',s2k:'Installation time',s2v:'1 day',s3k:'Structural changes',s3v:'Zero',s4k:'Boiler efficiency',s5k:'H₂ cost (curtailed wind)',s6k:'H₂ cost (grid electricity)',
   'loop-title':'Circular Economy Loop',
   tag1:'Wind 2.1 TWh',tag2:'Electrolysis',tag3:'Green H₂',tag4:'Home Heat',tag5:'Farm Subsidies',tag6:'Forests + SAC',tag7:'Clean Water',tag8:'Health Savings',reinvest:'→ reinvest →',
@@ -632,15 +630,15 @@ en:{
 },
 ru:{
   location:'Графство Клэр · Ирландия · 2025–2045',
-  sub:'Зелёный водород из невостребованной ветроэнергии · Котлы замены H₂ · Инвестиционная платформа',
-  pills:['Технология замены','Невост. ветер','Циклическая экономика','Пилот Клэр'],
+  sub:'Зелёный водород из невостребованной ветроэнергии · Исследование смешивания H₂ · Концепция',
+  pills:['Смешивание H₂','Невост. ветер','Циклическая экономика','Пилот Клэр'],
   nav:['Обзор','Калькулятор H₂','Хронология','Рынок','Прототип','Аналитика','Контакты','⚠ Анализ рисков'],
   m1l:'Финансирование пилота',m1s:'DTIF + совет Клэр',m2l:'Размер рынка',m2s:'домов без решения',m3l:'Стоимость установки',m3s:'vs €49.6k глубокий ретрофит',m4l:'Рабочих мест',m4s:'к Фазе 4',
   'prob-title':'Проблема — кризис декарбонизации жилья в Ирландии',
   'prob-body':'<p>Ирландия имеет юридически обязывающее обязательство: сократить выбросы ПГ на <strong>51% к 2030 году</strong>. Текущая траектория: ~29%. Разрыв почти полностью в жилищном отоплении — <strong>500 000 домов нужно декарбонизировать к 2030 году.</strong> Выполнено 55 000.</p><p>Традиционное решение — глубокий ретрофит за €49 600 за дом — структурно невозможно примерно для <strong>30% жилого фонда Ирландии</strong>. Дома до 1940-х годов с цельными каменными стенами не имеют полостей. Тепловые насосы требуют низкотемпературных радиаторов, которых в этих домах нет.</p><p>Только 12% ирландских домохозяйств готовы попробовать водородное отопление, хотя 53% хотят его изменить. <strong>Рынок существует — не хватает демонстрации.</strong></p>',
   r1k:'Цель ретрофита к 2030',r2k:'Выполнено на сегодня',r3k:'Без решения (30%)',r4k:'Стоимость глубокого ретрофита',r5k:'Общий рынок без H₂',r6k:'Штрафы ЕС при срыве целей',
-  'sol-title':'Решение — технология замены на H₂',
-  'sol-body':'<p>Котёл H₂-ready заменяет только газовую горелку — подходит к существующим радиаторам, трубам, термостату без модификаций. <strong>Никаких структурных изменений. Установка за один день. Стоимость: €3 000–6 000.</strong></p><p>Топливо: зелёный водород из невостребованной ветроэнергии (~€0,01/кВтч). Себестоимость: <strong>€1,5–2,5/кг против €6–10/кг из сетевого электричества</strong> — преимущество в 4–6 раз. Выбросов нет.</p>',
+  'sol-title':'Концепция — исследование смешивания H₂',
+  'sol-body':'<p>Проект исследует <strong>подмешивание до 20% зелёного водорода по объёму</strong> в природный газ для существующего газового отопления, а не перевод всех котлов на 100% водород. При 20% H₂ по объёму водород даёт около 7% энергии смеси и ориентировочно 6–7% сокращения прямых выбросов CO₂ на единицу тепла.</p><p>Необходимо проверить разрешения на подмешивание в Ирландии, совместимость котлов и счётчиков, безопасность, NOx, выбросы за жизненный цикл, доступность ветровой энергии и экономику. Проект пока не имеет разрешений на подачу водорода в сеть.</p>',
   s1k:'Стоимость установки',s2k:'Время установки',s2v:'1 день',s3k:'Структурные изменения',s3v:'Ноль',s4k:'КПД котла',s5k:'Стоимость H₂ (ветер)',s6k:'Стоимость H₂ (сеть)',
   'loop-title':'Петля циклической экономики',
   tag1:'Ветер 2.1 ТВтч',tag2:'Электролиз',tag3:'Зелёный H₂',tag4:'Отопление домов',tag5:'Субсидии фермерам',tag6:'Леса + SAC',tag7:'Чистая вода',tag8:'Экономия здоровья',reinvest:'→ реинвест →',
@@ -706,7 +704,7 @@ ru:{
   projLabels:['Выручка H₂','OPEX','Валовая прибыль','NPV 10 лет'],
   rLabels:['Выручка H₂','Общий OPEX','Валовая прибыль','NPV (10 лет)','IRR','Окупаемость'],yr:'лет',
   pillData:{
-    dropin:{t:'Технология замены',b:'Котёл H₂-ready заменяет только горелку — подходит к существующим радиаторам. <strong>Никаких структурных изменений. Установка за 1 день. €3 000–6 000.</strong> Единственный путь декарбонизации для домов с цельными стенами.'},
+    dropin:{t:'Смешивание H₂',b:'Котёл H₂-ready заменяет только горелку — подходит к существующим радиаторам. <strong>Никаких структурных изменений. Установка за 1 день. €3 000–6 000.</strong> Единственный путь декарбонизации для домов с цельными стенами.'},
     curtailed:{t:'Зелёный H₂ из невостребованного ветра',b:'EirGrid платит генераторам за отключение при избытке ветра. В 2025 году растрачено <strong>2,1 ТВтч</strong>. Мы улавливаем это по ~€0,01/кВтч и превращаем в водород по <strong>€1,5–2,5/кг</strong> против €6–10/кг из сети.'},
     circular:{t:'Петля циклической экономики',b:'Доходы от H₂ финансируют Завет 20% — фермеры сокращают стадо, сажают лес, получают <strong>€12–18 тыс./год</strong>. Лесные буферы снижают загрязнение азотом. Экономия на здоровье реинвестируется в H₂. <strong>Система самоокупается.</strong>'},
     pilot:{t:'Пилотный участок графства Клэр',b:'Клэр идеален: Монейпойнт (915 МВт) прекратил сжигание угля в июне 2025 и нуждается в отечественном поставщике H₂ до 2029 года. <strong>Фаза 1 (2025–27):</strong> 5–10 социальных домов, 12 месяцев данных. Стоимость: €1,5 млн через DTIF.'}
