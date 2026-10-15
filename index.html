@@ -123,6 +123,31 @@ body{background:radial-gradient(ellipse 75% 45% at 90% 10%,rgba(119,211,213,.3),
 .overview-chart-top{display:flex;justify-content:space-between;gap:14px;align-items:start;flex-wrap:wrap}.overview-chart-top h2{font-size:clamp(20px,3vw,27px)}.overview-chart-top p{font-size:14px;color:#526c75;max-width:590px}.overview-chart-value{font-size:clamp(25px,4vw,34px);font-weight:850;color:#0b6269;white-space:nowrap}.overview-chart-value small{font-size:13px;font-weight:600;color:#5d7b82}
 .overview-chart-bars{display:flex;align-items:end;justify-content:center;gap:clamp(15px,4vw,45px);height:185px;margin:15px 0 18px;padding:5px 10px 0;border-bottom:1px solid #bad7da}.overview-bar-item{display:flex;flex-direction:column;align-items:center;justify-content:end;gap:5px;height:100%;font-size:12px;color:#315b67;font-weight:750}.overview-bar-track{height:130px;width:clamp(31px,7vw,60px);display:flex;align-items:end}.overview-bar-track>div{width:100%;border-radius:9px 9px 2px 2px;background:linear-gradient(180deg,#70cbd3,#0a6b78);transition:height .2s}.overview-bar-track>div.selected{background:linear-gradient(180deg,#86e5c7,#149e90);box-shadow:0 0 0 2px #a3e6d6}.overview-bar-item small{font-size:11px}
 .overview-chart-control{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:#41616c;margin-bottom:8px}.overview-chart input[type=range]{width:100%;accent-color:#0b7d83;cursor:pointer}.overview-chart .note{margin-top:12px}
+
+/* Site-wide translucent Liquid Glass treatment */
+body{background:radial-gradient(circle at 82% 7%,#b9e4e4 0,transparent 36%),radial-gradient(circle at 8% 74%,#d3e5f4 0,transparent 42%),#edf4f6;background-attachment:fixed}
+header{position:relative;overflow:hidden;background:linear-gradient(105deg,rgba(5,36,53,.9),rgba(5,82,88,.65)),url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=85&fit=crop') center 52%/cover no-repeat;border-bottom:1px solid #ffffff55}
+header:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 12%,#ffffff28,transparent 50%);pointer-events:none}
+header>*{position:relative}
+nav,.tabs{backdrop-filter:blur(24px) saturate(155%);-webkit-backdrop-filter:blur(24px) saturate(155%)}
+.tabs{background:rgba(255,255,255,.68);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 34px #0b304019,inset 0 1px #fff;border-radius:18px;padding:8px;position:sticky;top:0;z-index:30}
+.tabs button{background:rgba(255,255,255,.33);border-color:transparent;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.tabs button[aria-selected=true]{background:linear-gradient(135deg,rgba(7,87,99,.96),rgba(5,100,103,.88));box-shadow:0 5px 16px #083a4430;border:1px solid #ffffff44}
+.langs button{background:rgba(255,255,255,.18);color:white;border:1px solid #ffffff66;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.langs button[aria-pressed=true]{background:rgba(255,255,255,.9);color:#0b4b54;border-color:#fff}
+.panel>.card,.panel>.grid>.card,.research-story,.research-news-list,.research-intro{background:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.9);box-shadow:0 12px 35px #123e5016,inset 0 1px #fff;backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%)}
+.overview-visual{position:relative;background:#0a5665;isolation:isolate}
+.overview-visual>img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9) contrast(1.06)}
+.overview-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(4,43,58,.25),transparent 75%);pointer-events:none}
+.overview-svg-fallback{height:100%;width:100%}
+.overview-svg-fallback svg{width:100%;height:100%}
+.research-news-image{height:105px;overflow:hidden;border-radius:11px;margin-bottom:10px;background:linear-gradient(120deg,#0c4b57,#1a8990)}
+.research-news-image img{width:100%;height:100%;object-fit:cover;display:block;filter:saturate(.85)}
+.research-news-entry{background:rgba(255,255,255,.72)!important}
+.research-news-list{background:rgba(255,255,255,.6)}
+.research-search-wrap{background:rgba(255,255,255,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+@media(min-width:720px){.research-news-entry{display:grid;grid-template-columns:155px 1fr;column-gap:18px;align-items:start}.research-news-image{grid-row:1/5;height:110px;margin:0}.research-news-date,.research-news-entry h3,.research-news-entry p,.research-news-link{grid-column:2}}
+@media(prefers-reduced-transparency:reduce){.tabs,.panel>.card,.panel>.grid>.card{backdrop-filter:none;-webkit-backdrop-filter:none;background:#f8fbfb}}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
@@ -216,7 +241,7 @@ function renderResearch(){
  }else{
   root.innerHTML='<div class="research-news-head"><div class="eyebrow">'+(ru?"Архив публикаций":"Publication archive")+'</div><h2>Research & Insights</h2><p>'+(ru?"Исследования энергетики Ирландии. Нажмите «Читать далее», чтобы открыть статью целиком.":"Research on Ireland’s energy future. Select “Read more” to open a complete article.")+'</p></div>'+
   '<div class="research-search"><label for="researchSearch">'+(ru?"Поиск по статьям":"Search articles")+'</label><div class="research-search-wrap"><span aria-hidden="true">⌕</span><input id="researchSearch" type="search" autocomplete="off" placeholder="'+(ru?"Например: ветер, водород, приливы…":"Try wind, hydrogen, tidal…")+'" value="'+researchEscape(researchQuery)+'"></div><div class="research-search-count" id="researchSearchCount" aria-live="polite"></div></div>'+
-  '<div class="research-news-list" id="researchNewsList">'+ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<article class="card research-news-entry"><div class="research-news-date">'+dateFmt(a.date)+' <span>· '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span></div><h3><a href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+researchEscape(local(a.title))+'</a></h3><p>'+researchEscape(local(a.excerpt))+'</p><a class="research-news-link" href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+(ru?"Читать далее →":"Read more →")+'</a></article>').join('')+'</div>';
+  '<div class="research-news-list" id="researchNewsList">'+ARTICLES.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(a=>'<article class="card research-news-entry"><div class="research-news-image" aria-hidden="true"><img src="'+(a.category==='wind'?OVERVIEW_PHOTOS[0]:a.category==='tidal'?OVERVIEW_PHOTOS[1]:a.category==='hydrogen'?OVERVIEW_PHOTOS[2]:OVERVIEW_PHOTOS[3])+'" loading="lazy" alt=""></div><div class="research-news-date">'+dateFmt(a.date)+' <span>· '+researchEscape(local(RESEARCH_CATEGORIES.find(c=>c.id===a.category)))+'</span></div><h3><a href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+researchEscape(local(a.title))+'</a></h3><p>'+researchEscape(local(a.excerpt))+'</p><a class="research-news-link" href="#research/'+encodeURIComponent(a.id)+'" data-article="'+researchEscape(a.id)+'">'+(ru?"Читать далее →":"Read more →")+'</a></article>').join('')+'</div>';
   const search=document.getElementById("researchSearch"),entries=[...root.querySelectorAll(".research-news-entry")];
   const normalize=v=>String(v).toLocaleLowerCase().normalize("NFKD").replace(/[\u0300-\u036f]/g,"").trim();
   function filterResearch(){
@@ -251,12 +276,13 @@ function overviewMiniChart(){
  function update(){const p=Number(slider.value)/1000,c=p*52;label.textContent='€'+p.toFixed(3)+'/kWh';value.innerHTML='€'+c.toFixed(2)+' <small>/ kg H₂</small>';const scenarios=[.001,.02,.04,.08];bars.innerHTML=scenarios.map(v=>{const h=Math.max(4,v/.08*100),selected=Math.abs(v-p)<.001;return '<div class="overview-bar-item"><span>€'+(v*52).toFixed(2)+'</span><div class="overview-bar-track"><div style="height:'+h+'%" class="'+(selected?'selected':'')+'"></div></div><small>€'+v.toFixed(3)+'</small></div>'}).join('')}
  slider.addEventListener('input',update);update();
 }
+const OVERVIEW_PHOTOS=["https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=85&fit=crop","https://images.unsplash.com/photo-1497436072909-60f362e1d4b1?w=1200&q=85&fit=crop"];
 function setupOverview(){
  const panel=document.getElementById('overview');if(!panel)return;
  const grid=[...panel.querySelectorAll('.grid')].find(g=>g.querySelectorAll(':scope > .card').length===4);if(!grid)return;
  [...grid.children].forEach((card,i)=>{
   card.classList.add('overview-topic');card.setAttribute('role','button');card.tabIndex=0;
-  if(!card.querySelector('.overview-visual')){const visual=document.createElement('div');visual.className='overview-visual';visual.innerHTML=OVERVIEW_VISUALS[i];const h=card.querySelector('h3');if(h)h.before(visual);else card.prepend(visual)}
+  if(!card.querySelector('.overview-visual')){const visual=document.createElement('div');visual.className='overview-visual';visual.innerHTML='<img src="'+OVERVIEW_PHOTOS[i]+'" loading="lazy" alt="'+(lang==='ru'?OVERVIEW_DETAILS.ru[i][0]:OVERVIEW_DETAILS.en[i][0])+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">'+'<span class="overview-svg-fallback" style="display:none">'+OVERVIEW_VISUALS[i]+'</span>';const h=card.querySelector('h3');if(h)h.before(visual);else card.prepend(visual)}
   const more=document.createElement('div');more.className='overview-readmore';more.innerHTML='<span class="overview-dots">•••</span><span>'+(lang==='ru'?'Читать далее':'Read more')+' ↓</span>';
   const existing=card.querySelector('.overview-readmore');if(existing)existing.remove();card.appendChild(more);
   const old=card.querySelector('.overview-detail');if(old)old.remove();
