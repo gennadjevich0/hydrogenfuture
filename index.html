@@ -76,6 +76,17 @@ footer{font-size:12px;letter-spacing:.03em}
 .research-news-entry p{font-size:15px;line-height:1.7;color:#536b75;max-width:690px}
 .research-news-link{display:inline-block;margin-top:9px;color:#0b6570!important;font-weight:800;text-decoration:none!important;border-bottom:1px solid #0b6570;padding-bottom:2px}
 .research-news-link:hover{text-decoration:underline!important}
+
+/* Compact editorial archive: publication entries read as a continuous journal */
+.research-news-list{gap:0;max-width:850px;background:#fff;border:1px solid #dce6e8;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px #0b30400b}
+.research-news-entry{border:0!important;border-radius:0!important;box-shadow:none!important;padding:19px 22px 20px!important;background:#fff;margin:0!important}
+.research-news-entry+.research-news-entry{border-top:1px solid #e2e9eb!important}
+.research-news-entry h3{font-size:clamp(18px,2.4vw,22px);margin:7px 0 7px;line-height:1.35}
+.research-news-entry p{font-size:14px;line-height:1.55;margin:0 0 8px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.research-news-date{font-size:12px;letter-spacing:0}
+.research-news-link{font-size:13px;margin-top:3px}
+.research-news-head{padding:5px 2px 14px}
+@media(max-width:600px){.research-news-entry{padding:17px 17px 18px!important}.research-news-entry h3{font-size:19px}.research-news-head h2{font-size:27px}}
 </style></head><body>
 <header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
