@@ -24,7 +24,7 @@ footer{text-align:center;color:#56747b;padding:25px}.site-toolbar,.mobile-langs,
 /* EDITORIAL PHOTOGRAPHIC REDESIGN */
 .hero-art{height:clamp(260px,42vw,490px);position:relative;background:#244b53;border:0;border-radius:17px}
 .hero-art svg{display:none!important}
-.hero-art:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,27,35,.62),transparent 70%),url("https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?auto=format&fit=crop&w=1800&q=85") center/cover}
+.hero-art:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(7,27,35,.62),transparent 70%),url("https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&w=1800&q=85") center/cover}
 .hero-art:after{content:"WIND ENERGY  /  ATLANTIC TRANSITION";position:absolute;bottom:20px;left:24px;color:#fff;font-size:12px;letter-spacing:.18em;font-weight:800}
 .editorial-cover{display:grid;grid-template-columns:1.15fr .85fr;overflow:hidden;background:#132d38;color:#fff;border-radius:23px;margin:0 0 24px;box-shadow:0 18px 42px #12374328;min-height:325px}
 .editorial-cover__image{position:relative;min-height:280px}.editorial-cover__image img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
@@ -261,7 +261,7 @@ risks:{en:["RISK & SAFETY","The difficult questions matter most","Safety, infras
 research:{en:["THE JOURNAL","Research, insight and long-form reading","Explore the articles and original sources behind the energy transition."],ru:["ЖУРНАЛ","Исследования, аналитика и большие статьи","Статьи и первоисточники об энергетическом переходе."]},
 contact:{en:["COLLABORATION","Research needs critical discussion","Share evidence, ask questions and explore cooperation."],ru:["СОТРУДНИЧЕСТВО","Исследования требуют открытого обсуждения","Обмен данными, вопросы и возможности сотрудничества."]}
 };
-function editorialPhoto(id,w){return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+w+'&q=85'}
+function editorialPhoto(id,w){return 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w='+w+'&q=85&rev=windfix2'}
 function renderEditorialPhotos(){
  const ru=lang==='ru';
  Object.keys(EDITORIAL_PHOTOS).forEach(id=>{
@@ -276,7 +276,7 @@ function renderEditorialPhotos(){
  if(grid){const imgs=['photo-1466611653911-95081537e5b7','photo-1518837695005-2083093ee35b','photo-1581092160562-40aa08e78837','photo-1503376780353-7e6692767b70'];
   [...grid.children].forEach((card,i)=>{card.querySelectorAll(':scope > .editorial-photo').forEach(el=>el.remove());const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i],850);img.alt=(ru?['Ветряная энергетика','Океан и приливы','Электролиз и научные исследования','Транспорт и применение водорода']:['Wind turbines','Ocean and tidal energy','Electrolysis research','Hydrogen applications and transport'])[i];card.prepend(img)})}
  const journal=document.getElementById('researchJournal');
- if(journal){const imgs=['photo-1466611653911-95081537e5b7','photo-1486406146926-c627a92ad1ab','photo-1532094349884-543bc11b234d','photo-1451187580459-43490279c0fa','photo-1497435334941-8c899ee9e8e9','photo-1503376780353-7e6692767b70','photo-1581092160562-40aa08e78837','photo-1551288049-bebda4e38f71'];
+ if(journal){const imgs=['photo-1466611653911-95081537e5b7','photo-1486406146926-c627a92ad1ab','photo-1532094349884-543bc11b234d','photo-1451187580459-43490279c0fa','photo-1466611653911-95081537e5b7','photo-1503376780353-7e6692767b70','photo-1581092160562-40aa08e78837','photo-1551288049-bebda4e38f71'];
   journal.querySelectorAll('.research-news-list .card,.research-news-entry').forEach((card,i)=>{card.querySelectorAll(':scope > .editorial-photo').forEach(el=>el.remove());const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i%imgs.length],750);img.alt=ru?'Фотография к статье':'Article photograph';card.prepend(img)});
   const story=journal.querySelector('.research-story');if(story){const img=document.createElement('img');img.className='editorial-photo';img.src=editorialPhoto(imgs[Math.max(0,ARTICLES.findIndex(a=>a.id===researchArticle))%imgs.length],1400);img.alt=ru?'Обложка статьи':'Article cover';story.querySelector('h2')?.after(img)}
  }
