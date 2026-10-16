@@ -250,7 +250,7 @@ function setupOverview(){
  });
 }
 
-const EDITORIAL_PHOTOS={"overview":"photo-1466611653911-95081537e5b7","timeline":"photo-1506784983877-45594efa4cbe","market":"photo-1473341304170-971dccb5ac1e","prototype":"photo-1532094349884-543bc11b234d","analytics":"photo-1551288049-bebda4e38f71","risks":"photo-1581091226825-a6a2a5aee158","research":"photo-1499750310107-5fef28a66643","contact":"photo-1497366811353-6870744d04b2"};
+const EDITORIAL_PHOTOS={"overview":"photo-1500530855697-b586d89ba3ee","timeline":"photo-1506784983877-45594efa4cbe","market":"photo-1473341304170-971dccb5ac1e","prototype":"photo-1581092160607-ee22621dd758","analytics":"photo-1551288049-bebda4e38f71","risks":"photo-1581091226825-a6a2a5aee158","research":"photo-1499750310107-5fef28a66643","contact":"photo-1497366811353-6870744d04b2"};
 const EDITORIAL_TITLES={
 overview:{en:["THE BIG PICTURE","Ireland’s renewable energy future","From wind and tidal resources to electrolysis, hydrogen and real-world demand."],ru:["ГЛАВНАЯ ТЕМА","Будущее возобновляемой энергетики Ирландии","От ветра и приливов до электролиза, водорода и реального спроса."]},
 timeline:{en:["ROADMAP","From hypothesis to evidence","A research timeline: what must be checked before hydrogen becomes viable."],ru:["ДОРОЖНАЯ КАРТА","От гипотезы к доказательствам","Хронология исследований: что необходимо проверить до реализации."]},
@@ -273,11 +273,11 @@ function renderEditorialPhotos(){
   panel.prepend(cover);
  });
  const grid=[...document.querySelectorAll('#overview .grid')].find(g=>g.querySelectorAll(':scope > .card').length===4);
- if(grid){const imgs=['photo-1466611653911-95081537e5b7','photo-1518837695005-2083093ee35b','photo-1532094349884-543bc11b234d','photo-1492144534655-ae79c964c9d7'];
-  [...grid.children].forEach((card,i)=>{const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i],850);img.alt=(ru?['Ветряная энергетика','Океан и приливы','Электролиз и научные исследования','Транспорт и применение водорода']:['Wind turbines','Ocean and tidal energy','Electrolysis research','Hydrogen applications and transport'])[i];card.prepend(img)})}
+ if(grid){const imgs=['photo-1497435334941-8c899ee9e8e9','photo-1518837695005-2083093ee35b','photo-1581092160562-40aa08e78837','photo-1503376780353-7e6692767b70'];
+  [...grid.children].forEach((card,i)=>{card.querySelectorAll(':scope > .editorial-photo').forEach(el=>el.remove());const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i],850);img.alt=(ru?['Ветряная энергетика','Океан и приливы','Электролиз и научные исследования','Транспорт и применение водорода']:['Wind turbines','Ocean and tidal energy','Electrolysis research','Hydrogen applications and transport'])[i];card.prepend(img)})}
  const journal=document.getElementById('researchJournal');
- if(journal){const imgs=['photo-1466611653911-95081537e5b7','photo-1473341304170-971dccb5ac1e','photo-1532094349884-543bc11b234d','photo-1518837695005-2083093ee35b'];
-  journal.querySelectorAll('.research-news-list .card,.research-news-entry').forEach((card,i)=>{const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i%imgs.length],750);img.alt=ru?'Фотография к статье':'Article photograph';card.prepend(img)});
+ if(journal){const imgs=['photo-1466611653911-95081537e5b7','photo-1486406146926-c627a92ad1ab','photo-1532094349884-543bc11b234d','photo-1451187580459-43490279c0fa','photo-1497435334941-8c899ee9e8e9','photo-1503376780353-7e6692767b70','photo-1581092160562-40aa08e78837','photo-1551288049-bebda4e38f71'];
+  journal.querySelectorAll('.research-news-list .card,.research-news-entry').forEach((card,i)=>{card.querySelectorAll(':scope > .editorial-photo').forEach(el=>el.remove());const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i%imgs.length],750);img.alt=ru?'Фотография к статье':'Article photograph';card.prepend(img)});
   const story=journal.querySelector('.research-story');if(story){const img=document.createElement('img');img.className='editorial-photo';img.src=editorialPhoto(imgs[Math.max(0,ARTICLES.findIndex(a=>a.id===researchArticle))%imgs.length],1400);img.alt=ru?'Обложка статьи':'Article cover';story.querySelector('h2')?.after(img)}
  }
 }
