@@ -273,7 +273,7 @@ function renderEditorialPhotos(){
   panel.prepend(cover);
  });
  const grid=[...document.querySelectorAll('#overview .grid')].find(g=>g.querySelectorAll(':scope > .card').length===4);
- if(grid){const imgs=['photo-1497435334941-8c899ee9e8e9','photo-1518837695005-2083093ee35b','photo-1581092160562-40aa08e78837','photo-1503376780353-7e6692767b70'];
+ if(grid){const imgs=['photo-1466611653911-95081537e5b7','photo-1518837695005-2083093ee35b','photo-1581092160562-40aa08e78837','photo-1503376780353-7e6692767b70'];
   [...grid.children].forEach((card,i)=>{card.querySelectorAll(':scope > .editorial-photo').forEach(el=>el.remove());const img=document.createElement('img');img.className='editorial-photo';img.loading='lazy';img.src=editorialPhoto(imgs[i],850);img.alt=(ru?['Ветряная энергетика','Океан и приливы','Электролиз и научные исследования','Транспорт и применение водорода']:['Wind turbines','Ocean and tidal energy','Electrolysis research','Hydrogen applications and transport'])[i];card.prepend(img)})}
  const journal=document.getElementById('researchJournal');
  if(journal){const imgs=['photo-1466611653911-95081537e5b7','photo-1486406146926-c627a92ad1ab','photo-1532094349884-543bc11b234d','photo-1451187580459-43490279c0fa','photo-1497435334941-8c899ee9e8e9','photo-1503376780353-7e6692767b70','photo-1581092160562-40aa08e78837','photo-1551288049-bebda4e38f71'];
