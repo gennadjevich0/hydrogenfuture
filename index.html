@@ -1,127 +1,27 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Independent concept for Ireland's renewable electricity, wind surplus and green hydrogen."><title>Hydrogen Future Ireland — Independent Concept</title>
-<style>
-:root{color-scheme:dark;--bg:#07556b;--ink:#fff;--muted:#d5f6f8;--line:#91eaf0;--green:#1ebcc9;--accent:#23b5be;--white:rgba(18,155,175,.27)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;background:#07556b}
-body{margin:0;min-height:100vh;font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;color:#fff;background:radial-gradient(ellipse at 90% 4%,#4ed0d3 0%,transparent 43%),radial-gradient(ellipse at 0% 80%,#46b8a8 0%,transparent 42%),linear-gradient(145deg,#005470 0%,#087e98 49%,#034763 100%);background-attachment:fixed}
-header{padding:24px max(20px,calc((100vw - 1100px)/2)) 24px;background:transparent}
-.top{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.badge{display:inline-block;border:1px solid #b0f7f866;border-radius:99px;padding:6px 11px;font-size:11px;letter-spacing:.06em;color:#d9fbfd}
-.langs{display:flex;gap:6px}
-.langs button{font:inherit;font-size:13px;font-weight:700;border:1px solid #b9ffff66;background:#ffffff24;color:#fff;border-radius:13px;padding:10px 14px;cursor:pointer}
-.langs button[aria-pressed=true]{background:#57e2eb;color:#043c53}
-h1{font-size:clamp(30px,5vw,51px);line-height:1.13;letter-spacing:-.035em;margin:19px 0 12px}
-header p{color:#e1fbfb;max-width:750px}
-main{max-width:1100px;margin:0 auto;padding:0 18px 70px}
-.tabs{position:sticky;top:0;z-index:20;display:flex;gap:8px;overflow-x:auto;scrollbar-width:thin;padding:8px;margin:0 0 20px;border-radius:23px;background:#ffffff19;border:1px solid #b5ffff70;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
-.tabs button{flex-shrink:0;white-space:nowrap;font:inherit;font-size:14px;border-radius:15px;border:1px solid transparent;background:transparent;color:#fff;padding:12px 15px;cursor:pointer}
-.tabs button[aria-selected=true]{background:#56ddea;color:#064458;border-color:#abffffaa;box-shadow:0 4px 14px #003c5550;font-weight:750}
-.panel{display:none}.panel.active{display:block}
-.card,.panel .card{background:linear-gradient(125deg,#16a7bd4d,#057b9a55);border:1px solid #a7f6fa75;border-radius:25px;padding:clamp(21px,4vw,32px);margin:0 0 15px;box-shadow:inset 0 1px #ffffff38,0 8px 24px #003f581f;color:#fff}
-.card.highlight{background:linear-gradient(125deg,#26c4ca55,#0783a655)}
-.card p,.card h2,.card h3,.card strong,.card li{color:#fff}
-h2{font-size:clamp(24px,3vw,33px);line-height:1.2;margin:0 0 14px}
-h3{font-size:clamp(21px,2.4vw,26px);margin:0 0 11px}
-p{margin:8px 0 14px}
-.grid,.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-bottom:18px}
-.grid .card,.steps .card{margin:0}
-.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:#b8ffff;margin-bottom:10px}
-.note{font-size:13px;color:#d2f2f4}
-a{color:#c4ffff}a:hover{color:#fff}
-.field{display:flex;flex-direction:column;gap:6px}
-.field input,.field select,.research-search-wrap input{width:100%;font:inherit;padding:11px;border:1px solid #c4ffff8c;border-radius:12px;background:#e4ffff;color:#064357}
-.result{border:1px solid #b5ffff66;border-radius:14px;background:#ffffff24;padding:17px}
-.result small{display:block;color:#d7f6f6}.metric{font-size:29px;font-weight:800}
-button.action,.research-back{font:inherit;font-weight:700;cursor:pointer;border:1px solid #b5ffff8c;border-radius:13px;background:#20b9c9;color:#073e54;padding:11px 16px}
-.steps{counter-reset:step}.steps>.card:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#48d5de;color:#064357;font-size:21px;font-weight:800;margin-bottom:15px}
-.viz-shell{background:#005e7a65;border:1px solid #b5ffff80;border-radius:24px;padding:23px;margin-bottom:18px}
-.viz-shell p{color:#e8ffff}.viz-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:12px}.viz-node{padding:15px;border:1px solid #a4f7fa78;border-radius:15px;background:#ffffff16}.viz-node small{color:#c7eff2}.viz-symbol{font-size:26px}
-.chart-wrap{overflow:auto;background:#f1ffff;border-radius:13px;padding:12px}.chart-wrap svg{width:100%;min-width:300px}
-.chart-legend{display:flex;flex-wrap:wrap;gap:12px}
-.overview-topic{cursor:pointer;outline-offset:3px}
-.overview-readmore{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #b5ffff66;margin-top:17px;padding-top:13px;color:#c8ffff;font-weight:750}
-.overview-dots{letter-spacing:4px;font-size:19px}
-.overview-detail{border-top:1px solid #b5ffff66;padding-top:14px;margin-top:15px}
-#overview .overview-topic[aria-expanded=true]{grid-column:1/-1}
-.research-news-list{display:grid;gap:14px}.research-news-date{font-size:13px;color:#c2edf0}.research-news-link{font-weight:750}
-.research-search{margin:18px 0}.research-search-wrap{display:flex;align-items:center;gap:8px;border:1px solid #a4f7fa78;border-radius:13px;padding:6px 12px;background:#ffffff1c}.research-search-wrap input{background:transparent;color:#fff;border:0}.research-search-wrap input::placeholder{color:#d4f5f7}
-footer{text-align:center;color:#d6f5f6;padding:25px}
-@media(max-width:600px){header{padding:20px 18px 23px}main{padding:0 14px 55px}.grid,.steps{grid-template-columns:1fr}.tabs button{padding:10px 13px}.card{padding:22px}}
-@media(prefers-reduced-transparency:reduce){.tabs{backdrop-filter:none;-webkit-backdrop-filter:none}}
-.site-toolbar{display:flex;justify-content:flex-end;margin:0 0 9px}.mobile-langs{display:flex;gap:5px;background:#ffffff23;border:1px solid #b5ffff70;border-radius:14px;padding:4px}.mobile-langs button{font:inherit;font-size:14px;font-weight:700;border:0;border-radius:10px;background:transparent;color:#fff;padding:9px 14px;cursor:pointer}.mobile-langs button.selected,.mobile-langs button[aria-pressed="true"]{background:#56ddea;color:#064458}.site-toolbar{position:sticky;top:0;z-index:22;background:#075e78;padding:5px 0;border-radius:12px}.tabs{top:51px}@media(max-width:600px){.tabs{top:51px}}
-
-/* Aquamarine liquid-glass skin: CSS-only, no images or illustrations */
-:root{--aqua-deep:#06566b;--aqua-mid:#138da2;--aqua-light:#78d9d4;--glass-stroke:rgba(225,255,255,.55)}
-html{background:#075b70}
-body{background:radial-gradient(ellipse 75% 55% at 10% 6%,rgba(151,244,225,.42),transparent 65%),radial-gradient(ellipse 65% 50% at 95% 47%,rgba(87,214,223,.36),transparent 70%),radial-gradient(ellipse 80% 45% at 15% 95%,rgba(94,187,213,.45),transparent 70%),linear-gradient(145deg,#07516c 0%,#12899b 46%,#076279 100%)!important;background-attachment:fixed!important}
-header{background:linear-gradient(115deg,rgba(3,75,94,.6),rgba(19,159,169,.24))!important;border-bottom:1px solid #c8ffff40}
-main{position:relative;isolation:isolate}
-main:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background:repeating-radial-gradient(ellipse 380px 210px at 88% 19%,transparent 0 72px,rgba(221,255,255,.09) 74px 76px,transparent 79px 126px),repeating-radial-gradient(ellipse 290px 250px at 7% 78%,transparent 0 64px,rgba(199,255,245,.07) 66px 68px,transparent 70px 116px)}
-.tabs,.mobile-langs,.site-toolbar{background:rgba(51,175,191,.28)!important;border:1px solid rgba(221,255,255,.5)!important;box-shadow:inset 0 1px rgba(255,255,255,.42),0 12px 30px rgba(1,45,66,.18)!important;backdrop-filter:blur(22px) saturate(160%)!important;-webkit-backdrop-filter:blur(22px) saturate(160%)!important}
-.site-toolbar{padding:5px 8px!important}
-.tabs button:not([aria-selected=true]){background:rgba(222,255,255,.09);border:1px solid rgba(255,255,255,.16)}
-.tabs button[aria-selected=true],.mobile-langs button[aria-pressed=true]{background:linear-gradient(130deg,rgba(141,249,238,.96),rgba(75,203,216,.95))!important;color:#064b61!important;box-shadow:inset 0 1px #fff9,0 4px 14px #03445b4d!important}
-.card,.panel .card,.viz-shell,.result,.research-search-wrap{position:relative;background:linear-gradient(135deg,rgba(158,244,235,.18),rgba(18,113,142,.28) 55%,rgba(182,252,246,.11))!important;border:1px solid var(--glass-stroke)!important;box-shadow:inset 0 1px rgba(255,255,255,.42),inset 0 -1px rgba(255,255,255,.09),0 12px 29px rgba(1,46,64,.16)!important;backdrop-filter:blur(18px) saturate(150%)!important;-webkit-backdrop-filter:blur(18px) saturate(150%)!important}
-.card:before{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;background:radial-gradient(ellipse 70% 35% at 7% 0%,rgba(236,255,255,.13),transparent 85%);opacity:.9}
-.card>*{position:relative}
-.card.highlight{background:linear-gradient(135deg,rgba(134,235,221,.27),rgba(6,115,146,.31))!important}
-.grid .card,.steps .card{transition:box-shadow .2s,border-color .2s}
-.grid .card:hover,.steps .card:hover{border-color:#e1ffffc9!important;box-shadow:inset 0 1px #ffffff70,0 17px 35px #023d5760!important}
-.field input,.field select{border:1px solid #d6ffffb8!important;background:rgba(230,255,255,.9)!important}
-.overview-readmore{border-top-color:rgba(226,255,255,.4)}
-@media(prefers-reduced-transparency:reduce){.card,.panel .card,.viz-shell{backdrop-filter:none!important;-webkit-backdrop-filter:none!important;background:#126b81!important}}
-
-/* Soft aquamarine flowing wallpaper: calm low-contrast waves, no imagery */
-html{background:#b8dadc!important}
-body{color:#173f4c;background:
-radial-gradient(ellipse 120% 48% at 6% -12%,#dcefea 0%,#c3e2dd 53%,transparent 54%),
-radial-gradient(ellipse 98% 50% at 96% 26%,#a6d8d8 0%,#a6d8d8 54%,transparent 55%),
-radial-gradient(ellipse 110% 43% at 4% 66%,#8fcacb 0%,#8fcacb 52%,transparent 53%),
-radial-gradient(ellipse 110% 48% at 90% 110%,#b8dfe0 0%,#b8dfe0 55%,transparent 56%),
-linear-gradient(160deg,#cfe7e3 0%,#9ccfd1 48%,#c2e3e2 100%)!important;background-attachment:fixed!important}
-body:before,main:before{display:none!important}
-header{background:linear-gradient(120deg,#155e6bd9,#247f84c9)!important}
-.tabs,.mobile-langs,.site-toolbar{background:rgba(233,251,249,.53)!important;border:1px solid rgba(255,255,255,.83)!important;box-shadow:inset 0 1px #ffffffba,0 7px 20px #1c667221!important;backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important}
-.tabs button:not([aria-selected=true]),.mobile-langs button:not([aria-pressed=true]){color:#255763!important;background:rgba(255,255,255,.33)!important}
-.tabs button[aria-selected=true],.mobile-langs button[aria-pressed=true]{background:#397f88!important;color:#fff!important;box-shadow:none!important}
-.card,.panel .card,.viz-shell,.result,.research-search-wrap{background:rgba(246,255,253,.47)!important;color:#194450!important;border:1px solid rgba(255,255,255,.82)!important;box-shadow:inset 0 1px #ffffffbb,0 8px 22px #2c7a831a!important;backdrop-filter:blur(14px) saturate(110%)!important;-webkit-backdrop-filter:blur(14px) saturate(110%)!important}
-.card:before{display:none!important}
-.card h2,.card h3,.card h4,.card p,.card strong,.card li,.panel .card h2,.panel .card h3,.panel .card p{color:#194450!important}
-.card.highlight{background:rgba(223,246,241,.59)!important}
-.eyebrow,.card .eyebrow{color:#2d777b!important}
-.note,.card .note{color:#55787c!important}
-.overview-readmore{color:#286e78!important;border-top-color:#8bbabc!important}
-a,.panel a{color:#216e7b}
-.viz-shell{background:rgba(24,103,116,.78)!important;color:#fff!important}
-.viz-shell p,.viz-shell h2,.viz-shell .eyebrow,.viz-shell .viz-node{color:#fff!important}
-.viz-node{background:#ffffff1b;border-color:#ffffff5a}
-.result small{color:#4c7278!important}.metric{color:#195a68!important}
-.field input,.field select{background:#f4fffd!important;color:#194450!important}
-.research-search-wrap input{color:#194450!important}
-.research-search-wrap input::placeholder{color:#6a8b8e!important}
-@media(max-width:650px){body{background-attachment:scroll!important;background:linear-gradient(155deg,#d1e9e5 0%,#a6d4d5 44%,#c0e2df 100%)!important}.card,.panel .card{background:rgba(246,255,253,.53)!important}}
-
-/* Visible layered aqua wallpaper: large flowing curved ribbons on mobile and desktop */
-html{background:#b9deda!important}
-body{position:relative;background:linear-gradient(165deg,#dcefea 0%,#c1e4e0 34%,#a3d1d4 72%,#d4eae4 100%)!important;background-attachment:fixed!important}
-body:before{display:block!important;content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:1!important;background:linear-gradient(150deg,#b0dedb,#72c4cc 58%,#b1e2df);clip-path:polygon(0 26%,12% 22%,26% 24%,40% 33%,54% 36%,70% 30%,84% 20%,100% 15%,100% 65%,85% 70%,69% 74%,53% 69%,38% 61%,22% 58%,8% 64%,0 70%);filter:blur(1px)}
-body:after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:linear-gradient(145deg,rgba(228,255,249,.62),rgba(133,205,208,.45));clip-path:polygon(0 67%,14% 59%,29% 61%,44% 69%,60% 76%,78% 72%,100% 56%,100% 100%,0 100%)}
-header,main,footer{position:relative;z-index:1}
-main:before{display:none!important}
-.panel .card,.card{background:rgba(244,255,253,.57)!important}
-@media(max-width:650px){
- body{background:linear-gradient(165deg,#dcefea 0%,#c1e4e0 34%,#a3d1d4 72%,#d4eae4 100%)!important;background-attachment:fixed!important}
- body:before{display:block!important}
- body:after{display:block!important}
-}
-
-/* Single language selector only, in header */
-.site-toolbar,.mobile-langs,[data-language]{display:none!important}
-.tabs{top:0!important}
-.langs{flex-shrink:0}
-</style></head><body>
-<header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p></header>
+<style>:root{color-scheme:light;--bg:#edf7f7;--ink:#1a2b34;--muted:#4a606a;--line:rgba(0,139,116,.18);--green:#008b74;--accent:#00c897;--white:rgba(255,255,255,.78)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:92px;background:#edf7f7}
+body{margin:0;min-height:100vh;font:16px/1.65 -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Arial,sans-serif;color:#1a2b34;background:radial-gradient(ellipse 65% 30% at 10% 8%,#c7f2e7 0%,transparent 100%),radial-gradient(ellipse 65% 38% at 92% 70%,#b9e6e5 0%,transparent 100%),linear-gradient(160deg,#f3fafb,#e5f5f3 55%,#f3faf8);overflow-x:hidden}
+header{max-width:1220px;margin:0 auto;padding:24px 22px 0}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:19px}.badge{display:inline-block;border:1px solid #9fdad1;border-radius:100px;padding:7px 13px;font-size:11px;font-weight:800;letter-spacing:.075em;color:#007a6c;background:#ffffffa6}
+.langs{display:flex;gap:4px;background:#ffffffbb;border:1px solid #c6e8e0;border-radius:17px;padding:4px}.langs button{font:inherit;font-size:13px;font-weight:800;cursor:pointer;border:0;border-radius:12px;background:transparent;color:#31565d;padding:9px 15px}.langs button[aria-pressed=true]{background:#008b74;color:#fff;box-shadow:0 3px 10px #008b7438}
+.hero-banner{position:relative;overflow:hidden;border-radius:27px;background:linear-gradient(120deg,#102a35 0%,#1b4551 55%,#0e343d 100%);color:#fff;padding:clamp(27px,5vw,56px);box-shadow:0 22px 54px #173e4b35}.hero-banner:before{content:"";position:absolute;width:600px;height:600px;border:1px solid #ffffff24;border-radius:50%;right:-290px;top:-370px;box-shadow:0 0 0 65px #ffffff09,0 0 0 130px #ffffff07,0 0 0 195px #ffffff06;pointer-events:none}.hero-banner>*{position:relative}
+h1{font-size:clamp(35px,5vw,59px);line-height:1.11;letter-spacing:-.048em;margin:0 0 14px;color:#fff;font-weight:800}header p{max-width:790px;color:#e2f5f3;font-size:clamp(15px,1.8vw,18px);margin:0 0 12px}header strong{color:#aef2dc}
+.hero-art{height:clamp(165px,29vw,275px);margin:25px 0 0;border-radius:18px;overflow:hidden;border:1px solid #ffffff32;background:#1a3d4c}.hero-art svg{display:block;width:100%;height:100%}
+main{max-width:1220px;margin:0 auto;padding:0 22px 75px}.tabs{position:sticky;top:0;z-index:40;display:flex;gap:6px;overflow-x:auto;scrollbar-width:thin;padding:11px 8px;margin:0 0 25px;background:rgba(240,250,249,.87);border:1px solid #ffffffd9;border-radius:0 0 19px 19px;backdrop-filter:blur(20px) saturate(170%);-webkit-backdrop-filter:blur(20px) saturate(170%);box-shadow:0 12px 28px #164f5b16}.tabs button{flex-shrink:0;white-space:nowrap;font:inherit;font-size:14px;font-weight:650;border-radius:12px;border:1px solid transparent;background:transparent;color:#36535c;padding:11px 15px;cursor:pointer}.tabs button[aria-selected=true]{background:#008b74;color:#fff;font-weight:750;box-shadow:0 4px 12px #008b7430}
+.panel{display:none;scroll-margin-top:95px}.panel.active{display:block;animation:appear .2s ease}@keyframes appear{from{opacity:.6;transform:translateY(4px)}to{opacity:1;transform:none}}
+.card,.panel .card{background:rgba(255,255,255,.79);backdrop-filter:blur(18px) saturate(155%);-webkit-backdrop-filter:blur(18px) saturate(155%);border:1px solid #ffffff;border-radius:22px;padding:clamp(22px,3.5vw,34px);margin:0 0 18px;box-shadow:0 12px 36px -8px #0f2d371a,inset 0 1px 0 #fff;color:#1a2b34}.card.highlight{background:linear-gradient(135deg,#fff,#e4f7f2);border-left:4px solid #00a98e}
+.card p,.card h2,.card h3,.card strong,.card li{color:inherit}h2{font-size:clamp(25px,3.4vw,37px);line-height:1.2;letter-spacing:-.03em;color:#1a2b34;margin:0 0 17px}h3{font-size:clamp(21px,2.4vw,27px);line-height:1.3;color:#007c72;margin:0 0 13px}p{margin:8px 0 16px;color:#4a606a}.card p{color:#4a606a}.grid,.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:18px;margin-bottom:20px}.grid .card,.steps .card{margin:0}.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:850;color:#008b74;margin-bottom:12px}.note{font-size:13px;color:#56737a}
+a{color:#007f76;text-underline-offset:3px}a:hover{color:#005b58}.field{display:flex;flex-direction:column;gap:7px}.field input,.field select,.research-search-wrap input{width:100%;font:inherit;padding:12px;border:1px solid #badbd6;border-radius:12px;background:#f8fffd;color:#193e47;outline-color:#008b74}.result{border:1px solid #c9e8e0;border-radius:15px;background:#e9f8f4;padding:17px}.result small{display:block;color:#54747b}.metric{font-size:clamp(23px,3vw,31px);font-weight:850;color:#007e73}
+button.action,.research-back{font:inherit;font-weight:750;cursor:pointer;border:0;border-radius:13px;background:#008b74;color:#fff;padding:12px 17px}.steps{counter-reset:step}.steps>.card:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:45px;height:45px;border-radius:13px;background:#d9f4eb;color:#008b74;font-size:22px;font-weight:850;margin-bottom:18px}
+.viz-shell{background:linear-gradient(135deg,#15313c,#1d5761);border:1px solid #2c6970;border-radius:22px;padding:clamp(22px,3.5vw,34px);margin-bottom:20px;color:#fff}.viz-shell h2,.viz-shell h3,.viz-shell p,.viz-shell .eyebrow{color:#fff}.viz-flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.viz-node{padding:16px;border:1px solid #ffffff3b;border-radius:15px;background:#ffffff12;color:#fff}.viz-node small{color:#b9e8e4}.viz-symbol{font-size:26px}
+.chart-wrap{overflow:auto;background:#f7fffd;border:1px solid #d3eae5;border-radius:15px;padding:12px}.chart-wrap svg{width:100%;min-width:300px}.chart-legend{display:flex;flex-wrap:wrap;gap:12px}
+.overview-topic{cursor:pointer;outline-offset:3px;transition:transform .2s,box-shadow .2s}.overview-topic:hover{transform:translateY(-2px);box-shadow:0 18px 40px #0f2d3720}.overview-readmore{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #d0e8e2;margin-top:18px;padding-top:14px;color:#008b74;font-weight:800}.overview-dots{letter-spacing:4px;font-size:19px}.overview-detail{border-top:1px solid #d0e8e2;padding-top:15px;margin-top:15px}#overview .overview-topic[aria-expanded=true]{grid-column:1/-1}
+.research-news-list{display:grid;gap:14px}.research-news-date{font-size:13px;color:#54747b}.research-news-link{font-weight:750}.research-search{margin:18px 0}.research-search-wrap{display:flex;align-items:center;gap:8px;border:1px solid #c6e7df;border-radius:13px;padding:6px 12px;background:#fff}.research-search-wrap input{background:transparent;color:#1a2b34;border:0}.research-search-wrap input::placeholder{color:#67838a}
+footer{text-align:center;color:#56747b;padding:25px}.site-toolbar,.mobile-langs,[data-language]{display:none!important}
+@media(max-width:650px){header{padding:15px 13px 0}.top{margin-bottom:12px}.badge{font-size:9px;padding:7px 9px;letter-spacing:.025em}.langs button{padding:8px 11px}.hero-banner{padding:25px 20px;border-radius:20px}h1{font-size:clamp(32px,8vw,43px)}.hero-art{height:175px;margin-top:20px}main{padding:0 13px 60px}.tabs{padding:9px 6px;margin-bottom:16px}.tabs button{padding:10px 12px;font-size:13px}.grid,.steps{grid-template-columns:1fr;gap:14px}.card,.panel .card{padding:22px;border-radius:19px;margin-bottom:14px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}</style></head><body>
+<header><div class="top"><span class="badge">H₂ • IRELAND • INDEPENDENT CONCEPT</span><div class="langs"><button id="enBtn" type="button" aria-pressed="true">EN</button><button id="ruBtn" type="button" aria-pressed="false">RU</button></div></div><div class="hero-banner"><h1>Hydrogen Future Ireland</h1><p data-i="subtitle"></p><p><strong data-i="status"></strong></p><div class="hero-art" role="img" aria-label="Illustrative offshore wind turbines on the Atlantic coast"><svg viewBox="0 0 1100 270" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#c8d9de"/><stop offset="1" stop-color="#8eaeb8"/></linearGradient><linearGradient id="sea" x2="0" y2="1"><stop stop-color="#315e70"/><stop offset="1" stop-color="#102c39"/></linearGradient></defs><rect width="1100" height="270" fill="url(#sky)"/><path d="M0 150V70L100 67 195 91 290 137 375 151 450 165H1100V270H0Z" fill="#526f6b"/><path d="M0 150V100L110 97 225 126 320 155H1100V270H0Z" fill="#34514e"/><rect y="162" width="1100" height="108" fill="url(#sea)"/><g stroke="#9dbdc6" opacity=".3"><path d="M0 190h110m80 15h180m110-22h200m85 29h240M45 246h250m75-13h200m100 13h350"/></g><g fill="#edf5f5" stroke="#edf5f5" stroke-linejoin="round"><g transform="translate(340 93)"><path d="M-3 0h6l3 118h-12Z"/><circle r="6"/><path d="M0 0-17-78-10-80 3 0ZM0 0 79-11 79-4 1 4ZM0 0-46 64-51 59-3-2Z"/></g><g transform="translate(555 104) scale(.82)"><path d="M-3 0h6l3 118h-12Z"/><circle r="6"/><path d="M0 0-57-59-51-63 3 0ZM0 0 76-9 77-2 1 4ZM0 0-18 79-25 77-3-2Z"/></g><g transform="translate(738 118) scale(.67)"><path d="M-3 0h6l3 118h-12Z"/><circle r="6"/><path d="M0 0-17-78-10-80 3 0ZM0 0 79-11 79-4 1 4ZM0 0-46 64-51 59-3-2Z"/></g><g transform="translate(894 126) scale(.57)"><path d="M-3 0h6l3 118h-12Z"/><circle r="6"/><path d="M0 0-57-59-51-63 3 0ZM0 0 76-9 77-2 1 4ZM0 0-18 79-25 77-3-2Z"/></g></g></svg></div></div></header>
 <main><nav class="tabs" id="tabs" aria-label="Site sections"></nav><section id="overview" class="panel active"></section><section id="calculator" class="panel"></section><section id="timeline" class="panel"></section><section id="market" class="panel"></section><section id="prototype" class="panel"></section><section id="analytics" class="panel"></section><section id="risks" class="panel"></section><section id="research" class="panel"></section><section id="contact" class="panel"></section></main><footer>Hydrogen Future Ireland · <span data-i="footer"></span></footer>
 <script>
 const L={
